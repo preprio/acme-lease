@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import AccessTokenIndicator from '@/components/access-token-indicator'
 import '@preprio/prepr-nextjs/index.css'
 import { getToolbarProps } from '@preprio/prepr-nextjs/server'
+import { PreprToolbarProps } from '@preprio/prepr-nextjs/types'
 import {
   PreprToolbarProvider,
 } from '@preprio/prepr-nextjs/react'
@@ -24,7 +25,23 @@ export default async function PagesLayout({
         notFound()
     }
 
-    const previewBarProps = await getToolbarProps(process.env.PREPR_GRAPHQL_URL!)
+    let previewBarProps: PreprToolbarProps | null = null;
+
+    try {
+        previewBarProps = await getToolbarProps(process.env.PREPR_GRAPHQL_URL!)
+    } catch (error) {
+        console.error('Error getting preview bar props', error)
+        console.error('Make sure that environment variable PREPR_GRAPHQL_URL is set correctly and that the token has edit mode enabled')
+    }
+
+    if (!previewBarProps) {
+        return (
+            <div className="flex min-h-screen flex-col">
+                <Navbar locale={locale} />
+                <main className="flex-1">{children}</main>
+            </div>
+        )
+    }
 
     return (
         <PreprToolbarProvider props={previewBarProps} options={{
