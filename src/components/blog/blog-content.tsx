@@ -3,6 +3,7 @@ import BlogText from '@/components/blog/blog-text'
 import BlogAssets from '@/components/blog/blog-assets'
 import YoutubeEmbed from '@/components/youtube-embed'
 import { cn } from '@/lib/utils'
+import { DynamicContentField } from '@/types/dynamic-content-field'
 
 interface BlogContentProps extends React.HTMLAttributes<HTMLDivElement> {
     content: any 
@@ -10,11 +11,11 @@ interface BlogContentProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function BlogContent({ content, className, ...props }: BlogContentProps) {
-    const items = content?.map((item: any, index: any) => {
+    const items = content?.map((item: DynamicContentField, index: number) => {
         if (item.__typename === 'Text') {
             return <BlogText item={item} key={index} />
         } else if (item?.__typename === 'Assets' && item.items) {
-            return <BlogAssets item={item} key={index} />
+            return <BlogAssets assets={item} key={index} />
         }  else if (item?.__typename === 'YouTubePost') {
             return (
                 <div className='mx-auto max-w-prose' key={index}>

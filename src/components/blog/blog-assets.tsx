@@ -1,34 +1,38 @@
+import { Asset, Assets, Maybe } from '@/gql/graphql'
 import Image from 'next/image'
 
-export default function BlogAssets({ item }: { item: any }) {
-    const items = item.items.map((item: any, index: any) => {
-        if (!item) return null
+export default function BlogAssets({ assets }: { assets: Assets }) {
 
-        if (item._type === 'Photo') {
+    if (!assets || !assets.items) return null
+    
+    const items = assets.items.map((asset: Maybe<Asset>, index: number) => {
+        if (!asset) return null
+
+        if (asset._type === 'Photo') {
             return (
                 <Image
                     key={index}
-                    src={item?.url || ''}
-                    width={item.width || 1000}
-                    height={item.height || 500}
+                    src={asset?.url || ''}
+                    width={asset.width || 1000}
+                    height={asset.height || 500}
                     alt=""
                     className="mx-auto rounded-xl"
                 />
             )
-        } else if (item._type === 'Video') {
+        } else if (asset._type === 'Video') {
             return (
                 <p>No video support yet!</p>
             )
         } else if (
-            item._type === 'Document' &&
-            (item.mime_type === 'image/gif' || item.mime_type === 'image/webp')
+            asset._type === 'Document' &&
+            (asset.mime_type === 'image/gif' || asset.mime_type === 'image/webp')
         ) {
             return (
                 <Image
                     key={index}
-                    src={item?.url || ''}
-                    width={item.width || 1000}
-                    height={item.height || 500}
+                    src={asset?.url || ''}
+                    width={asset.width || 1000}
+                    height={asset.height || 500}
                     alt=""
                     className="mx-auto rounded-xl"
                 />
