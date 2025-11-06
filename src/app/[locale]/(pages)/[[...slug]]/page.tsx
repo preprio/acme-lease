@@ -8,7 +8,7 @@ import { Locale } from '@/types/locale'
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
 
-async function getData(slug: string) {
+async function getData(slug: string, locale: Locale) {
     const headers = await getHeaders()
 
     const client = await getApolloClient()
@@ -21,6 +21,7 @@ async function getData(slug: string) {
         context: {
             headers: {
                 ...headers,
+                'Prepr-Locale': locale || '',
             },
         },
         fetchPolicy: 'no-cache',

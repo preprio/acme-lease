@@ -17,7 +17,7 @@ import { getHeaders } from '@/lib/server'
 import { useTranslations } from 'next-intl'
 import { Locale } from '@/types/locale'
 
-const getPostData = async (slug: string) => {
+const getPostData = async (slug: string, locale: Locale) => {
     const client = await getApolloClient()
 
     const { data } = await client.query<PostQuery>({
@@ -27,6 +27,7 @@ const getPostData = async (slug: string) => {
         },
         context: {
             headers: await getHeaders(),
+            'Prepr-Locale': locale || '',
         },
     })
 

@@ -10,8 +10,9 @@ import Button from '@/components/elements/button'
 import { getHeaders } from '@/lib/server'
 import { getTranslations } from 'next-intl/server'
 import Sections from '@/components/sections/sections'
+import { Locale } from '@/types/locale'
 
-const getProductData = async (slug: string) => {
+const getProductData = async (slug: string, locale: Locale) => {
     const client = await getApolloClient()
 
     const { data } = await client.query<ProductQuery>({
@@ -21,6 +22,7 @@ const getProductData = async (slug: string) => {
         },
         context: {
             headers: await getHeaders(),
+            'Prepr-Locale': locale || '',
         },
     })
 
@@ -35,11 +37,11 @@ const getProductData = async (slug: string) => {
 export default async function ProductPage({
                                               params,
                                           }: {
-    params: Promise<{ slug: string }>
+    params: Promise<{ slug: string, locale: Locale }>
 }) {
-    let { slug } = await params
-    const product = await getProductData(slug)
-
+    let { slug, locale } = await params
+    const product = await getProductData(slug, locale)
+    
     const sections = product?.content && <Sections sections={product?.content} />
 
     const t = await getTranslations('Products')
