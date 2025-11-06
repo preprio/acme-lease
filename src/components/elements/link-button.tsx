@@ -14,8 +14,10 @@ export default function LinkButton({ children, href = '/', className, ...additio
         className,
     )
 
+    const { popover, ...restProps } = additionalProps
+
     return (
-        <Link href={href} className={classes} {...additionalProps}>
+        <Link href={href} className={classes} {...restProps}>
             {children}
         </Link>
     )
