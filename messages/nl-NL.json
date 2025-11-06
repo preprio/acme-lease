@@ -1,0 +1,50 @@
+{
+  "Products": {
+    "title": "Aanbod",
+    "price_suffix": {
+      "MONTH": "maand"
+    },
+    "card": {
+      "cta": "Bekijk"
+    },
+    "request_quote": "Vraag offerte aan"
+  },
+  "Blog": {
+    "Filter": {
+      "all": "Alle"
+    },
+    "card": {
+      "cta": "Lees meer"
+    },
+    "read_time": "Leestijd"
+  },
+  "StaticSections": {
+    "steps": {
+      "title": "Hoe het werkt",
+      "button": "Boek een demo"
+    },
+    "testimonials": {
+      "title": "Testimonials over Acme"
+    },
+    "explanation": {
+      "title": "Hoe krijg je het product"
+    },
+    "benefits": {
+      "title": "Acme Voordelen"
+    }
+  },
+  "CTA": {
+    "subscribe": "Inschrijven",
+    "title": "Blijf verbonden",
+    "text": "Ontvang nieuws, expert tips en speciale aanbiedingen direct in je inbox.",
+    "subscribe_success": {
+      "title": "Success!",
+      "text": "Je bent ingeschreven!"
+    }
+  },
+  "Prefix": {
+    "products": "products",
+    "page": "page",
+    "category": "category"
+  }
+}

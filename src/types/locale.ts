@@ -1,0 +1,13 @@
+export type Locale = 'en-US' | 'nl-NL' | 'af-ZA' | 'ar-AE' | 'ar-BH' | 'ar-DJ' | 'ar-DZ' | 'ar-EG' | 'ar-EH' | 'ar-ER' | 'ar-IL' | 'ar-IQ' |
+            'ar-JO' | 'ar-KM' | 'ar-KW' | 'ar-LB' | 'ar-LY' | 'ar-MA' | 'ar-MR' | 'ar-OM' | 'ar-PS' | 'ar-QA' |
+            'ar-SA' | 'ar-SD' | 'ar-SO' | 'ar-SS' | 'ar-SY' | 'ar-TD' | 'ar-TN' | 'ar-YE' | 'az-AZ' | 'be-BY' |
+            'bg-BG' | 'br-FR' | 'ca-AD' | 'ca-ES' | 'ca-FR' | 'ca-IT' | 'cs-CZ' | 'da-DK' | 'da-GL' | 'de-AT' |
+            'de-BE' | 'de-CH' | 'de-IT' | 'de-DE' | 'de-LI' | 'de-LU' | 'el-CY' | 'el-GR' | 'en-AT' | 'en-AU' |
+            'en-CA' | 'en-IE' | 'en-IN' | 'en-NA' | 'en-NZ' | 'en-SG' | 'en-US' | 'en-ZA' | 'es-CL' | 'es-CO' |
+            'es-EC' | 'es-ES' | 'es-LA' | 'es-MX' | 'es-US' | 'et-EE' | 'eu-ES' | 'fi-FI' | 'fo-DK' | 'fo-FO' |
+            'fr-BE' | 'fr-CA' | 'fr-CH' | 'fr-FR' | 'fr-LU' | 'fy-NL' | 'ga-IE' | 'gl-ES' | 'hi-IN' | 'hr-BA' |
+            'hr-HR' | 'hu-HU' | 'hy-AM' | 'is-IS' | 'it-CH' | 'it-IT' | 'it-SM' | 'it-VA' | 'ja-JP' | 'kl-GL' |
+            'ko-KR' | 'lb-LU' | 'lv-LV' | 'mk-MK' | 'mt-MT' | 'nb-NO' | 'nl-BE' | 'nl-NL' | 'nn-NO' | 'pl-PL' |
+            'pt-BR' | 'pt-LU' | 'pt-PT' | 'ro-MD' | 'ro-RO' | 'ru-RU' | 'se-FI' | 'se-NO' | 'se-SE' | 'sk-SK' |
+            'si-SI' | 'sq-AL' | 'sq-MK' | 'sq-XK' | 'sr-SP' | 'sv-AX' | 'sv-FI' | 'sv-SE' | 'tr-TR' | 'uk-UA' |
+            'va-ES' | 'vi-VN' | 'zh-CN' | 'zh-HK' | 'zh-MO' | 'zh-SG' | 'zh-TW' | 'en-GB'

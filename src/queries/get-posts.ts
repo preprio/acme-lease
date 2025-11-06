@@ -1,0 +1,12 @@
+import { graphql } from '@/gql'
+
+export const GET_POSTS = graphql(`
+    query Posts($skip: Int, $limit: Int, $where: PostWhereInput) {
+        Posts(limit: $limit, skip: $skip, sort: publish_on_DESC, where: $where) {
+            total
+            items {
+                ...PostCard
+            }
+        }
+    }
+`)

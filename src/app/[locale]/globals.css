@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-spacing {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-18 2xl:px-20
+}

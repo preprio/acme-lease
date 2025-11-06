@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/nl-NL/producten",
+      "destination": "/nl-NL/products"
+    },
+    {
+      "source": "/nl-NL/producten/:slug",
+      "destination": "/nl-NL/products/:slug"
+    }
+  ]
+}
