@@ -137,7 +137,7 @@ pnpm start
 
 ### Deploy to Vercel (1-Click)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/preprio/acme-lease&env=PREPR_GRAPHQL_URL,PREPR_GRAPHQL_TOKEN,PREPR_ENV,APP_ENV,NODE_ENV,SITE_URL,HUBSPOT_PORTAL_ID,MAILCHAMP_API_KEY,MAILCHIMP_API_SERVER,MAILCHIMP_AUDIENCE_ID&envDescription=Environment%20variables%20required%20for%20the%20application&project-name=acme-lease)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/preprio/acme-lease&env=PREPR_GRAPHQL_URL,SITE_URL&envDescription=Environment%20variables%20required%20for%20the%20application&project-name=acme-lease)
 
 ### Manual Deployment to Vercel
 
