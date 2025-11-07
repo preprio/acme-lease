@@ -11,8 +11,6 @@ interface BlogContentProps extends React.PropsWithChildren {
 }
 
 export default function BlogContent({ content, className, ...props }: BlogContentProps) {
-
-    console.log(content)
     const items = content.map((item: DcfFragment, index: number) => {
         if (!item) return null
 
