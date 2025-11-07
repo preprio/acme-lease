@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
+import type { Locale } from '@/types/locale'
 
 const ubuntu = Ubuntu({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
@@ -20,11 +21,11 @@ export const metadata = {
 
 export default async function LocaleLayout({ children, params }: Readonly<{
     children: React.ReactNode,
-    params: Promise<{ locale: string }>
+    params: Promise<{ locale: Locale }>
 }>) {
     const { locale } = await params
 
-    if (!routing.locales.includes(locale as any)) {
+    if (!routing.locales.includes(locale as Locale)) {
         notFound()
     }
 
