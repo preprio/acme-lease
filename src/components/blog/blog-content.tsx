@@ -16,11 +16,11 @@ export default function BlogContent({ content, className, ...props }: BlogConten
 
         switch (item.__typename) {
             case 'Text':
-                return <BlogText item={item} key={index} />
+                return <BlogText item={item} key={item._id} />
             case 'Assets':
                 return <BlogAssets assets={item as Assets} key={index} />
             case 'YouTubePost':
-                return <YoutubeEmbed url={item.url} key={index} />
+                return <YoutubeEmbed url={item.url} key={item.url} />
             default:
                 return null
         }
