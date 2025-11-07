@@ -66,6 +66,7 @@ async function getBlogPage(locale: string) {
         context: {
             headers: {
                 ...headers,
+                'Prepr-Locale': locale,
             },
         },
         fetchPolicy: 'no-cache',
