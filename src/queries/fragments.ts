@@ -1,4 +1,4 @@
-import { graphql } from '../gql'
+import { graphql } from '@/gql'
 
 export const STATIC_FRAGMENT = graphql(`
     fragment Static on Static {
@@ -192,26 +192,34 @@ export const CONTENT_FRAGMENT = graphql(`
         __typename
         _id
         main_content {
-                __typename
-                ... on Text {
-                    body
-                    format
-                    text
-                }
-                ... on YouTubePost {
-                    url
-                }
-                ... on Assets {
-                    items {
-                        _type
-                        url(width: 1000)
-                        mime_type
-                        caption
-                        playback_id
-                        width
-                        height
-                    }
-                }
+            ...DynamicContentField    
+        }
+    }
+`)
+
+export const DYNAMIC_CONTENT_FIELD_FRAGMENT = graphql(`
+    fragment DynamicContentField on _prepr_types {
+        __typename
+        ... on Text {
+            _id
+            body
+            format
+            text
+        }
+        ... on YouTubePost {
+            _id
+            url
+        }
+        ... on Assets {
+            items {
+                _type
+                url(width: 1000)
+                mime_type
+                caption
+                playback_id
+                width
+                height
             }
+        }
     }
 `)

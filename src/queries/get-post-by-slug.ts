@@ -20,26 +20,7 @@ export const GET_POST_BY_SLUG = graphql(`
                 ...Author
             }
             content {
-                __typename
-                ... on Text {
-                    body
-                    format
-                    text
-                }
-                ... on YouTubePost {
-                    url
-                }
-                ... on Assets {
-                    items {
-                        _type
-                        url(width: 1000)
-                        mime_type
-                        caption
-                        playback_id
-                        width
-                        height
-                    }
-                }
+                ...DynamicContentField
             }
         }
     }
