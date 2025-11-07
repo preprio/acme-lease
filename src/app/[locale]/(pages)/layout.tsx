@@ -10,6 +10,7 @@ import {
   PreprToolbarProvider,
 } from '@preprio/prepr-nextjs/react'
 import PreviewBar from '@/components/preview-bar'
+import type { Locale } from '@/types/locale'
 
 export default async function PagesLayout({
     children,
@@ -21,7 +22,7 @@ export default async function PagesLayout({
     const { locale } = await params
 
     // Ensure that the incoming `locale` is valid
-    if (!routing.locales.includes(locale as any)) {
+    if (!routing.locales.includes(locale as Locale)) {
         notFound()
     }
 
