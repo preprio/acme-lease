@@ -1,7 +1,7 @@
 import Container from '@/components/container'
 import { FaChevronLeft } from 'react-icons/fa6'
 import { Link } from '@/i18n/routing'
-import { CtaFragment, DynamicContentFieldFragment, PostDocument, PostQuery } from '@/gql/graphql'
+import { CtaFragment, DcfFragment, PostDocument, PostQuery } from '@/gql/graphql'
 import Badge from '@/components/elements/badge'
 import AuthorBox from '@/components/author-box'
 import ReadTime from '@/components/elements/read-time'
@@ -89,7 +89,7 @@ export default async function BlogDetailPage({
                             </p>
                         </Prose>
 
-                        <BlogContent content={(post?.content as DynamicContentFieldFragment[]) || []} />
+                        <BlogContent content={(post?.content as DcfFragment[]) || []} />
 
                         <div className="py-10 max-w-prose mx-auto">
                             <CustomCTACard />

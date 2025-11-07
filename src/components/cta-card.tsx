@@ -6,7 +6,7 @@ import { Input } from '@headlessui/react'
 import Button from '@/components/elements/button'
 import React, { useActionState, useEffect } from 'react'
 import { z } from 'zod'
-import toast from 'react-hot-toast'
+import toast, { Toast } from 'react-hot-toast'
 import { FaXmark } from 'react-icons/fa6'
 import { useTranslations } from 'next-intl'
 import { CtaFragment } from '@/gql/graphql'
@@ -39,7 +39,7 @@ export default function CtaCard({ item, color = 'white' }: { item: CtaFragment, 
         if (formState.message) {
             if (formState.status === 'SUCCESS') {
                 window.prepr('event', 'Email', formState.email);
-                toast.custom((t: any) => (
+                toast.custom((t: Toast) => (
                     <div className="rounded-2xl p-5 flex items-start justify-between max-w-[420px] w-full bg-white">
                         <div className="flex gap-4 flex-wrap">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"

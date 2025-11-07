@@ -15,7 +15,7 @@ type FormState = {
     email: string | undefined | null;
 }
 
-export default async function newsletterSubscribe(formState: FormState, formData: FormData) {
+export default async function newsletterSubscribe(formState: any, formData: FormData) {
     const validatedFields = schema.safeParse({
         email: formData.get('email'),
     })

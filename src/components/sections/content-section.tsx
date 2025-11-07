@@ -1,4 +1,4 @@
-import { ContentFragment, DynamicContentFieldFragment } from '@/gql/graphql'
+import { ContentFragment, DcfFragment } from '@/gql/graphql'
 import BlogContent from '../blog/blog-content'
 import Container from '../container'
 
@@ -7,7 +7,7 @@ interface ContentSectionProps {
 }
 
 export default function ContentSection({ item }: ContentSectionProps) {    
- const content = item.main_content as DynamicContentFieldFragment[]
+ const content = item.main_content as DcfFragment[]
  if (!content) return null
 
  return (
