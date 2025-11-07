@@ -192,14 +192,33 @@ export const CONTENT_FRAGMENT = graphql(`
         __typename
         _id
         main_content {
-            ...DynamicContentField    
+            ... on Text {
+                _id
+                body
+                format
+                text
+            }
+            ... on YouTubePost {
+                _id
+                url
+            }
+            ... on Assets {
+                items {
+                    _type
+                    url(width: 1000)
+                    mime_type
+                    caption
+                    playback_id
+                    width
+                    height
+                }
+            } 
         }
     }
 `)
 
 export const DYNAMIC_CONTENT_FIELD_FRAGMENT = graphql(`
-    fragment DynamicContentField on _prepr_types {
-        __typename
+    fragment DCF on _prepr_types {
         ... on Text {
             _id
             body
