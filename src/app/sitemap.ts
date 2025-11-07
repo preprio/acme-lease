@@ -1,6 +1,5 @@
 import { getApolloClient } from '@/apollo-client'
 import { SitemapDocument, SitemapQuery } from '@/gql/graphql'
-import { SEO_FRAGMENT } from '@/queries/fragments'
 
 const SITE_URL = process.env.SITE_URL + '/'
 
