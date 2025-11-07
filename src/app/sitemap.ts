@@ -1,21 +1,30 @@
 import { getApolloClient } from '@/apollo-client'
-import { SitemapDocument, SitemapQuery } from '@/gql/graphql'
+import { SeoFragment, SitemapDocument, SitemapQuery } from '@/gql/graphql'
+
+type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+
+type SitemapEntry = {
+    url: string
+    changeFrequency: ChangeFrequency
+    priority: number
+    lastModified: string
+} & Partial<Pick<SeoFragment, 'meta_description' | 'meta_title' | 'meta_image'>>
 
 const SITE_URL = process.env.SITE_URL + '/'
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<SitemapEntry[]> {
     return [
         ...(await getPages()),
     ]
 }
 
-async function getPages() {
+async function getPages(): Promise<SitemapEntry[]> {
     const client = await getApolloClient()
     const { data } = await client.query<SitemapQuery>({
         query: SitemapDocument,
     })
 
-    let pages: any = []
+    const pages: SitemapEntry[] = []
 
     // Add pages to sitemap
     data?.Pages?.items.map((item) => {
