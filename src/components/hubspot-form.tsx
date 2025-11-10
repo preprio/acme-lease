@@ -33,12 +33,11 @@ const HubspotContactForm = (props: { portalId: string; formId: string }) => {
         script.id = 'hs-script-loader'
 
         script.onload = () => {
-            // @ts-ignore
-            if (window.hbspt && !hubspotLoaded) {
+            const hbspt = window.hbspt
+            if (hbspt && !hubspotLoaded) {
                 setTimeout(async () => {
                     setHubspotLoaded(true)
-                    // @ts-ignore
-                    window.hbspt.forms.create({
+                    hbspt.forms.create({
                         portalId,
                         formId,
                         target: '#hs-form-wrapper',

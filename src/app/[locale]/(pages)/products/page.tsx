@@ -132,7 +132,6 @@ export default async function ProductOverviewPage({
                 </div>
                 <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                     {products?.items?.map((product, index) => (
-                        // @ts-ignore
                         <ProductCard
                             product={product}
                             key={index}

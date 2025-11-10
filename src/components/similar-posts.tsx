@@ -36,8 +36,5 @@ export default async function SimilarPosts({ id }: SimilarPostsProps) {
         cards: posts.items,
     } as CardsFragment
 
-    return (
-        // @ts-ignore
-        <CardsSection item={item} />
-    )
+    return <CardsSection item={item} />
 }

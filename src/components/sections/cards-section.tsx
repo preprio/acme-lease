@@ -127,7 +127,6 @@ export default function CardsSection({ item }: { item: CardsFragment }) {
                     >
                         {item.cards?.map((card, index) => {
                             if (card.__typename === 'Post') {
-                                // @ts-ignore
                                 return (
                                     <SwiperSlide
                                         key={index}
