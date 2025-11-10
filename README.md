@@ -217,8 +217,7 @@ Translation files are located in the `messages/` directory:
 To enable preview mode for content editing:
 
 1. Set `PREPR_ENV=preview` in your environment variables
-2. Add `?access_token=YOUR_TOKEN` to any URL
-3. The Prepr preview toolbar will appear at the bottom of the page
+2. The Prepr preview toolbar will appear at the bottom of the page
 
 ## Troubleshooting
 
