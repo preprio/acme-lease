@@ -4,16 +4,14 @@ import { Toaster } from 'react-hot-toast'
 import React from 'react'
 
 interface ToastProviderProps {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
-export default function ToastProvider({
-                                          children,
-                                      }: ToastProviderProps) {
+export default function ToastProvider({ children }: ToastProviderProps) {
     return (
         <>
             {children}
-            <Toaster position="top-right" />
+            <Toaster position='top-right' />
         </>
     )
 }

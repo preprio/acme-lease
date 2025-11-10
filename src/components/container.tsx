@@ -5,9 +5,16 @@ interface ContainerProps extends ComponentProps<'div'> {
     children?: React.ReactNode
 }
 
-export default function Container({ children, className, ...props }: ContainerProps) {
+export default function Container({
+    children,
+    className,
+    ...props
+}: ContainerProps) {
     return (
-        <div className={cn('mx-auto max-w-8xl p-spacing', className)} {...props}>
+        <div
+            className={cn('max-w-8xl p-spacing mx-auto', className)}
+            {...props}
+        >
             {children}
         </div>
     )

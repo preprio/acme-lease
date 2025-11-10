@@ -1,5 +1,9 @@
 import { getApolloClient } from '@/apollo-client'
-import { CardsFragment, Similar_PostsDocument, Similar_PostsQuery } from '@/gql/graphql'
+import {
+    CardsFragment,
+    Similar_PostsDocument,
+    Similar_PostsQuery,
+} from '@/gql/graphql'
 import CardsSection from '@/components/sections/cards-section'
 
 interface SimilarPostsProps {
@@ -19,7 +23,6 @@ async function getSimilarPosts(id: string) {
     return data?.Similar_Posts
 }
 
-
 export default async function SimilarPosts({ id }: SimilarPostsProps) {
     const posts = await getSimilarPosts(id)
 
@@ -32,7 +35,6 @@ export default async function SimilarPosts({ id }: SimilarPostsProps) {
         variant: 'BLOG',
         cards: posts.items,
     } as CardsFragment
-
 
     return (
         // @ts-ignore

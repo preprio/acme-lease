@@ -1,50 +1,50 @@
 {
-  "Products": {
-    "title": "Aanbod",
-    "price_suffix": {
-      "MONTH": "maand"
+    "Products": {
+        "title": "Aanbod",
+        "price_suffix": {
+            "MONTH": "maand"
+        },
+        "card": {
+            "cta": "Bekijk"
+        },
+        "request_quote": "Vraag offerte aan"
     },
-    "card": {
-      "cta": "Bekijk"
+    "Blog": {
+        "Filter": {
+            "all": "Alle"
+        },
+        "card": {
+            "cta": "Lees meer"
+        },
+        "read_time": "Leestijd"
     },
-    "request_quote": "Vraag offerte aan"
-  },
-  "Blog": {
-    "Filter": {
-      "all": "Alle"
+    "StaticSections": {
+        "steps": {
+            "title": "Hoe het werkt",
+            "button": "Boek een demo"
+        },
+        "testimonials": {
+            "title": "Testimonials over Acme"
+        },
+        "explanation": {
+            "title": "Hoe krijg je het product"
+        },
+        "benefits": {
+            "title": "Acme Voordelen"
+        }
     },
-    "card": {
-      "cta": "Lees meer"
+    "CTA": {
+        "subscribe": "Inschrijven",
+        "title": "Blijf verbonden",
+        "text": "Ontvang nieuws, expert tips en speciale aanbiedingen direct in je inbox.",
+        "subscribe_success": {
+            "title": "Success!",
+            "text": "Je bent ingeschreven!"
+        }
     },
-    "read_time": "Leestijd"
-  },
-  "StaticSections": {
-    "steps": {
-      "title": "Hoe het werkt",
-      "button": "Boek een demo"
-    },
-    "testimonials": {
-      "title": "Testimonials over Acme"
-    },
-    "explanation": {
-      "title": "Hoe krijg je het product"
-    },
-    "benefits": {
-      "title": "Acme Voordelen"
+    "Prefix": {
+        "products": "products",
+        "page": "page",
+        "category": "category"
     }
-  },
-  "CTA": {
-    "subscribe": "Inschrijven",
-    "title": "Blijf verbonden",
-    "text": "Ontvang nieuws, expert tips en speciale aanbiedingen direct in je inbox.",
-    "subscribe_success": {
-      "title": "Success!",
-      "text": "Je bent ingeschreven!"
-    }
-  },
-  "Prefix": {
-    "products": "products",
-    "page": "page",
-    "category": "category"
-  }
 }

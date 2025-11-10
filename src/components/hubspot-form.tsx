@@ -3,7 +3,7 @@ import { vercelStegaClean } from '@vercel/stega'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
-const HubspotContactForm = (props: { portalId: string, formId: string }) => {
+const HubspotContactForm = (props: { portalId: string; formId: string }) => {
     const portalId = vercelStegaClean(props.portalId)
     const formId = vercelStegaClean(props.formId)
     const pathName = usePathname()
@@ -12,7 +12,7 @@ const HubspotContactForm = (props: { portalId: string, formId: string }) => {
     if (!formId) {
         return <div>No form ID</div>
     }
-    
+
     if (!portalId) {
         return <div>No portal ID</div>
     }
@@ -58,7 +58,11 @@ const HubspotContactForm = (props: { portalId: string, formId: string }) => {
 
     return (
         <div>
-            <div id="hs-form-wrapper" className="hs-form-frame" data-region="eu1"></div>
+            <div
+                id='hs-form-wrapper'
+                className='hs-form-frame'
+                data-region='eu1'
+            ></div>
         </div>
     )
 }

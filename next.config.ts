@@ -36,7 +36,7 @@ async function fetchPreprRedirects() {
             body: JSON.stringify({
                 query: query,
             }),
-        },
+        }
     )
 
     const { data } = await fetched.json()
@@ -91,8 +91,8 @@ const nextConfig: NextConfig = {
                 hostname: 'demo-patterns.stream.prepr.io',
             },
             {
-                hostname: '*.prepr.io'
-            }
+                hostname: '*.prepr.io',
+            },
         ],
     },
     async rewrites() {

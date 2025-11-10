@@ -1,53 +1,53 @@
 {
-  "Products": {
-    "title": "Find a car",
-    "price_suffix": {
-      "MONTH": "month"
+    "Products": {
+        "title": "Find a car",
+        "price_suffix": {
+            "MONTH": "month"
+        },
+        "card": {
+            "cta": "View"
+        },
+        "request_quote": "Request a quote"
     },
-    "card": {
-      "cta": "View"
+    "Blog": {
+        "Filter": {
+            "all": "All"
+        },
+        "card": {
+            "cta": "Read more"
+        },
+        "read_time": "Reading time"
     },
-    "request_quote": "Request a quote"
-  },
-  "Blog": {
-    "Filter": {
-      "all": "All"
+    "CTA": {
+        "subscribe": "subscribe",
+        "title": "Stay connected",
+        "text": "Get news, expert tips, and special offers delivered right to your inbox.",
+        "subscribe_success": {
+            "title": "Success!",
+            "text": "You were subscribed!"
+        }
     },
-    "card": {
-      "cta": "Read more"
+    "StaticSections": {
+        "steps": {
+            "title": "How it works",
+            "button": "Get a consultation"
+        },
+        "testimonials": {
+            "title": "Testimonials about Acme"
+        },
+        "explanation": {
+            "title": "How to get a product"
+        },
+        "benefits": {
+            "title": "Acme Benefits"
+        }
     },
-    "read_time": "Reading time"
-  },
-  "CTA": {
-    "subscribe": "subscribe",
-    "title": "Stay connected",
-    "text": "Get news, expert tips, and special offers delivered right to your inbox.",
-    "subscribe_success": {
-      "title": "Success!",
-      "text": "You were subscribed!"
+    "Prefix": {
+        "products": "products",
+        "page": "page",
+        "category": "category"
+    },
+    "Footer": {
+        "text": "Take the first step toward smarter leasing solutions. Contact us today!"
     }
-  },
-  "StaticSections": {
-    "steps": {
-      "title": "How it works",
-      "button": "Get a consultation"
-    },
-    "testimonials": {
-      "title": "Testimonials about Acme"
-    },
-    "explanation": {
-      "title": "How to get a product"
-    },
-    "benefits": {
-      "title": "Acme Benefits"
-    }
-  },
-  "Prefix": {
-    "products": "products",
-    "page": "page",
-    "category": "category"
-  },
-  "Footer": {
-    "text": "Take the first step toward smarter leasing solutions. Contact us today!"
-  }
 }

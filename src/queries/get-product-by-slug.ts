@@ -35,7 +35,7 @@ export const GET_PRODUCT_BY_SLUG = graphql(`
                 ... on Feature {
                     ...Feature
                 }
-                ...on FAQ {
+                ... on FAQ {
                     ...FAQ
                 }
                 ... on Cards {

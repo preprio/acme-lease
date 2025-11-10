@@ -10,12 +10,15 @@ const schema = z.object({
 
 type FormState = {
     message: string
-    errors: Record<string, string[] | undefined>;
-    status: 'UNSET' | 'SUCCESS' | 'ERROR';
-    email: string | undefined | null;
+    errors: Record<string, string[] | undefined>
+    status: 'UNSET' | 'SUCCESS' | 'ERROR'
+    email: string | undefined | null
 }
 
-export default async function newsletterSubscribe(formState: any, formData: FormData) {
+export default async function newsletterSubscribe(
+    formState: any,
+    formData: FormData
+) {
     const validatedFields = schema.safeParse({
         email: formData.get('email'),
     })
@@ -45,7 +48,7 @@ export default async function newsletterSubscribe(formState: any, formData: Form
     const response = await fetch(customUrl, {
         method: 'POST',
         headers: {
-            Authorization: `Basic ${Buffer.from(`anystring:${MailchimpKey}`).toString('base64')}`,
+            'Authorization': `Basic ${Buffer.from(`anystring:${MailchimpKey}`).toString('base64')}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -62,7 +65,10 @@ export default async function newsletterSubscribe(formState: any, formData: Form
         }
     }
 
-
-    return { message: 'Subscription successful', errors: { email: []
-        }, status: 'SUCCESS', email: validatedFields.data.email }
+    return {
+        message: 'Subscription successful',
+        errors: { email: [] },
+        status: 'SUCCESS',
+        email: validatedFields.data.email,
+    }
 }

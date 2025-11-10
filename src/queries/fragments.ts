@@ -126,7 +126,7 @@ export const CARDS_SECTION_FRAGMENT = graphql(`
                 ...PostCard
             }
 
-            ...on Product {
+            ... on Product {
                 ...ProductCard
             }
         }
@@ -212,7 +212,7 @@ export const CONTENT_FRAGMENT = graphql(`
                     width
                     height
                 }
-            } 
+            }
         }
     }
 `)

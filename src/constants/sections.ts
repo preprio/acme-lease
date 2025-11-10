@@ -1,8 +1,8 @@
-import dynamic from 'next/dynamic';
-import { ComponentType } from 'react';
+import dynamic from 'next/dynamic'
+import { ComponentType } from 'react'
 
-import { SectionTypename } from '@/types/sections';
-import { StaticComponent } from '@/gql/graphql';
+import { SectionTypename } from '@/types/sections'
+import { StaticComponent } from '@/gql/graphql'
 
 export const SECTIONS: Record<SectionTypename | string, ComponentType<any>> = {
     Feature: dynamic(() => import('@/components/sections/feature-section')),
@@ -15,9 +15,18 @@ export const SECTIONS: Record<SectionTypename | string, ComponentType<any>> = {
     Static: dynamic(() => import('@/components/sections/static-section')),
 }
 
-export const STATIC_SECTIONS: Record<StaticComponent | string, ComponentType<any>> = {
-    TESTIMONIALS: dynamic(() => import('@/components/sections/static/testimonial-section')),
+export const STATIC_SECTIONS: Record<
+    StaticComponent | string,
+    ComponentType<any>
+> = {
+    TESTIMONIALS: dynamic(
+        () => import('@/components/sections/static/testimonial-section')
+    ),
     STEPS: dynamic(() => import('@/components/sections/static/steps-section')),
-    EXPLANATION: dynamic(() => import('@/components/sections/static/explanation-section')),
-    BENEFITS: dynamic(() => import('@/components/sections/static/benefit-section')),
+    EXPLANATION: dynamic(
+        () => import('@/components/sections/static/explanation-section')
+    ),
+    BENEFITS: dynamic(
+        () => import('@/components/sections/static/benefit-section')
+    ),
 }

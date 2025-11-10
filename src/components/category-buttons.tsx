@@ -24,21 +24,34 @@ function DefaultFilter({ pageCategory }: { pageCategory?: string }) {
     const t = useTranslations('Blog')
 
     return (
-        <CategoryButton className={cn(!pageCategory && 'active')}
-                        _slug="all">{t('Filter.all')}</CategoryButton>
+        <CategoryButton
+            className={cn(!pageCategory && 'active')}
+            _slug='all'
+        >
+            {t('Filter.all')}
+        </CategoryButton>
     )
 }
 
-export default async function CategoryButtons({ locale, pageCategory }: { locale: string, pageCategory?: string }) {
-
+export default async function CategoryButtons({
+    locale,
+    pageCategory,
+}: {
+    locale: string
+    pageCategory?: string
+}) {
     const categories = await getCategories(locale)
     return (
         <>
             <DefaultFilter pageCategory={pageCategory} />
             {categories?.items?.map((category) => (
-                <CategoryButton key={category._id}
-                                className={cn(pageCategory === category._slug && 'active')}
-                                _slug={category._slug!}>{category.name}</CategoryButton>
+                <CategoryButton
+                    key={category._id}
+                    className={cn(pageCategory === category._slug && 'active')}
+                    _slug={category._slug!}
+                >
+                    {category.name}
+                </CategoryButton>
             ))}
         </>
     )

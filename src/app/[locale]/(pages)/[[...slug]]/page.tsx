@@ -37,7 +37,7 @@ async function getData(slug: string, locale: Locale) {
 export default async function Page({
     params,
 }: {
-    params: Promise<{ slug: string | string[], locale: Locale }>
+    params: Promise<{ slug: string | string[]; locale: Locale }>
 }) {
     let { slug, locale } = await params
 
@@ -54,7 +54,10 @@ export default async function Page({
 
     return (
         <main>
-            <meta property="prepr:id" content={page?._id} />
+            <meta
+                property='prepr:id'
+                content={page?._id}
+            />
             {page?.content && <Sections sections={page?.content} />}
         </main>
     )

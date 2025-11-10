@@ -10,17 +10,36 @@ interface BlogContentProps extends React.PropsWithChildren {
     className?: string
 }
 
-export default function BlogContent({ content, className, ...props }: BlogContentProps) {
+export default function BlogContent({
+    content,
+    className,
+    ...props
+}: BlogContentProps) {
     const items = content.map((item: DcfFragment, index: number) => {
         if (!item) return null
 
         switch (item.__typename) {
             case 'Text':
-                return <BlogText item={item} key={item._id} />
+                return (
+                    <BlogText
+                        item={item}
+                        key={item._id}
+                    />
+                )
             case 'Assets':
-                return <BlogAssets assets={item as Assets} key={index} />
+                return (
+                    <BlogAssets
+                        assets={item as Assets}
+                        key={index}
+                    />
+                )
             case 'YouTubePost':
-                return <YoutubeEmbed url={item.url} key={item.url} />
+                return (
+                    <YoutubeEmbed
+                        url={item.url}
+                        key={item.url}
+                    />
+                )
             default:
                 return null
         }
@@ -30,7 +49,10 @@ export default function BlogContent({ content, className, ...props }: BlogConten
 
     return (
         <article>
-            <Prose {...props} className={cn("space-y-8 text-xl", className)}>
+            <Prose
+                {...props}
+                className={cn('space-y-8 text-xl', className)}
+            >
                 {items}
             </Prose>
         </article>

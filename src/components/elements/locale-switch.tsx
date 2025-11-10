@@ -11,18 +11,21 @@ const getCookie = (name: string) => {
 }
 
 type Locale = {
-    name: string,
-    code: string,
+    name: string
+    code: string
 }
 
 export default function LocaleSwitch() {
-    const locales: Locale[] = [{
-        name: 'en',
-        code: 'en-US',
-    }, {
-        name: 'nl',
-        code: 'nl-NL',
-    }]
+    const locales: Locale[] = [
+        {
+            name: 'en',
+            code: 'en-US',
+        },
+        {
+            name: 'nl',
+            code: 'nl-NL',
+        },
+    ]
     const [selectedLocale, setSelectedLocale] = useState<Locale>(locales[0])
 
     const router = useRouter()
@@ -32,9 +35,13 @@ export default function LocaleSwitch() {
         const pathNameLocale = window.location.pathname.split('/')[1]
 
         if (locale) {
-            setSelectedLocale(locales.find((l) => l.code === locale) || locales[0])
+            setSelectedLocale(
+                locales.find((l) => l.code === locale) || locales[0]
+            )
         } else if (pathNameLocale) {
-            setSelectedLocale(locales.find((l) => l.code === pathNameLocale) || locales[0])
+            setSelectedLocale(
+                locales.find((l) => l.code === pathNameLocale) || locales[0]
+            )
         } else {
             setSelectedLocale(locales[0])
         }
@@ -53,7 +60,7 @@ export default function LocaleSwitch() {
 
     return (
         <RadioGroup
-            className="rounded-full p-1.5 flex flex-grow-0 bg-blue-200 select-none"
+            className='flex grow-0 rounded-full bg-blue-200 p-1.5 select-none'
             value={selectedLocale.code}
             onChange={(code) => {
                 const locale = locales.find((l) => l.code === code)
@@ -64,9 +71,7 @@ export default function LocaleSwitch() {
                 <Radio
                     key={locale.code}
                     value={locale.code}
-                    className="rounded-full px-3 py-2 text-sm font-medium text-secondary-600 leading-none
-                        data-[checked]:text-secondary-700 data-[checked]:bg-white data-[checked]:hover:cursor-default hover:cursor-pointer
-                    "
+                    className='text-secondary-600 data-checked:text-secondary-700 rounded-full px-3 py-2 text-sm leading-none font-medium hover:cursor-pointer data-checked:bg-white data-checked:hover:cursor-default'
                 >
                     {locale.name}
                 </Radio>

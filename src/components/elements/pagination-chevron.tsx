@@ -6,12 +6,17 @@ import { useSearchParams } from 'next/navigation'
 import React from 'react'
 import { cn } from '@/lib/utils'
 
-interface PaginationChevronProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface PaginationChevronProps
+    extends React.HTMLAttributes<HTMLButtonElement> {
     disabled?: boolean
     direction?: 'left' | 'right'
 }
 
-export default function PaginationChevron({ disabled, className, direction = 'left' }: PaginationChevronProps) {
+export default function PaginationChevron({
+    disabled,
+    className,
+    direction = 'left',
+}: PaginationChevronProps) {
     const searchParams = useSearchParams()
     const { replace } = useRouter()
     const pathname = usePathname()
@@ -34,16 +39,17 @@ export default function PaginationChevron({ disabled, className, direction = 'le
         replace(`${pathname}?${params.toString()}`)
     }
 
-
     return (
         <button
             onClick={handleClick}
             disabled={disabled}
             className={cn(
-                'rounded-full bg-white flex justify-center items-center text-xs w-9 h-9 ',
+                'flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs',
                 disabled ? 'text-secondary-300' : 'text-secondary-700',
-                className,
-            )}>
-            {direction === 'right' ? <FaChevronRight /> : <FaChevronLeft />}</button>
+                className
+            )}
+        >
+            {direction === 'right' ? <FaChevronRight /> : <FaChevronLeft />}
+        </button>
     )
 }

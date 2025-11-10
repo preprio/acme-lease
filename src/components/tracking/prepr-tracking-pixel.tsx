@@ -16,7 +16,7 @@ export default async function PreprTrackingPixel() {
     }).queue = [], n.t = +new Date, (a = t.createElement(p)).async = 1, a.src = "https://cdn.tracking.prepr.io/js/prepr_v2.min.js?t=" + 864e5 * Math.ceil(new Date / 864e5), (s = t.getElementsByTagName(p)[0]).parentNode.insertBefore(a, s))
     }(window, document, "script", "prepr"), prepr("init", "${accessTokenHeader || process.env.PREPR_GRAPHQL_TOKEN}", {clientSideExperiments:true}), prepr("event", "pageload");
           `,
-            }}>
-        </Script>
+            }}
+        ></Script>
     )
 }

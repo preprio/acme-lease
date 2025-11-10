@@ -19,8 +19,11 @@ export const metadata = {
     description: 'Prepr example implementation on how to use personalization',
 }
 
-export default async function LocaleLayout({ children, params }: Readonly<{
-    children: React.ReactNode,
+export default async function LocaleLayout({
+    children,
+    params,
+}: Readonly<{
+    children: React.ReactNode
     params: Promise<{ locale: Locale }>
 }>) {
     const { locale } = await params
@@ -34,21 +37,23 @@ export default async function LocaleLayout({ children, params }: Readonly<{
     const accessToken = extractAccessToken(process.env.PREPR_GRAPHQL_URL!)
 
     return (
-        <html className="h-full" lang={locale}>
+        <html
+            className='h-full'
+            lang={locale}
+        >
             <head>
                 <PreprTrackingPixel accessToken={accessToken!} />
             </head>
-        <body
-            className={`${ubuntu.className} min-h-screen h-screen flex flex-col`}
+            <body
+                className={`${ubuntu.className} flex h-screen min-h-screen flex-col`}
             >
-                
-            <NextIntlClientProvider messages={messages}>
-                <ToastProvider>
-                    <HubspotTracking />
-                    <div className='flex flex-1 flex-col'>{children}</div>
-                </ToastProvider>
-            </NextIntlClientProvider>
-        </body>
+                <NextIntlClientProvider messages={messages}>
+                    <ToastProvider>
+                        <HubspotTracking />
+                        <div className='flex flex-1 flex-col'>{children}</div>
+                    </ToastProvider>
+                </NextIntlClientProvider>
+            </body>
         </html>
     )
 }

@@ -21,7 +21,7 @@ const getProductData = async (slug: string, locale: Locale) => {
             slug: slug,
         },
         context: {
-            headers: await getHeaders(),
+            'headers': await getHeaders(),
             'Prepr-Locale': locale || '',
         },
     })
@@ -33,49 +33,69 @@ const getProductData = async (slug: string, locale: Locale) => {
     return data.Product
 }
 
-
 export default async function ProductPage({
-                                              params,
-                                          }: {
-    params: Promise<{ slug: string, locale: Locale }>
+    params,
+}: {
+    params: Promise<{ slug: string; locale: Locale }>
 }) {
     let { slug, locale } = await params
     const product = await getProductData(slug, locale)
-    
-    const sections = product?.content && <Sections sections={product?.content} />
+
+    const sections = product?.content && (
+        <Sections sections={product?.content} />
+    )
 
     const t = await getTranslations('Products')
 
     return (
         <div>
-            <meta property="prepr:id" content={product?._id} />
+            <meta
+                property='prepr:id'
+                content={product?._id}
+            />
             <section>
-                <Container className="pt-6">
-                    <Link href="/products"
-                          className="flex items-center gap-1 text-sm text-secondary-700 font-medium hover:pointer-cursor hover:underline">
-                        <FaChevronLeft />Back
+                <Container className='pt-6'>
+                    <Link
+                        href='/products'
+                        className='text-secondary-700 hover:pointer-cursor flex items-center gap-1 text-sm font-medium hover:underline'
+                    >
+                        <FaChevronLeft />
+                        Back
                     </Link>
                 </Container>
             </section>
             <section>
-                <Container className="py-10 lg:py-20">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center justify-center">
-                        <Image src={product.image?.url || ''} alt="Product image" width={696} height={326}
-                               className="w-full" />
-                        <div className="space-y-6 lg:space-y-8">
-                            <div className="space-y-3">
-                                <h1 className="text-mb-5xl lg:text-7xl text-secondary-700 font-medium break-words text-balance">{product.name}</h1>
-                                <div className="flex gap-2">
+                <Container className='py-10 lg:py-20'>
+                    <div className='grid grid-cols-1 items-center justify-center gap-8 md:grid-cols-2 lg:gap-12'>
+                        <Image
+                            src={product.image?.url || ''}
+                            alt='Product image'
+                            width={696}
+                            height={326}
+                            className='w-full'
+                        />
+                        <div className='space-y-6 lg:space-y-8'>
+                            <div className='space-y-3'>
+                                <h1 className='text-mb-5xl text-secondary-700 font-medium text-balance wrap-break-word lg:text-7xl'>
+                                    {product.name}
+                                </h1>
+                                <div className='flex gap-2'>
                                     <Ratings rating={product.rating} />
                                 </div>
                             </div>
-                            <h2 className="text-secondary-700 text-mb-3xl lg:text-4xl font-medium">
+                            <h2 className='text-secondary-700 text-mb-3xl font-medium lg:text-4xl'>
                                 € {product.price}
-                                <span
-                                    className="text-mb-base lg:text-base lowercase">{product.price_suffix && ' /'} {product.price_suffix}</span>
+                                <span className='text-mb-base lowercase lg:text-base'>
+                                    {product.price_suffix && ' /'}{' '}
+                                    {product.price_suffix}
+                                </span>
                             </h2>
-                            <Button buttonStyle="primary">{t('request_quote')}</Button>
-                            <p className="text-mb-lg lg:text-lg font-medium text-secondary-700 ">{product.excerpt}</p>
+                            <Button buttonStyle='primary'>
+                                {t('request_quote')}
+                            </Button>
+                            <p className='text-mb-lg text-secondary-700 font-medium lg:text-lg'>
+                                {product.excerpt}
+                            </p>
                         </div>
                     </div>
                 </Container>
@@ -110,11 +130,16 @@ function Ratings({ rating }: { rating?: Rating | null }) {
     const stars = Array.from({ length: 5 })
 
     return (
-        <div className="flex gap-1 text-2xl">
+        <div className='flex gap-1 text-2xl'>
             {stars.map((star, index) => (
-                <FaStar key={index} className={cn(
-                    (index + 1) <= ratingValue ? 'text-primary-600' : 'text-primary-200',
-                )} />
+                <FaStar
+                    key={index}
+                    className={cn(
+                        index + 1 <= ratingValue
+                            ? 'text-primary-600'
+                            : 'text-primary-200'
+                    )}
+                />
             ))}
         </div>
     )

@@ -6,7 +6,7 @@ interface BadgeProps {
 
 export default function Badge({ children }: BadgeProps) {
     return (
-        <div className="bg-primary-50 rounded-full py-1 px-3 text-sm text-secondary-700 font-medium">
+        <div className='bg-primary-50 text-secondary-700 rounded-full px-3 py-1 text-sm font-medium'>
             {children}
         </div>
     )

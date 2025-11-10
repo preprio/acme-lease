@@ -4,17 +4,17 @@ import { cn } from '@/lib/utils'
 import React, { ReactElement, useEffect, useState } from 'react'
 
 export const InfiniteMovingCards = ({
-                                        items,
-                                        direction = 'left',
-                                        speed = 'fast',
-                                        pauseOnHover = true,
-                                        className,
-                                    }: {
-    items: ReactElement[];
-    direction?: 'left' | 'right';
-    speed?: 'fast' | 'normal' | 'slow';
-    pauseOnHover?: boolean;
-    className?: string;
+    items,
+    direction = 'left',
+    speed = 'fast',
+    pauseOnHover = true,
+    className,
+}: {
+    items: ReactElement[]
+    direction?: 'left' | 'right'
+    speed?: 'fast' | 'normal' | 'slow'
+    pauseOnHover?: boolean
+    className?: string
 }) => {
     const containerRef = React.useRef<HTMLDivElement>(null)
     const scrollerRef = React.useRef<HTMLUListElement>(null)
@@ -46,12 +46,12 @@ export const InfiniteMovingCards = ({
             if (direction === 'left') {
                 containerRef.current.style.setProperty(
                     '--animation-direction',
-                    'forwards',
+                    'forwards'
                 )
             } else {
                 containerRef.current.style.setProperty(
                     '--animation-direction',
-                    'reverse',
+                    'reverse'
                 )
             }
         }
@@ -59,11 +59,20 @@ export const InfiniteMovingCards = ({
     const getSpeed = () => {
         if (containerRef.current) {
             if (speed === 'fast') {
-                containerRef.current.style.setProperty('--animation-duration', '20s')
+                containerRef.current.style.setProperty(
+                    '--animation-duration',
+                    '20s'
+                )
             } else if (speed === 'normal') {
-                containerRef.current.style.setProperty('--animation-duration', '40s')
+                containerRef.current.style.setProperty(
+                    '--animation-duration',
+                    '40s'
+                )
             } else {
-                containerRef.current.style.setProperty('--animation-duration', '120s')
+                containerRef.current.style.setProperty(
+                    '--animation-duration',
+                    '120s'
+                )
             }
         }
     }
@@ -71,24 +80,20 @@ export const InfiniteMovingCards = ({
         <div
             ref={containerRef}
             className={cn(
-                'scroller relative z-20  max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_05%,white_95%,transparent)]',
-                className,
+                'scroller relative z-20 mx-auto max-w-7xl overflow-hidden mask-[linear-gradient(to_right,transparent,white_05%,white_95%,transparent)]',
+                className
             )}
         >
             <ul
                 ref={scrollerRef}
                 className={cn(
-                    ' flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
-                    start && 'animate-scroll ',
-                    pauseOnHover && 'hover:[animation-play-state:paused]',
+                    'flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4',
+                    start && 'animate-scroll',
+                    pauseOnHover && 'hover:[animation-play-state:paused]'
                 )}
             >
                 {items.map((item, index) => (
-                    <li
-                        key={index}
-                    >
-                        {item}
-                    </li>
+                    <li key={index}>{item}</li>
                 ))}
             </ul>
         </div>

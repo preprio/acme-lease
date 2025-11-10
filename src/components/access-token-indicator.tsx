@@ -15,7 +15,7 @@ export default async function AccessTokenIndicator() {
 
     return (
         <div className='bg-white'>
-            <Container className='py-2 text-start text-xs text-secondary-700 flex justify-end gap-2 flex-wrap items-center'>
+            <Container className='text-secondary-700 flex flex-wrap items-center justify-end gap-2 py-2 text-start text-xs'>
                 <p>Viewing content with token: {accessTokenHeader}</p>
                 <ClearToken />
             </Container>

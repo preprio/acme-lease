@@ -60,7 +60,7 @@ MAILCHIMP_AUDIENCE_ID=your_audience_id
 2. Navigate to **Settings** → **Access tokens**
 3. Create a new access token or copy an existing one
 4. Use the full GraphQL URL (e.g., `https://graphql.prepr.io/ac_xxxxxxxxxxxxx`) as `PREPR_GRAPHQL_URL`
-   - Or extract just the token part and use it as `PREPR_GRAPHQL_TOKEN`
+    - Or extract just the token part and use it as `PREPR_GRAPHQL_TOKEN`
 
 ## Installation
 
@@ -148,33 +148,32 @@ git push origin main
 ```
 
 2. **Import your repository to Vercel**
-
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click **Add New Project**
-   - Import your GitHub repository
-   - Configure the project:
-     - **Framework Preset**: Next.js
-     - **Root Directory**: `/`
-     - **Build Command**: `pnpm build` (or `npm run build`)
-     - **Install Command**: `pnpm install` (or `npm install`)
-     - **Output Directory**: `.next`
+    - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+    - Click **Add New Project**
+    - Import your GitHub repository
+    - Configure the project:
+        - **Framework Preset**: Next.js
+        - **Root Directory**: `/`
+        - **Build Command**: `pnpm build` (or `npm run build`)
+        - **Install Command**: `pnpm install` (or `npm install`)
+        - **Output Directory**: `.next`
 
 3. **Add Environment Variables**
 
-   Add all required environment variables in the Vercel dashboard:
-   - `PREPR_GRAPHQL_URL` or `PREPR_GRAPHQL_TOKEN`
-   - `PREPR_ENV`
-   - `APP_ENV`
-   - `NODE_ENV`
-   - `SITE_URL`
-   - `HUBSPOT_PORTAL_ID` (if using HubSpot)
-   - `MAILCHAMP_API_KEY` (if using Mailchimp)
-   - `MAILCHIMP_API_SERVER` (if using Mailchimp)
-   - `MAILCHIMP_AUDIENCE_ID` (if using Mailchimp)
+    Add all required environment variables in the Vercel dashboard:
+    - `PREPR_GRAPHQL_URL` or `PREPR_GRAPHQL_TOKEN`
+    - `PREPR_ENV`
+    - `APP_ENV`
+    - `NODE_ENV`
+    - `SITE_URL`
+    - `HUBSPOT_PORTAL_ID` (if using HubSpot)
+    - `MAILCHAMP_API_KEY` (if using Mailchimp)
+    - `MAILCHIMP_API_SERVER` (if using Mailchimp)
+    - `MAILCHIMP_AUDIENCE_ID` (if using Mailchimp)
 
 4. **Deploy**
 
-   Click **Deploy** and Vercel will build and deploy your application.
+    Click **Deploy** and Vercel will build and deploy your application.
 
 ### Environment Variables in Vercel
 
@@ -209,6 +208,7 @@ acme-lease/
 The application supports 100+ locales. The default locale is `en-US`. All routes are prefixed with the locale (e.g., `/en-US/`, `/nl-NL/`).
 
 Translation files are located in the `messages/` directory:
+
 - `en-US.json` - English (United States)
 - `nl-NL.json` - Dutch (Netherlands)
 

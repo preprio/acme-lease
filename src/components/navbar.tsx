@@ -1,6 +1,6 @@
-import {getApolloClient} from '@/apollo-client'
-import {NavigationDocument, NavigationQuery} from '@/gql/graphql'
-import {getPreprHeaders} from '@preprio/prepr-nextjs/server'
+import { getApolloClient } from '@/apollo-client'
+import { NavigationDocument, NavigationQuery } from '@/gql/graphql'
+import { getPreprHeaders } from '@preprio/prepr-nextjs/server'
 import NavbarClient from '@/components/navbar-client'
 
 export const revalidate = 0
@@ -16,8 +16,6 @@ async function getNavbar(locale: string) {
                 ...headers,
                 'Prepr-Locale': locale,
             },
-
-
         },
         fetchPolicy: 'no-cache',
     })
@@ -29,7 +27,6 @@ async function getNavbar(locale: string) {
     return data.Navigation
 }
 
-
 export default async function Navbar({ locale }: { locale: string }) {
     const navbar = await getNavbar(locale)
 
@@ -37,7 +34,5 @@ export default async function Navbar({ locale }: { locale: string }) {
         return null
     }
 
-    return (
-        <NavbarClient items={navbar.top_navigation} />
-    )
+    return <NavbarClient items={navbar.top_navigation} />
 }

@@ -7,17 +7,25 @@ interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
     href?: string
 }
 
-
-export default function LinkButton({ children, href = '/', className, ...additionalProps }: LinkProps) {
+export default function LinkButton({
+    children,
+    href = '/',
+    className,
+    ...additionalProps
+}: LinkProps) {
     const classes = cn(
         'text-base text-neutral-700 pb-0.5 border-b-transparent border-b hover:border-secondary-700  border-box',
-        className,
+        className
     )
 
     const { popover, ...restProps } = additionalProps
 
     return (
-        <Link href={href} className={classes} {...restProps}>
+        <Link
+            href={href}
+            className={classes}
+            {...restProps}
+        >
             {children}
         </Link>
     )

@@ -1,4 +1,9 @@
-import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client'
+import {
+    ApolloClient,
+    ApolloLink,
+    HttpLink,
+    InMemoryCache,
+} from '@apollo/client'
 import { headers } from 'next/headers'
 import { onError } from '@apollo/client/link/error'
 import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
@@ -17,16 +22,20 @@ export async function getApolloClient() {
     if (!accessToken) {
         accessToken = getEnvAccessToken()
         if (accessToken) {
-            console.warn('Falling back to env access token; middleware may be misconfigured')
+            console.warn(
+                'Falling back to env access token; middleware may be misconfigured'
+            )
         }
     }
 
     if (!accessToken) {
-        throw new Error('Missing Prepr access token; cannot configure Apollo client')
+        throw new Error(
+            'Missing Prepr access token; cannot configure Apollo client'
+        )
     }
 
     const httpLink = new HttpLink({
-        uri: buildPreprGraphqlUrl(accessToken)
+        uri: buildPreprGraphqlUrl(accessToken),
     })
 
     return new ApolloClient({
@@ -36,7 +45,7 @@ export async function getApolloClient() {
             onError((error) => {
                 console.log(error.graphQLErrors)
             }),
-            httpLink
-        ])
+            httpLink,
+        ]),
     })
 }

@@ -14,7 +14,11 @@ export default function ClearToken() {
     }
 
     return (
-        <button onClick={handleClear} className='rounded-md px-4 py-1 text-xs text-white bg-primary-600 hover:bg-primary-700'>Clear token</button>
-
+        <button
+            onClick={handleClear}
+            className='bg-primary-600 hover:bg-primary-700 rounded-md px-4 py-1 text-xs text-white'
+        >
+            Clear token
+        </button>
     )
 }

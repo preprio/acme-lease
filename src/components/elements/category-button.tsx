@@ -11,15 +11,15 @@ interface CategoryButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 export default function CategoryButton({
-                                           children,
-                                           className,
-                                           _slug = '',
-                                           ...props
-                                       }: CategoryButtonProps) {
+    children,
+    className,
+    _slug = '',
+    ...props
+}: CategoryButtonProps) {
     const classes = cn(
         'text-secondary-700 text-sm text-mb-sm font-medium border-2 border-primary-200 hover:bg-primary-100 transition eas-in duration-200',
         'rounded-full py-2 px-6 [&.active]:bg-primary-200',
-        className,
+        className
     )
     const searchParams = useSearchParams()
     const pathname = usePathname()
@@ -47,7 +47,11 @@ export default function CategoryButton({
     }
 
     return (
-        <button className={classes} onClick={handleClick} {...props}>
+        <button
+            className={classes}
+            onClick={handleClick}
+            {...props}
+        >
             {children}
         </button>
     )
