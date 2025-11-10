@@ -140,7 +140,7 @@ const handleI18nRouting = createIntlMiddleware({
     localeDetection: false,
 })
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     // First run internationalization middleware
     const i18nResponse = handleI18nRouting(request)
 
