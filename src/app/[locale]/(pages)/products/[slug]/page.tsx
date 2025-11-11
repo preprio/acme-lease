@@ -15,7 +15,7 @@ export default async function ProductPage({
 }: {
     params: Promise<{ slug: string; locale: Locale }>
 }) {
-    let { slug, locale } = await params
+    const { slug, locale } = await params
 
     const product = await ProductsService.getProductBySlug({ slug, locale })
 

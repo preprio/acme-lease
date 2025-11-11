@@ -57,7 +57,7 @@ async function fetchPreprRedirects() {
 
     const { data } = (await fetched.json()) as { data: RedirectsResponse }
 
-    let redirects = data?.Redirects?.items.map((item: RedirectItem) => {
+    const redirects = data?.Redirects?.items.map((item: RedirectItem) => {
         let url = ''
 
         if (item.destination[0] === null) return null

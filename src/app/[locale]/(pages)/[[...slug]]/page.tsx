@@ -11,7 +11,8 @@ export default async function Page({
 }: {
     params: Promise<{ slug: string | string[]; locale: Locale }>
 }) {
-    let { slug, locale } = await params
+    let { slug } = await params
+    const { locale } = await params
 
     if (!slug) {
         slug = '/'

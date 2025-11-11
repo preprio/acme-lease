@@ -21,7 +21,7 @@ export default async function BlogDetailPage({
 }: {
     params: Promise<{ slug: string; locale: Locale }>
 }) {
-    let { slug, locale } = await params
+    const { slug, locale } = await params
 
     const post = await PostsService.getPostBySlug({ slug, locale })
 

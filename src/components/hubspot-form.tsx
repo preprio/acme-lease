@@ -17,6 +17,13 @@ const HubspotContactForm = ({ portalId, formId }: HubspotContactFormProps) => {
     const cleanPortalId = vercelStegaClean(portalId)
     const cleanFormId = vercelStegaClean(formId)
 
+    // Use the custom hook for script management (must be called before any early returns)
+    useHubspotScript({
+        portalId: cleanPortalId || '',
+        formId: cleanFormId || '',
+        targetId: 'hs-form-wrapper',
+    })
+
     if (!cleanFormId) {
         return <div>No form ID</div>
     }
@@ -24,13 +31,6 @@ const HubspotContactForm = ({ portalId, formId }: HubspotContactFormProps) => {
     if (!cleanPortalId) {
         return <div>No portal ID</div>
     }
-
-    // Use the custom hook for script management
-    useHubspotScript({
-        portalId: cleanPortalId,
-        formId: cleanFormId,
-        targetId: 'hs-form-wrapper',
-    })
 
     return (
         <div>

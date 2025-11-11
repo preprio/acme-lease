@@ -2,7 +2,7 @@
 
 import { Radio, RadioGroup } from '@headlessui/react'
 import { useEffect, useState } from 'react'
-import { redirect, usePathname, useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/routing'
 
 const getCookie = (name: string) => {
     const value = `; ${document.cookie}`

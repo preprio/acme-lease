@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ImgPlaceholderProps extends React.SVGProps<SVGSVGElement> {}
+type ImgPlaceholderProps = React.SVGProps<SVGSVGElement>
 
 export default function ImgPlaceholder({ ...props }: ImgPlaceholderProps) {
     return (

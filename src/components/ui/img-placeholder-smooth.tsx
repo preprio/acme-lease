@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ImgPlaceholderSmoothProps extends React.SVGProps<SVGSVGElement> {}
+type ImgPlaceholderSmoothProps = React.SVGProps<SVGSVGElement>
 
 export default function ImgPlaceholderSmooth({
     ...props

@@ -18,7 +18,7 @@ export default function LinkButton({
         className
     )
 
-    const { popover, ...restProps } = additionalProps
+    const { popover: _popover, ...restProps } = additionalProps
 
     return (
         <Link

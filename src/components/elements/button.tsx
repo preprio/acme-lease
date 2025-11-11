@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export default function Button(props: ButtonProps) {
     const {
         children,
-        buttonStyle = 'primary',
+        buttonStyle: _buttonStyle = 'primary',
         className,
         ...additionalProps
     } = props
