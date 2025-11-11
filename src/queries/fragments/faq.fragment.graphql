@@ -1,0 +1,11 @@
+fragment FAQ on FAQ {
+    _id
+    title
+    questions {
+        question
+        answer
+    }
+    _context {
+        variant_key
+    }
+}

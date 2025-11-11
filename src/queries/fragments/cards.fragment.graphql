@@ -1,0 +1,22 @@
+fragment Cards on Cards {
+    _id
+    heading
+    sub_heading
+    _context {
+        variant_key
+    }
+    button {
+        ...Button
+    }
+    variant
+    cards {
+        __typename
+        ... on Post {
+            ...PostCard
+        }
+
+        ... on Product {
+            ...ProductCard
+        }
+    }
+}

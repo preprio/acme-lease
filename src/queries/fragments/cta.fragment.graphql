@@ -1,0 +1,8 @@
+fragment CTA on CTA {
+    _id
+    heading
+    _context {
+        variant_key
+    }
+    sub_heading
+}

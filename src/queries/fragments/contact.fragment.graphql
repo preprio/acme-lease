@@ -1,0 +1,13 @@
+fragment Contact on Contact {
+    _id
+    heading
+    sub_heading
+    form_title
+    _context {
+        variant_key
+    }
+    phone_number
+    email
+    hubspot_form_id
+    hubspot_portal_id
+}

@@ -1,0 +1,10 @@
+fragment ProductCard on Product {
+    _id
+    _slug
+    name
+    price
+    price_suffix
+    image {
+        url(width: 372, height: 188)
+    }
+}

@@ -1,0 +1,17 @@
+fragment PostCard on Post {
+    _slug
+    _id
+    title
+    excerpt
+    _read_time
+    categories {
+        name
+        _slug
+    }
+    cover {
+        url(width: 720, height: 360)
+    }
+    author {
+        ...Author
+    }
+}

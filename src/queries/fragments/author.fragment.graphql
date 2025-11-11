@@ -1,0 +1,7 @@
+fragment Author on Author {
+    _id
+    name
+    image {
+        url
+    }
+}

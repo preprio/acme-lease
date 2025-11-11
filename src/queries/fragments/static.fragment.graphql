@@ -1,0 +1,8 @@
+fragment Static on Static {
+    static_type
+    title
+    _context {
+        variant_key
+    }
+    _id
+}

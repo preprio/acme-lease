@@ -1,0 +1,8 @@
+fragment SEO on SEO {
+    _id
+    meta_description
+    meta_title
+    meta_image {
+        url
+    }
+}

@@ -1,0 +1,7 @@
+query Similar_Posts($similarPostsId: String!) {
+    Similar_Posts(id: $similarPostsId, limit: 3) {
+        items {
+            ...PostCard
+        }
+    }
+}
