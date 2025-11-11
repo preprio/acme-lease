@@ -1,65 +1,36 @@
 'use client'
 import { vercelStegaClean } from '@vercel/stega'
-import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-import { ANIMATION_DELAYS } from '@/constants/timing'
+import { useHubspotScript } from '@/hooks/useHubspotScript'
 
-const HubspotContactForm = (props: { portalId: string; formId: string }) => {
-    const portalId = vercelStegaClean(props.portalId)
-    const formId = vercelStegaClean(props.formId)
-    const pathName = usePathname()
-    const [hubspotLoaded, setHubspotLoaded] = useState(false)
+type HubspotContactFormProps = {
+    portalId: string
+    formId: string
+}
 
-    if (!formId) {
+/**
+ * HubspotContactForm component
+ *
+ * Renders a HubSpot contact form with automatic script management.
+ * Uses the useHubspotScript hook to handle script loading and cleanup.
+ */
+const HubspotContactForm = ({ portalId, formId }: HubspotContactFormProps) => {
+    const cleanPortalId = vercelStegaClean(portalId)
+    const cleanFormId = vercelStegaClean(formId)
+
+    if (!cleanFormId) {
         return <div>No form ID</div>
     }
 
-    if (!portalId) {
+    if (!cleanPortalId) {
         return <div>No portal ID</div>
     }
 
-    useEffect(() => {
-        const formWrapper = document.getElementById('hs-form-wrapper')
-        if (formWrapper) {
-            formWrapper.innerHTML = '' // Clear any existing children
-        }
-
-        const existingScript = document.getElementById('hs-script-loader')
-        if (existingScript) {
-            existingScript.remove()
-        }
-
-        const script = document.createElement('script')
-        script.src = `https://js.hsforms.net/forms/v2.js`
-        script.id = 'hs-script-loader'
-
-        script.onload = () => {
-            const hbspt = window.hbspt
-            if (hbspt && !hubspotLoaded) {
-                setTimeout(() => {
-                    setHubspotLoaded(true)
-                    hbspt.forms.create({
-                        portalId,
-                        formId,
-                        target: '#hs-form-wrapper',
-                    })
-                }, ANIMATION_DELAYS.HUBSPOT_FORM_INIT)
-            }
-        }
-
-        document.body.appendChild(script)
-
-        return () => {
-            if (formWrapper) {
-                formWrapper.innerHTML = '' // Cleanup on unmount
-            }
-            // Remove script on cleanup
-            const scriptToRemove = document.getElementById('hs-script-loader')
-            if (scriptToRemove) {
-                scriptToRemove.remove()
-            }
-        }
-    }, [pathName, portalId, formId, hubspotLoaded])
+    // Use the custom hook for script management
+    useHubspotScript({
+        portalId: cleanPortalId,
+        formId: cleanFormId,
+        targetId: 'hs-form-wrapper',
+    })
 
     return (
         <div>

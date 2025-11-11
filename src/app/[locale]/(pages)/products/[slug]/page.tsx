@@ -1,5 +1,4 @@
-import { getApolloClient } from '@/apollo-client'
-import { ProductDocument, ProductQuery, Rating } from '@/gql/graphql'
+import { Rating } from '@/gql/graphql'
 import { notFound } from 'next/navigation'
 import Container from '@/components/container'
 import { Link } from '@/i18n/routing'
@@ -7,31 +6,10 @@ import { FaChevronLeft, FaStar } from 'react-icons/fa6'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import Button from '@/components/elements/button'
-import { getHeaders } from '@/lib/server'
 import { getTranslations } from 'next-intl/server'
 import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
-
-const getProductData = async (slug: string, locale: Locale) => {
-    const client = await getApolloClient()
-
-    const { data } = await client.query<ProductQuery>({
-        query: ProductDocument,
-        variables: {
-            slug: slug,
-        },
-        context: {
-            'headers': await getHeaders(),
-            'Prepr-Locale': locale || '',
-        },
-    })
-
-    if (!data || !data.Product) {
-        return notFound()
-    }
-
-    return data.Product
-}
+import { ProductsService } from '@/services/products'
 
 export default async function ProductPage({
     params,
@@ -39,7 +17,12 @@ export default async function ProductPage({
     params: Promise<{ slug: string; locale: Locale }>
 }) {
     let { slug, locale } = await params
-    const product = await getProductData(slug, locale)
+
+    const product = await ProductsService.getProductBySlug({ slug, locale })
+
+    if (!product) {
+        return notFound()
+    }
 
     const sections = product?.content && (
         <Sections sections={product?.content} />

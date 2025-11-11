@@ -1,83 +1,17 @@
 import Container from '@/components/container'
-import { getApolloClient } from '@/apollo-client'
-import {
-    PageDocument,
-    PageQuery,
-    PostsDocument,
-    PostsQuery,
-    PostWhereInput,
-} from '@/gql/graphql'
 import PostCard from '@/components/post-card'
-import { getHeaders } from '@/lib/server'
 import { cn } from '@/lib/utils'
 import PaginationItem from '@/components/elements/pagination-item'
 import PaginationChevron from '@/components/elements/pagination-chevron'
 import CategoryButtons from '@/components/category-buttons'
 import { notFound } from 'next/navigation'
 import { Locale } from '@/types/locale'
+import { PostsService } from '@/services/posts'
+import { PagesService } from '@/services/pages'
 
 export const revalidate = 0
 
 const POSTS_PER_PAGE = 9
-
-async function getPosts(locale: string, skip: number = 0, category?: string) {
-    let cat = category !== 'all' ? category : undefined
-
-    const client = await getApolloClient()
-    const headers = await getHeaders()
-
-    const query = {
-        query: PostsDocument,
-        variables: {
-            skip,
-            limit: POSTS_PER_PAGE,
-            where: {},
-        },
-        context: {
-            headers: {
-                ...headers,
-                'Prepr-Locale': locale,
-            },
-        },
-    }
-
-    if (cat) {
-        query.variables.where = {
-            categories: {
-                _slug_any: cat,
-            },
-        } as unknown as PostWhereInput
-    }
-
-    const { data } = await client.query<PostsQuery>(query)
-
-    return data?.Posts
-}
-
-async function getBlogPage(locale: string) {
-    const headers = await getHeaders()
-    const client = await getApolloClient()
-
-    const { data } = await client.query<PageQuery>({
-        query: PageDocument,
-        variables: {
-            slug: 'blog',
-        },
-        context: {
-            headers: {
-                ...headers,
-                'Prepr-Locale': locale,
-            },
-        },
-        fetchPolicy: 'no-cache',
-    })
-
-    if (!data.Page) {
-        return notFound()
-    }
-
-    return data
-}
 
 export default async function BlogPage({
     searchParams,
@@ -91,8 +25,23 @@ export default async function BlogPage({
     const pageNumber = page ? parseInt(page) : 1
 
     const skip = (pageNumber - 1) * POSTS_PER_PAGE
-    const posts = await getPosts(locale, skip, pageCategory)
-    const blog = await getBlogPage(locale)
+
+    // Use services for data fetching
+    const posts = await PostsService.getPosts({
+        locale,
+        skip,
+        limit: POSTS_PER_PAGE,
+        category: pageCategory,
+    })
+
+    const blogPage = await PagesService.getPageBySlug({
+        locale,
+        slug: 'blog',
+    })
+
+    if (!blogPage) {
+        return notFound()
+    }
 
     const totalPages = Math.ceil((posts?.total || 0) / POSTS_PER_PAGE)
 
@@ -100,7 +49,7 @@ export default async function BlogPage({
         <section className='bg-primary-50 h-full w-full'>
             <meta
                 property='prepr:id'
-                content={blog.Page?._id}
+                content={blogPage._id}
             />
             <Container className='space-y-6 py-10 lg:space-y-14 lg:py-20'>
                 <div className='space-y-6'>

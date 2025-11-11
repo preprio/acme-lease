@@ -1,47 +1,20 @@
 import Container from '@/components/container'
 import { FaChevronLeft } from 'react-icons/fa6'
 import { Link } from '@/i18n/routing'
-import {
-    CtaFragment,
-    DcfFragment,
-    PostDocument,
-    PostQuery,
-} from '@/gql/graphql'
+import { CtaFragment, DcfFragment } from '@/gql/graphql'
 import Badge from '@/components/elements/badge'
 import AuthorBox from '@/components/author-box'
 import ReadTime from '@/components/elements/read-time'
 import Image from 'next/image'
 import ImgPlaceholderSmooth from '@/components/img-placeholder-smooth'
-import { getApolloClient } from '@/apollo-client'
 import { notFound } from 'next/navigation'
 import Prose from '@/components/blog/prose'
 import BlogContent from '@/components/blog/blog-content'
 import CtaCard from '@/components/cta-card'
 import SimilarPosts from '@/components/similar-posts'
-import { getHeaders } from '@/lib/server'
 import { useTranslations } from 'next-intl'
 import { Locale } from '@/types/locale'
-
-const getPostData = async (slug: string, locale: Locale) => {
-    const client = await getApolloClient()
-
-    const { data } = await client.query<PostQuery>({
-        query: PostDocument,
-        variables: {
-            slug: slug,
-        },
-        context: {
-            'headers': await getHeaders(),
-            'Prepr-Locale': locale || '',
-        },
-    })
-
-    if (!data || !data.Post) {
-        return notFound()
-    }
-
-    return data.Post
-}
+import { PostsService } from '@/services/posts'
 
 export default async function BlogDetailPage({
     params,
@@ -49,7 +22,12 @@ export default async function BlogDetailPage({
     params: Promise<{ slug: string; locale: Locale }>
 }) {
     let { slug, locale } = await params
-    const post = await getPostData(slug, locale)
+
+    const post = await PostsService.getPostBySlug({ slug, locale })
+
+    if (!post) {
+        return notFound()
+    }
 
     return (
         <div>

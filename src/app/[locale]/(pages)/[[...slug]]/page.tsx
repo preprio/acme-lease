@@ -1,38 +1,10 @@
 import { notFound } from 'next/navigation'
-import { PageDocument, PageQuery } from '@/gql/graphql'
-import { getApolloClient } from '@/apollo-client'
-import { getHeaders } from '@/lib/server'
 import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
+import { PagesService } from '@/services/pages'
 
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
-
-async function getData(slug: string, locale: Locale) {
-    const headers = await getHeaders()
-
-    const client = await getApolloClient()
-
-    const { data } = await client.query<PageQuery>({
-        query: PageDocument,
-        variables: {
-            slug: slug,
-        },
-        context: {
-            headers: {
-                ...headers,
-                'Prepr-Locale': locale || '',
-            },
-        },
-        fetchPolicy: 'no-cache',
-    })
-
-    if (!data.Page) {
-        return notFound()
-    }
-
-    return data
-}
 
 export default async function Page({
     params,
@@ -49,16 +21,19 @@ export default async function Page({
         slug = slug.join('/')
     }
 
-    const data = await getData(slug, locale)
-    const page = data.Page
+    const page = await PagesService.getPageBySlug({ slug, locale })
+
+    if (!page) {
+        return notFound()
+    }
 
     return (
         <main>
             <meta
                 property='prepr:id'
-                content={page?._id}
+                content={page._id}
             />
-            {page?.content && <Sections sections={page?.content} />}
+            {page.content && <Sections sections={page.content} />}
         </main>
     )
 }

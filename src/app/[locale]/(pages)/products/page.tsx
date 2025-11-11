@@ -1,14 +1,5 @@
 import Container from '@/components/container'
-import { getApolloClient } from '@/apollo-client'
-import {
-    PageDocument,
-    PageQuery,
-    ProductsDocument,
-    ProductsQuery,
-    ProductWhereInput,
-} from '@/gql/graphql'
 import ProductCard from '@/components/product-card'
-import { getHeaders } from '@/lib/server'
 import PaginationChevron from '@/components/elements/pagination-chevron'
 import PaginationItem from '@/components/elements/pagination-item'
 import { cn } from '@/lib/utils'
@@ -16,75 +7,10 @@ import { notFound } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import CategoryButtons from '@/components/category-buttons'
 import { Locale } from '@/types/locale'
+import { ProductsService } from '@/services/products'
+import { PagesService } from '@/services/pages'
 
 const PRODUCTS_PER_PAGE = 9
-
-async function getProducts(
-    locale: string,
-    skip: number = 0,
-    category?: string
-) {
-    let cat = category !== 'all' ? category : undefined
-
-    const client = await getApolloClient()
-    const headers = await getHeaders()
-
-    const query = {
-        query: ProductsDocument,
-        variables: {
-            skip,
-            limit: PRODUCTS_PER_PAGE,
-            where: {},
-        },
-        context: {
-            headers: {
-                ...headers,
-                'Prepr-Locale': locale,
-            },
-        },
-    }
-
-    if (cat) {
-        query.variables.where = {
-            categories: {
-                _slug_any: cat,
-            },
-        } as unknown as ProductWhereInput
-    }
-
-    const { data } = await client.query<ProductsQuery>(query)
-
-    if (!data.Products) {
-        return notFound()
-    }
-
-    return data?.Products
-}
-
-async function getProductsPage(locale: string) {
-    const headers = await getHeaders()
-    const client = await getApolloClient()
-
-    const { data } = await client.query<PageQuery>({
-        query: PageDocument,
-        variables: {
-            slug: 'products',
-        },
-        context: {
-            headers: {
-                ...headers,
-                'Prepr-Locale': locale || '',
-            },
-        },
-        fetchPolicy: 'no-cache',
-    })
-
-    if (!data.Page) {
-        return notFound()
-    }
-
-    return data
-}
 
 function ProductTitle() {
     const t = useTranslations('Products')
@@ -109,8 +35,26 @@ export default async function ProductOverviewPage({
 
     const skip = (pageNumber - 1) * PRODUCTS_PER_PAGE
 
-    const products = await getProducts(locale, skip, pageCategory)
-    const productPage = await getProductsPage(locale)
+    // Use services for data fetching
+    const products = await ProductsService.getProducts({
+        locale,
+        skip,
+        limit: PRODUCTS_PER_PAGE,
+        category: pageCategory,
+    })
+
+    const productPage = await PagesService.getPageBySlug({
+        locale,
+        slug: 'products',
+    })
+
+    if (!products) {
+        return notFound()
+    }
+
+    if (!productPage) {
+        return notFound()
+    }
 
     const totalPages = Math.ceil((products?.total || 0) / PRODUCTS_PER_PAGE)
 
@@ -118,7 +62,7 @@ export default async function ProductOverviewPage({
         <section className='bg-primary-50 h-full w-full'>
             <meta
                 property='prepr:id'
-                content={productPage?.Page?._id}
+                content={productPage._id}
             />
             <Container className='space-y-6 py-10 lg:space-y-14 lg:py-20'>
                 <div className='space-y-6'>
