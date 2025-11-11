@@ -1,16 +1,13 @@
 import Container from '@/components/container'
 import ProductCard from '@/components/product-card'
-import PaginationChevron from '@/components/elements/pagination-chevron'
-import PaginationItem from '@/components/elements/pagination-item'
-import { cn } from '@/lib/utils'
+import Pagination from '@/components/pagination'
 import { notFound } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import CategoryButtons from '@/components/category-buttons'
 import { Locale } from '@/types/locale'
 import { ProductsService } from '@/services/products'
 import { PagesService } from '@/services/pages'
-
-const PRODUCTS_PER_PAGE = 9
+import { PRODUCTS_PER_PAGE } from '@/constants/pagination'
 
 function ProductTitle() {
     const t = useTranslations('Products')
@@ -83,33 +80,10 @@ export default async function ProductOverviewPage({
                     ))}
                 </div>
 
-                {/* Pagination */}
-
-                {totalPages > 1 && (
-                    <div className='flex flex-wrap justify-center gap-8'>
-                        <PaginationChevron
-                            direction='left'
-                            disabled={pageNumber === 1}
-                        />
-                        <div className='flex items-center gap-3'>
-                            {Array.from({ length: totalPages }).map(
-                                (_, index) => (
-                                    <PaginationItem
-                                        pageNumber={index + 1}
-                                        key={index}
-                                        className={cn(
-                                            pageNumber === index + 1 && 'active'
-                                        )}
-                                    />
-                                )
-                            )}
-                        </div>
-                        <PaginationChevron
-                            direction='right'
-                            disabled={pageNumber === totalPages}
-                        />
-                    </div>
-                )}
+                <Pagination
+                    currentPage={pageNumber}
+                    totalPages={totalPages}
+                />
             </Container>
         </section>
     )

@@ -1,15 +1,14 @@
-import { Rating } from '@/gql/graphql'
 import { notFound } from 'next/navigation'
 import Container from '@/components/container'
 import { Link } from '@/i18n/routing'
-import { FaChevronLeft, FaStar } from 'react-icons/fa6'
+import { FaChevronLeft } from 'react-icons/fa6'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
 import Button from '@/components/elements/button'
 import { getTranslations } from 'next-intl/server'
 import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
 import { ProductsService } from '@/services/products'
+import RatingStars from '@/components/rating-stars'
 
 export default async function ProductPage({
     params,
@@ -63,7 +62,7 @@ export default async function ProductPage({
                                     {product.name}
                                 </h1>
                                 <div className='flex gap-2'>
-                                    <Ratings rating={product.rating} />
+                                    <RatingStars rating={product.rating} />
                                 </div>
                             </div>
                             <h2 className='text-secondary-700 text-mb-3xl font-medium lg:text-4xl'>
@@ -88,42 +87,3 @@ export default async function ProductPage({
     )
 }
 
-function Ratings({ rating }: { rating?: Rating | null }) {
-    let ratingValue = 0
-
-    switch (rating) {
-        case 'ONE':
-            ratingValue = 1
-            break
-        case 'TWO':
-            ratingValue = 2
-            break
-        case 'THREE':
-            ratingValue = 3
-            break
-        case 'FOUR':
-            ratingValue = 4
-            break
-        case 'FIVE':
-            ratingValue = 5
-            break
-    }
-
-    // Create an array of 5 elements, where each element is a star, the first n elements are filled, the rest are empty
-    const stars = Array.from({ length: 5 })
-
-    return (
-        <div className='flex gap-1 text-2xl'>
-            {stars.map((star, index) => (
-                <FaStar
-                    key={index}
-                    className={cn(
-                        index + 1 <= ratingValue
-                            ? 'text-primary-600'
-                            : 'text-primary-200'
-                    )}
-                />
-            ))}
-        </div>
-    )
-}

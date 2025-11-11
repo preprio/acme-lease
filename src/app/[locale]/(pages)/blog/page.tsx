@@ -1,17 +1,14 @@
 import Container from '@/components/container'
 import PostCard from '@/components/post-card'
-import { cn } from '@/lib/utils'
-import PaginationItem from '@/components/elements/pagination-item'
-import PaginationChevron from '@/components/elements/pagination-chevron'
+import Pagination from '@/components/pagination'
 import CategoryButtons from '@/components/category-buttons'
 import { notFound } from 'next/navigation'
 import { Locale } from '@/types/locale'
 import { PostsService } from '@/services/posts'
 import { PagesService } from '@/services/pages'
+import { POSTS_PER_PAGE } from '@/constants/pagination'
 
 export const revalidate = 0
-
-const POSTS_PER_PAGE = 9
 
 export default async function BlogPage({
     searchParams,
@@ -73,33 +70,11 @@ export default async function BlogPage({
                         </div>
                     ))}
                 </div>
-                {/* Pagination */}
 
-                {totalPages > 1 && (
-                    <div className='flex flex-wrap justify-center gap-8'>
-                        <PaginationChevron
-                            direction='left'
-                            disabled={pageNumber === 1}
-                        />
-                        <div className='flex items-center gap-3'>
-                            {Array.from({ length: totalPages }).map(
-                                (_, index) => (
-                                    <PaginationItem
-                                        pageNumber={index + 1}
-                                        key={index}
-                                        className={cn(
-                                            pageNumber === index + 1 && 'active'
-                                        )}
-                                    />
-                                )
-                            )}
-                        </div>
-                        <PaginationChevron
-                            direction='right'
-                            disabled={pageNumber === totalPages}
-                        />
-                    </div>
-                )}
+                <Pagination
+                    currentPage={pageNumber}
+                    totalPages={totalPages}
+                />
             </Container>
         </section>
     )
