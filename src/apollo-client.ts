@@ -8,6 +8,7 @@ import { headers } from 'next/headers'
 import { onError } from '@apollo/client/link/error'
 import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
 import { logger } from '@/lib/logger'
+import { env } from '@/config/env'
 
 /**
  * Creates and configures an Apollo Client instance for server-side GraphQL requests
@@ -16,8 +17,8 @@ import { logger } from '@/lib/logger'
  */
 export async function getApolloClient(): Promise<ApolloClient<unknown>> {
     if (
-        process.env.APP_ENV !== 'production' &&
-        process.env.PREPR_GRAPHQL_URL?.includes('-dev')
+        env.APP_ENV !== 'production' &&
+        env.PREPR_GRAPHQL_URL?.includes('-dev')
     ) {
         logger.warn('USING GQL DEV API, Personalization might not work')
     }

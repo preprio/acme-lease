@@ -1,5 +1,6 @@
 'use server'
 import { z } from 'zod'
+import { env } from '@/config/env'
 
 const schema = z.object({
     email: z
@@ -32,25 +33,22 @@ export default async function newsletterSubscribe(
         }
     }
 
-    const MailchimpKey = process.env.MAILCHAMP_API_KEY
-    const MailchimpServer = process.env.MAILCHIMP_API_SERVER
-    const MailchimpAudience = process.env.MAILCHIMP_AUDIENCE_ID
-
-    if (!MailchimpKey || !MailchimpServer || !MailchimpAudience) {
+    // Check if Mailchimp is configured
+    if (!env.MAILCHAMP_API_KEY || !env.MAILCHIMP_API_SERVER || !env.MAILCHIMP_AUDIENCE_ID) {
         return {
             message: 'Subscription failed',
-            errors: { email: ['Something went wrong! Please try again!'] },
+            errors: { email: ['Newsletter subscription is not configured'] },
             status: 'ERROR',
             email: null,
         }
     }
 
-    const customUrl = `https://${MailchimpServer}.api.mailchimp.com/3.0/lists/${MailchimpAudience}/members`
+    const customUrl = `https://${env.MAILCHIMP_API_SERVER}.api.mailchimp.com/3.0/lists/${env.MAILCHIMP_AUDIENCE_ID}/members`
 
     const response = await fetch(customUrl, {
         method: 'POST',
         headers: {
-            'Authorization': `Basic ${Buffer.from(`anystring:${MailchimpKey}`).toString('base64')}`,
+            'Authorization': `Basic ${Buffer.from(`anystring:${env.MAILCHAMP_API_KEY}`).toString('base64')}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({

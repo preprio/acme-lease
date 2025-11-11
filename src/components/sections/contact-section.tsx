@@ -2,6 +2,7 @@ import { FaEnvelope, FaPhone } from 'react-icons/fa6'
 import Container from '@/components/container'
 import HubspotContactForm from '@/components/hubspot-form'
 import { ContactFragment } from '@/gql/graphql'
+import { env } from '@/config/env'
 
 export default function ContactSection({ item }: { item: ContactFragment }) {
     return (
@@ -51,7 +52,7 @@ export default function ContactSection({ item }: { item: ContactFragment }) {
                         {item?.hubspot_form_id && (
                             <HubspotContactForm
                                 formId={item.hubspot_form_id}
-                                portalId={process.env.HUBSPOT_PORTAL_ID!}
+                                portalId={env.HUBSPOT_PORTAL_ID}
                             />
                         )}
                     </div>
