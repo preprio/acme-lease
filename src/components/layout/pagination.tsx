@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
-import PaginationChevron from '@/components/elements/pagination-chevron'
-import PaginationItem from '@/components/elements/pagination-item'
+import PaginationChevron from '@/components/ui/pagination-chevron'
+import PaginationItem from '@/components/ui/pagination-item'
 
 type PaginationProps = {
     currentPage: number

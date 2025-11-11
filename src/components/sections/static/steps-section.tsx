@@ -1,6 +1,6 @@
 import { Fa1, Fa2, Fa3 } from 'react-icons/fa6'
 import Container from '@/components/layout/container'
-import Button from '@/components/elements/button'
+import Button from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
 
 export default function StepsSection({

@@ -1,4 +1,4 @@
-import CategoryButton from '@/components/elements/category-button'
+import CategoryButton from '@/components/ui/category-button'
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
 import { getApolloClient } from '@/apollo-client'

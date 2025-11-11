@@ -3,7 +3,7 @@
 import Container from '@/components/layout/container'
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
-import PreprButton from '@/components/elements/prepr-button'
+import PreprButton from '@/components/ui/prepr-button'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 import { ButtonFragment } from '@/gql/graphql'

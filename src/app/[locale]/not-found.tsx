@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/routing'
-import Button from '@/components/elements/button'
+import Button from '@/components/ui/button'
 import Image from 'next/image'
 
 export default function NotFound() {

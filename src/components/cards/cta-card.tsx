@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import newsletterSubscribe from '@/actions/newsletter-subscribe'
 import { Input } from '@headlessui/react'
-import Button from '@/components/elements/button'
+import Button from '@/components/ui/button'
 import React, { useActionState, useEffect } from 'react'
 import { z } from 'zod'
 import toast, { Toast } from 'react-hot-toast'

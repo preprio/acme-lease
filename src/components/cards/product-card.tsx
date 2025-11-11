@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import Button from '@/components/elements/button'
+import Button from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
 import { ProductCardFragment } from '@/gql/graphql'
 

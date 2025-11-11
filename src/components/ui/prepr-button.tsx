@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import Button from '@/components/elements/button'
+import Button from '@/components/ui/button'
 import { Link } from '@/i18n/routing'
-import LinkButton from '@/components/elements/link-button'
+import LinkButton from '@/components/ui/link-button'
 import { ButtonFragment } from '@/gql/graphql'
 
 interface PreprButtonProps {

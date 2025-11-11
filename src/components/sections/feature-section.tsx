@@ -1,6 +1,6 @@
 import Container from '@/components/layout/container'
 import Image from 'next/image'
-import PreprButton from '@/components/elements/prepr-button'
+import PreprButton from '@/components/ui/prepr-button'
 import { FeatureFragment } from '@/gql/graphql'
 
 export default function FeatureSection({ item }: { item: FeatureFragment }) {
