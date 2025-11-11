@@ -22,35 +22,8 @@ export class AppError extends Error {
  * Error codes for common error scenarios
  */
 export const ErrorCodes = {
-    NOT_FOUND: 'NOT_FOUND',
-    VALIDATION_ERROR: 'VALIDATION_ERROR',
     GRAPHQL_ERROR: 'GRAPHQL_ERROR',
-    NETWORK_ERROR: 'NETWORK_ERROR',
-    CONFIGURATION_ERROR: 'CONFIGURATION_ERROR',
-    UNAUTHORIZED: 'UNAUTHORIZED',
 } as const
-
-/**
- * Creates a not found error
- */
-export function createNotFoundError(resource: string): AppError {
-    return new AppError(
-        `${resource} not found`,
-        ErrorCodes.NOT_FOUND,
-        404
-    )
-}
-
-/**
- * Creates a validation error
- */
-export function createValidationError(message: string): AppError {
-    return new AppError(
-        message,
-        ErrorCodes.VALIDATION_ERROR,
-        400
-    )
-}
 
 /**
  * Creates a GraphQL error
