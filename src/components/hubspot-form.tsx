@@ -2,6 +2,7 @@
 import { vercelStegaClean } from '@vercel/stega'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { ANIMATION_DELAYS } from '@/constants/timing'
 
 const HubspotContactForm = (props: { portalId: string; formId: string }) => {
     const portalId = vercelStegaClean(props.portalId)
@@ -35,14 +36,14 @@ const HubspotContactForm = (props: { portalId: string; formId: string }) => {
         script.onload = () => {
             const hbspt = window.hbspt
             if (hbspt && !hubspotLoaded) {
-                setTimeout(async () => {
+                setTimeout(() => {
                     setHubspotLoaded(true)
                     hbspt.forms.create({
                         portalId,
                         formId,
                         target: '#hs-form-wrapper',
                     })
-                }, 100)
+                }, ANIMATION_DELAYS.HUBSPOT_FORM_INIT)
             }
         }
 
@@ -52,8 +53,13 @@ const HubspotContactForm = (props: { portalId: string; formId: string }) => {
             if (formWrapper) {
                 formWrapper.innerHTML = '' // Cleanup on unmount
             }
+            // Remove script on cleanup
+            const scriptToRemove = document.getElementById('hs-script-loader')
+            if (scriptToRemove) {
+                scriptToRemove.remove()
+            }
         }
-    }, [pathName])
+    }, [pathName, portalId, formId, hubspotLoaded])
 
     return (
         <div>

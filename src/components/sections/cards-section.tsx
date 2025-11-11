@@ -12,6 +12,7 @@ import { useSwiperReactive } from '@/hooks/useSwiperReactive'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { useEffect, useState } from 'react'
 import { CardsFragment } from '@/gql/graphql'
+import { ANIMATION_DELAYS } from '@/constants/timing'
 
 export default function CardsSection({ item }: { item: CardsFragment }) {
     return (
@@ -157,14 +158,12 @@ function SwiperNavigation() {
                     1 + (swiper.slides?.length - swiper.slidesPerViewDynamic())
                 )
             }
-        }, 500)
+        }, ANIMATION_DELAYS.SWIPER_CALCULATION)
     }, [swiper])
 
     useEffect(() => {
         // Handler to call on window resize
         function handleResize() {
-            // Set window width/height to state
-            // setSlidesAmount(1 + (swiper.slides.length - swiper.slidesPerViewDynamic()))
             setTimeout(() => {
                 if (swiper && swiper.slides && swiper?.slidesPerViewDynamic())
                     setSlidesAmount(
@@ -172,7 +171,7 @@ function SwiperNavigation() {
                             (swiper.slides?.length -
                                 swiper.slidesPerViewDynamic())
                     )
-            }, 500)
+            }, ANIMATION_DELAYS.SWIPER_CALCULATION)
         }
 
         // Add event listener
@@ -183,7 +182,7 @@ function SwiperNavigation() {
         return () => {
             window.removeEventListener('resize', handleResize)
         }
-    }, [swiper]) // Empty array ensures that effect is only run on mount
+    }, [swiper])
 
     if (slidesAmount <= 1) return null
 

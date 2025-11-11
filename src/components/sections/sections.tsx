@@ -1,5 +1,6 @@
 import { SECTIONS } from '@/constants/sections'
 import { SectionData } from '@/types/sections'
+import { logger } from '@/lib/logger'
 
 interface DynamicSectionProps {
     section: SectionData
@@ -9,13 +10,13 @@ function DynamicSection({ section }: DynamicSectionProps) {
     const typename = section.__typename
 
     if (!typename) {
-        console.warn(`Unknown section type: ${typename}`)
+        logger.warn(`Unknown section type: ${typename}`)
         return null
     }
     const Component = SECTIONS[typename]
 
     if (!Component) {
-        console.warn(`Unknown section type: ${typename}`)
+        logger.warn(`Unknown section type: ${typename}`)
         return null
     }
 

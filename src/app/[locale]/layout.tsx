@@ -1,4 +1,5 @@
 import { Ubuntu } from 'next/font/google'
+import type { Metadata } from 'next'
 
 import './globals.css'
 import React from 'react'
@@ -14,7 +15,7 @@ import type { Locale } from '@/types/locale'
 
 const ubuntu = Ubuntu({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
     title: 'Acme Lease',
     description: 'Prepr example implementation on how to use personalization',
 }

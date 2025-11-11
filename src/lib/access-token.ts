@@ -20,6 +20,10 @@ export function getEnvAccessToken(): string | undefined {
     }
 }
 
+export function getEnvGraphqlUrl(): string | undefined {
+    return process.env.PREPR_GRAPHQL_URL || buildPreprGraphqlUrl(process.env.PREPR_GRAPHQL_TOKEN!)
+}
+
 export function buildPreprGraphqlUrl(accessToken: string): string {
     return `https://graphql.prepr.io/${accessToken}`
 }

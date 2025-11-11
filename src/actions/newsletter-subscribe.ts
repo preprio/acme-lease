@@ -16,9 +16,9 @@ type FormState = {
 }
 
 export default async function newsletterSubscribe(
-    formState: any,
+    formState: FormState,
     formData: FormData
-) {
+): Promise<FormState> {
     const validatedFields = schema.safeParse({
         email: formData.get('email'),
     })
@@ -28,6 +28,7 @@ export default async function newsletterSubscribe(
             message: 'Invalid form data',
             errors: validatedFields.error.flatten().fieldErrors,
             status: 'ERROR',
+            email: null,
         }
     }
 
@@ -40,6 +41,7 @@ export default async function newsletterSubscribe(
             message: 'Subscription failed',
             errors: { email: ['Something went wrong! Please try again!'] },
             status: 'ERROR',
+            email: null,
         }
     }
 
@@ -62,6 +64,7 @@ export default async function newsletterSubscribe(
             message: 'Subscription failed',
             errors: { email: ['Subscription failed, please try again'] },
             status: 'ERROR',
+            email: null,
         }
     }
 

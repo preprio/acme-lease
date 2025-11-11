@@ -2,6 +2,22 @@ import type { NextConfig } from 'next'
 import { vercelStegaSplit } from '@vercel/stega'
 import createNextIntlPlugin from 'next-intl/plugin'
 
+interface RedirectItem {
+    _slug: string
+    destination: Array<{
+        __typename: 'Page' | 'Post' | 'Product'
+        _slug: string
+    } | null>
+    redirect_type: 'PERMANENT' | 'TEMPORARY'
+}
+
+interface RedirectsResponse {
+    Redirects: {
+        items: RedirectItem[]
+        total: number
+    }
+}
+
 const query = `query GetRedirects {
         Redirects(limit: 100) {
             items {
@@ -39,9 +55,9 @@ async function fetchPreprRedirects() {
         }
     )
 
-    const { data } = await fetched.json()
+    const { data } = (await fetched.json()) as { data: RedirectsResponse }
 
-    let redirects = data?.Redirects?.items.map((item: any) => {
+    let redirects = data?.Redirects?.items.map((item: RedirectItem) => {
         let url = ''
 
         if (item.destination[0] === null) return null
@@ -80,7 +96,10 @@ async function fetchPreprRedirects() {
         }
     })
 
-    return redirects.filter((item: any) => item.destination !== '')
+    return redirects.filter(
+        (item): item is Exclude<typeof item, null> =>
+            item !== null && item.destination !== ''
+    )
 }
 
 const nextConfig: NextConfig = {

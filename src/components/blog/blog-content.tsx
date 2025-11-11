@@ -9,7 +9,7 @@ interface BlogContentProps extends React.PropsWithChildren {
     content: DcfFragment[]
     className?: string
 }
-
+ 
 export default function BlogContent({
     content,
     className,

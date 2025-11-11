@@ -1,10 +1,11 @@
 import { STATIC_SECTIONS } from '@/constants/sections'
 import { StaticComponent, StaticFragment } from '@/gql/graphql'
+import { logger } from '@/lib/logger'
 
 export default function StaticSection({ item }: { item: StaticFragment }) {
     const staticTypes = Object.values(StaticComponent)
     if (!staticTypes.includes(item.static_type as StaticComponent)) {
-        console.warn(`Unknown section type: ${item.static_type}`)
+        logger.warn(`Unknown section type: ${item.static_type}`)
         return null
     }
 
@@ -12,7 +13,7 @@ export default function StaticSection({ item }: { item: StaticFragment }) {
         STATIC_SECTIONS[item.static_type as StaticComponent]
 
     if (!SectionComponent) {
-        console.warn(`Unknown section type: ${item.static_type}`)
+        logger.warn(`Unknown section type: ${item.static_type}`)
         return null
     }
 

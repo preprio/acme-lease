@@ -11,6 +11,8 @@ interface PreprButtonProps {
 
 /**
  * Builds the URL from button link or external_url
+ * @param button - The button fragment containing link information
+ * @returns The constructed URL string
  */
 function buildButtonUrl(button: ButtonFragment): string {
     if (button.external_url) {

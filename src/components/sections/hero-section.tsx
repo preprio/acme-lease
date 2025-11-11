@@ -20,10 +20,10 @@ export default function HeroSection({ item }: { item: HeroFragment }) {
                         {item.sub_heading}
                     </p>
                     <div className='mt-8 flex gap-4 xl:mt-10'>
-                        {item.buttons.map((button, index) => (
+                        {item.buttons.map((button, idx) => (
                             <PreprButton
                                 button={button}
-                                key={index}
+                                key={button.text || `hero-btn-${idx}`}
                             />
                         ))}
                     </div>

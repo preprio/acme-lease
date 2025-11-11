@@ -7,13 +7,19 @@ import {
 import { headers } from 'next/headers'
 import { onError } from '@apollo/client/link/error'
 import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
+import { logger } from '@/lib/logger'
 
-export async function getApolloClient() {
+/**
+ * Creates and configures an Apollo Client instance for server-side GraphQL requests
+ * @returns Configured Apollo Client instance
+ * @throws Error if no access token is available
+ */
+export async function getApolloClient(): Promise<ApolloClient<unknown>> {
     if (
         process.env.APP_ENV !== 'production' &&
         process.env.PREPR_GRAPHQL_URL?.includes('-dev')
     ) {
-        console.warn('USING GQL DEV API, Personalization might not work')
+        logger.warn('USING GQL DEV API, Personalization might not work')
     }
 
     const headerStore = await headers()
@@ -22,7 +28,7 @@ export async function getApolloClient() {
     if (!accessToken) {
         accessToken = getEnvAccessToken()
         if (accessToken) {
-            console.warn(
+            logger.warn(
                 'Falling back to env access token; middleware may be misconfigured'
             )
         }
@@ -43,7 +49,7 @@ export async function getApolloClient() {
         ssrMode: true,
         link: ApolloLink.from([
             onError((error) => {
-                console.log(error.graphQLErrors)
+                logger.error('GraphQL Error:', error.graphQLErrors)
             }),
             httpLink,
         ]),

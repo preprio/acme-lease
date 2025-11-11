@@ -17,16 +17,16 @@ export const emailSchema = z.object({
 
 const INITIAL_STATE = {
     message: '',
-    email: '',
+    email: null,
     errors: {
         email: [],
     },
-    status: 'UNSET',
+    status: 'UNSET' as const,
 }
 
 declare global {
     interface Window {
-        prepr: any
+        prepr: (event: string, type: string, data: string | null | undefined) => void
     }
 }
 

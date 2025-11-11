@@ -15,7 +15,7 @@ export default function NavbarClient(props: { items: ButtonFragment[] }) {
         return null
     }
 
-    function handleMobileMenuClose() {
+    function handleMobileMenuClose(): void {
         setMobileMenuOpen(false)
     }
 
@@ -40,6 +40,8 @@ export default function NavbarClient(props: { items: ButtonFragment[] }) {
                         <button
                             type='button'
                             onClick={() => setMobileMenuOpen(true)}
+                            aria-label='Open mobile menu'
+                            aria-expanded={mobileMenuOpen}
                         >
                             <div className='flex h-8 w-8 items-center justify-center text-lg'>
                                 <svg
@@ -61,10 +63,10 @@ export default function NavbarClient(props: { items: ButtonFragment[] }) {
                     <div className='hidden items-center gap-8 lg:flex'>
                         {/*  Navitems  */}
                         <div className='flex items-center gap-12'>
-                            {props.items.map((item, index) => (
+                            {props.items.map((item, idx) => (
                                 <PreprButton
                                     button={item}
-                                    key={index}
+                                    key={item.text || `nav-${idx}`}
                                 />
                             ))}
                         </div>
@@ -85,15 +87,18 @@ export default function NavbarClient(props: { items: ButtonFragment[] }) {
                                     className='-m-1.5 p-1.5 hover:cursor-pointer sm:hidden'
                                 >
                                     <span className='sr-only'>Acme demo</span>
-                                    <img
+                                    <Image
                                         src='/logo.svg'
                                         alt='Acme Logo'
+                                        width={150}
+                                        height={40}
                                     />
                                 </Link>
                                 <button
                                     type='button'
                                     onClick={() => setMobileMenuOpen(false)}
                                     className='-m-2.5 rounded-md p-2.5 text-gray-700'
+                                    aria-label='Close menu'
                                 >
                                     <span className='sr-only'>Close menu</span>
                                     <div className='flex h-8 w-8 items-center justify-center text-lg'>
@@ -113,10 +118,10 @@ export default function NavbarClient(props: { items: ButtonFragment[] }) {
                                 </button>
                             </div>
                             <div className='flex flex-col items-center justify-center space-y-12 px-4 py-10'>
-                                {props.items.map((item, index) => (
+                                {props.items.map((item, idx) => (
                                     <div
                                         onClick={handleMobileMenuClose}
-                                        key={index}
+                                        key={item.text || `nav-mobile-${idx}`}
                                     >
                                         <PreprButton
                                             button={item}
