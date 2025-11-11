@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import { Link } from '@/i18n/routing'
 import { FaChevronLeft } from 'react-icons/fa6'
 import Image from 'next/image'
@@ -8,7 +8,7 @@ import { getTranslations } from 'next-intl/server'
 import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
 import { ProductsService } from '@/services/products'
-import RatingStars from '@/components/rating-stars'
+import RatingStars from '@/components/cards/rating-stars'
 
 export default async function ProductPage({
     params,

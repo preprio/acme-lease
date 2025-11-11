@@ -1,5 +1,5 @@
-import Container from '@/components/container'
-import CtaCard from '@/components/cta-card'
+import Container from '@/components/layout/container'
+import CtaCard from '@/components/cards/cta-card'
 import { CtaFragment } from '@/gql/graphql'
 export default function CtaSection({ item }: { item: CtaFragment }) {
     return (

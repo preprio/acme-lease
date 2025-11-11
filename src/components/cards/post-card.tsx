@@ -2,7 +2,7 @@
 
 import AuthorBox from '@/components/author-box'
 import { FaChevronRight } from 'react-icons/fa6'
-import ImgPlaceholderSmooth from '@/components/img-placeholder-smooth'
+import ImgPlaceholderSmooth from '@/components/ui/img-placeholder-smooth'
 import Badge from '@/components/elements/badge'
 import ReadTime from '@/components/elements/read-time'
 import { useRouter } from '@/i18n/routing'

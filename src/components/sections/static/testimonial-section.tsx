@@ -1,6 +1,6 @@
-import Container from '@/components/container'
-import TestimonialCard from '@/components/testimonial-card'
-import { InfiniteMovingCards } from '@/components/infinite-moving-cards'
+import Container from '@/components/layout/container'
+import TestimonialCard from '@/components/cards/testimonial-card'
+import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
 
 export default function TestimonialSection({
     title,

@@ -1,4 +1,4 @@
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import Image from 'next/image'
 import PreprButton from '@/components/elements/prepr-button'
 import { HeroFragment } from '@/gql/graphql'

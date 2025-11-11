@@ -2,8 +2,9 @@
 
 import { cn } from '@/lib/utils'
 import { useSwiperReactive } from '@/hooks/useSwiperReactive'
+import { useDebounce } from '@/hooks/useDebounce'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { ANIMATION_DELAYS } from '@/constants/timing'
 
 /**
@@ -12,44 +13,47 @@ import { ANIMATION_DELAYS } from '@/constants/timing'
  * Provides navigation controls (prev/next buttons and pagination dots) for Swiper carousels.
  * Automatically calculates the number of slides based on viewport and slidesPerView.
  * Hides navigation when there's only one slide or fewer.
+ * Uses debounced resize handler for better performance.
  */
 export default function SwiperNavigation() {
     const swiper = useSwiperReactive()
-
     const [slidesAmount, setSlidesAmount] = useState(1)
 
+    // Calculate slides amount based on swiper state
+    const calculateSlidesAmount = useCallback(() => {
+        if (swiper && swiper.slides && swiper?.slidesPerViewDynamic()) {
+            setSlidesAmount(
+                1 + (swiper.slides?.length - swiper.slidesPerViewDynamic())
+            )
+        }
+    }, [swiper])
+
+    // Initial calculation when swiper changes
     useEffect(() => {
         setTimeout(() => {
-            if (swiper && swiper.slides && swiper?.slidesPerViewDynamic()) {
-                setSlidesAmount(
-                    1 + (swiper.slides?.length - swiper.slidesPerViewDynamic())
-                )
-            }
+            calculateSlidesAmount()
         }, ANIMATION_DELAYS.SWIPER_CALCULATION)
-    }, [swiper])
+    }, [calculateSlidesAmount])
+
+    // Debounced resize handler for better performance
+    const debouncedCalculate = useDebounce(() => {
+        setTimeout(() => {
+            calculateSlidesAmount()
+        }, ANIMATION_DELAYS.SWIPER_CALCULATION)
+    }, 150) // 150ms debounce delay
 
     useEffect(() => {
-        // Handler to call on window resize
-        function handleResize() {
-            setTimeout(() => {
-                if (swiper && swiper.slides && swiper?.slidesPerViewDynamic())
-                    setSlidesAmount(
-                        1 +
-                            (swiper.slides?.length -
-                                swiper.slidesPerViewDynamic())
-                    )
-            }, ANIMATION_DELAYS.SWIPER_CALCULATION)
-        }
+        // Add debounced resize listener
+        window.addEventListener('resize', debouncedCalculate)
 
-        // Add event listener
-        window.addEventListener('resize', handleResize)
-        // Call handler right away so state gets updated with initial window size
-        handleResize()
-        // Remove event listener on cleanup
+        // Initial calculation
+        debouncedCalculate()
+
+        // Cleanup
         return () => {
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', debouncedCalculate)
         }
-    }, [swiper])
+    }, [debouncedCalculate])
 
     if (slidesAmount <= 1) return null
 

@@ -1,5 +1,5 @@
 import { FaEnvelope, FaPhone } from 'react-icons/fa6'
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import HubspotContactForm from '@/components/hubspot-form'
 import { ContactFragment } from '@/gql/graphql'
 import { env } from '@/config/env'

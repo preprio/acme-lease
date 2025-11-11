@@ -1,4 +1,4 @@
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import { useTranslations } from 'next-intl'
 
 export default function BenefitSection({

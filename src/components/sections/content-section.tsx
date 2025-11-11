@@ -1,6 +1,6 @@
 import { ContentFragment, DcfFragment } from '@/gql/graphql'
 import BlogContent from '../blog/blog-content'
-import Container from '../container'
+import Container from '../layout/container'
 
 interface ContentSectionProps {
     item: ContentFragment

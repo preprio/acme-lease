@@ -1,7 +1,7 @@
 import Prose from '@/components/blog/prose'
 import BlogText from '@/components/blog/blog-text'
 import BlogAssets from '@/components/blog/blog-assets'
-import YoutubeEmbed from '@/components/youtube-embed'
+import YoutubeEmbed from '@/components/ui/youtube-embed'
 import { cn } from '@/lib/utils'
 import { Assets, DcfFragment } from '@/gql/graphql'
 

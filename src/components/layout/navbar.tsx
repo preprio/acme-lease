@@ -1,7 +1,7 @@
 import { getApolloClient } from '@/apollo-client'
 import { NavigationDocument, NavigationQuery } from '@/gql/graphql'
 import { getPreprHeaders } from '@preprio/prepr-nextjs/server'
-import NavbarClient from '@/components/navbar-client'
+import NavbarClient from '@/components/layout/navbar-client'
 
 export const revalidate = 0
 

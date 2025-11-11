@@ -1,9 +1,9 @@
 'use client'
 
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import PreprButton from '@/components/elements/prepr-button'
-import PostCard from '@/components/post-card'
-import SwiperNavigation from '@/components/swiper-navigation'
+import PostCard from '@/components/cards/post-card'
+import SwiperNavigation from '@/components/layout/swiper-navigation'
 import { CardsFragment } from '@/gql/graphql'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'

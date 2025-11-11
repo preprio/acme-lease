@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import { headers } from 'next/headers'
 import ClearToken from '@/components/clear-token'
 import { getEnvAccessToken } from '@/lib/access-token'

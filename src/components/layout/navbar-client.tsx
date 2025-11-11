@@ -1,6 +1,6 @@
 'use client'
 
-import Container from '@/components/container'
+import Container from '@/components/layout/container'
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import PreprButton from '@/components/elements/prepr-button'

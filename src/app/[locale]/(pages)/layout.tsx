@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '@/components/navbar'
+import Navbar from '@/components/layout/navbar'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import AccessTokenIndicator from '@/components/access-token-indicator'
