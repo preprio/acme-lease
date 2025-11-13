@@ -3,8 +3,8 @@ import { vercelStegaClean } from '@vercel/stega'
 import { useHubspotScript } from '@/hooks/useHubspotScript'
 
 type HubspotContactFormProps = {
-    portalId: string
-    formId: string
+    portalId?: string
+    formId?: string
 }
 
 /**
@@ -14,6 +14,10 @@ type HubspotContactFormProps = {
  * Uses the useHubspotScript hook to handle script loading and cleanup.
  */
 const HubspotContactForm = ({ portalId, formId }: HubspotContactFormProps) => {
+    if (!portalId || !formId) {
+        return <div>No portal ID or form ID</div>
+    }
+
     const cleanPortalId = vercelStegaClean(portalId)
     const cleanFormId = vercelStegaClean(formId)
 
