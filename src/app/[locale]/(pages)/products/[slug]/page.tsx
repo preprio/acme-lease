@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 import Container from '@/components/layout/container'
 import { Link } from '@/i18n/routing'
 import { FaChevronLeft } from 'react-icons/fa6'
@@ -9,6 +10,7 @@ import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
 import { ProductsService } from '@/services/products'
 import RatingStars from '@/components/cards/rating-stars'
+import Loading from '@/components/loading'
 
 export default async function ProductPage({
     params,
@@ -82,7 +84,9 @@ export default async function ProductPage({
                     </div>
                 </Container>
             </section>
-            {sections}
+            {sections && (
+                <Suspense fallback={<Loading />}>{sections}</Suspense>
+            )}
         </div>
     )
 }

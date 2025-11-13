@@ -12,7 +12,7 @@ import { Assets, DcfFragment, Text, YouTubePost } from '@/gql/graphql'
 import { CONTENT_TYPES } from './constants'
 
 interface BlogContentProps extends React.PropsWithChildren {
-    content: DcfFragment[]
+    content?: Array<DcfFragment | null> | null
     className?: string
 }
 
@@ -45,9 +45,11 @@ export default function BlogContent({
         return null
     }
 
-    const items = content.map((item: DcfFragment, index: number) => {
+    const items = content.map((item, index: number) => {
         if (!item) {
-            logger.warn('BlogContent: Encountered null item in content array', { index })
+            logger.warn('BlogContent: Encountered null item in content array', {
+                index,
+            })
             return null
         }
 

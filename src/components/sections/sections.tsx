@@ -1,6 +1,7 @@
 import { SECTIONS } from '@/constants/sections'
 import { SectionData } from '@/types/sections'
 import { logger } from '@/lib/logger'
+import ErrorBoundaryWrapper from '@/components/error-boundary-wrapper'
 
 interface DynamicSectionProps {
     section: SectionData
@@ -20,7 +21,11 @@ function DynamicSection({ section }: DynamicSectionProps) {
         return null
     }
 
-    return <Component item={section} />
+    return (
+        <ErrorBoundaryWrapper>
+            <Component item={section} />
+        </ErrorBoundaryWrapper>
+    )
 }
 
 export default function Sections({ sections }: { sections: SectionData[] }) {

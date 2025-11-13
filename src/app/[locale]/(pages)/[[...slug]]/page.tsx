@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 import Sections from '@/components/sections/sections'
 import { Locale } from '@/types/locale'
 import { PagesService } from '@/services/pages'
+import Loading from '@/components/loading'
 
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
@@ -34,7 +36,11 @@ export default async function Page({
                 property='prepr:id'
                 content={page._id}
             />
-            {page.content && <Sections sections={page.content} />}
+            {page.content && (
+                <Suspense fallback={<Loading />}>
+                    <Sections sections={page.content} />
+                </Suspense>
+            )}
         </main>
     )
 }

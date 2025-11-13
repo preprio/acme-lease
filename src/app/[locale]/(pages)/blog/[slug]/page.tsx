@@ -1,7 +1,7 @@
 import Container from '@/components/layout/container'
 import { FaChevronLeft } from 'react-icons/fa6'
 import { Link } from '@/i18n/routing'
-import { CtaFragment, DcfFragment } from '@/gql/graphql'
+import { CtaFragment } from '@/gql/graphql'
 import Badge from '@/components/ui/badge'
 import AuthorBox from '@/components/author-box'
 import ReadTime from '@/components/ui/read-time'
@@ -16,6 +16,7 @@ import { Locale } from '@/types/locale'
 import { PostsService } from '@/services/posts'
 import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
+import Loading from '@/components/loading'
 
 export default async function BlogDetailPage({
     params,
@@ -88,18 +89,22 @@ export default async function BlogDetailPage({
                         </Prose>
 
                         <BlogContent
-                            content={(post?.content as DcfFragment[]) || []}
+                            content={
+                                post.content
+                            }
                         />
 
                         <div className='mx-auto max-w-prose py-10'>
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<Loading />}>
                                 <CustomCTACard />
                             </Suspense>
                         </div>
                     </div>
                 </Container>
-            </section>
-            <SimilarPosts id={post._id} />
+            </section> 
+            <Suspense fallback={<Loading />}>
+                <SimilarPosts id={post._id} />
+            </Suspense>
         </div>
     )
 }

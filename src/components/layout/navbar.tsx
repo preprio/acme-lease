@@ -2,6 +2,7 @@ import { getApolloClient } from '@/apollo-client'
 import { NavigationDocument, NavigationQuery } from '@/gql/graphql'
 import { getPreprHeaders } from '@preprio/prepr-nextjs/server'
 import NavbarClient from '@/components/layout/navbar-client'
+import ErrorBoundaryWrapper from '@/components/error-boundary-wrapper'
 
 export const revalidate = 0
 
@@ -34,5 +35,9 @@ export default async function Navbar({ locale }: { locale: string }) {
         return null
     }
 
-    return <NavbarClient items={navbar.top_navigation} />
+    return (
+        <ErrorBoundaryWrapper>
+            <NavbarClient items={navbar.top_navigation} />
+        </ErrorBoundaryWrapper>
+    )
 }
