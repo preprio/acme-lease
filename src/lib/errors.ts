@@ -35,14 +35,6 @@ export function createGraphQLError(message: string): AppError {
         500
     )
 }
-
-/**
- * Checks if an error is an AppError
- */
-export function isAppError(error: unknown): error is AppError {
-    return error instanceof AppError
-}
-
 /**
  * Safely extracts error message from unknown error
  */
