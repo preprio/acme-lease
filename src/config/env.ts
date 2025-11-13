@@ -10,7 +10,7 @@ const envSchema = z.object({
     PREPR_ENV: z.enum(['preview', 'production']).optional(),
 
     // HubSpot Configuration
-    HUBSPOT_PORTAL_ID: z.string().min(1, 'HubSpot Portal ID is required'),
+    HUBSPOT_PORTAL_ID: z.string().optional(),
 
     // Mailchimp Configuration (all optional)
     MAILCHIMP_API_KEY: z.string().optional(),
