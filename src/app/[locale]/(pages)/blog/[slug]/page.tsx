@@ -12,9 +12,10 @@ import Prose from '@/components/blog/prose'
 import BlogContent from '@/components/blog/blog-content'
 import CtaCard from '@/components/cards/cta-card'
 import SimilarPosts from '@/components/similar-posts'
-import { useTranslations } from 'next-intl'
 import { Locale } from '@/types/locale'
 import { PostsService } from '@/services/posts'
+import { getTranslations } from 'next-intl/server'
+import { Suspense } from 'react'
 
 export default async function BlogDetailPage({
     params,
@@ -91,7 +92,9 @@ export default async function BlogDetailPage({
                         />
 
                         <div className='mx-auto max-w-prose py-10'>
-                            <CustomCTACard />
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <CustomCTACard />
+                            </Suspense>
                         </div>
                     </div>
                 </Container>
@@ -101,8 +104,8 @@ export default async function BlogDetailPage({
     )
 }
 
-function CustomCTACard() {
-    const t = useTranslations('CTA')
+async function CustomCTACard() {
+    const t = await getTranslations('CTA')
 
     return (
         <CtaCard

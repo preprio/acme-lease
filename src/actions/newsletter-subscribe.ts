@@ -34,7 +34,11 @@ export default async function newsletterSubscribe(
     }
 
     // Check if Mailchimp is configured
-    if (!env.MAILCHAMP_API_KEY || !env.MAILCHIMP_API_SERVER || !env.MAILCHIMP_AUDIENCE_ID) {
+    if (
+        !env.MAILCHIMP_API_KEY ||
+        !env.MAILCHIMP_API_SERVER ||
+        !env.MAILCHIMP_AUDIENCE_ID
+    ) {
         return {
             message: 'Subscription failed',
             errors: { email: ['Newsletter subscription is not configured'] },
@@ -48,7 +52,7 @@ export default async function newsletterSubscribe(
     const response = await fetch(customUrl, {
         method: 'POST',
         headers: {
-            'Authorization': `Basic ${Buffer.from(`anystring:${env.MAILCHAMP_API_KEY}`).toString('base64')}`,
+            'Authorization': `Basic ${Buffer.from(`anystring:${env.MAILCHIMP_API_KEY}`).toString('base64')}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({

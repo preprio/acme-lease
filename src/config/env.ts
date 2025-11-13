@@ -13,7 +13,7 @@ const envSchema = z.object({
     HUBSPOT_PORTAL_ID: z.string().min(1, 'HubSpot Portal ID is required'),
 
     // Mailchimp Configuration (all optional)
-    MAILCHAMP_API_KEY: z.string().optional(),
+    MAILCHIMP_API_KEY: z.string().optional(),
     MAILCHIMP_API_SERVER: z.string().optional(),
     MAILCHIMP_AUDIENCE_ID: z.string().optional(),
 })
@@ -23,8 +23,16 @@ const envSchema = z.object({
  * These are accessed directly from process.env but typed for convenience
  */
 const passthroughEnv = {
-    NODE_ENV: process.env.NODE_ENV as 'development' | 'production' | 'test' | undefined,
-    APP_ENV: process.env.APP_ENV as 'development' | 'staging' | 'production' | undefined,
+    NODE_ENV: process.env.NODE_ENV as
+        | 'development'
+        | 'production'
+        | 'test'
+        | undefined,
+    APP_ENV: process.env.APP_ENV as
+        | 'development'
+        | 'staging'
+        | 'production'
+        | undefined,
 }
 
 /**
@@ -39,7 +47,10 @@ function getValidatedEnv() {
     const parsed = envSchema.safeParse(process.env)
 
     if (!parsed.success) {
-        console.error('❌ Invalid environment variables:', parsed.error.flatten().fieldErrors)
+        console.error(
+            '❌ Invalid environment variables:',
+            parsed.error.flatten().fieldErrors
+        )
         throw new Error('Invalid environment variables')
     }
 

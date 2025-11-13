@@ -4,8 +4,6 @@ import { ComponentType } from 'react'
 import { SectionTypename } from '@/types/sections'
 import { StaticComponent } from '@/gql/graphql'
 
-// Using any here is acceptable for dynamic component props
-// since each section has its own specific fragment type
 export const SECTIONS: Record<
     SectionTypename | string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

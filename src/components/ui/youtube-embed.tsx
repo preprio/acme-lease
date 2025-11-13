@@ -1,3 +1,5 @@
+import { logger } from '@/lib/logger'
+
 type YoutubeEmbedProps = {
     url: string
 }
@@ -46,7 +48,7 @@ function extractYoutubeId(url: string): string | null {
 
         return null
     } catch (error) {
-        console.error('Error parsing YouTube URL:', error)
+        logger.error('Error parsing YouTube URL:', error)
         return null
     }
 }
@@ -63,7 +65,7 @@ export default function YoutubeEmbed({ url }: YoutubeEmbedProps) {
     const youtubeId = extractYoutubeId(url)
 
     if (!youtubeId) {
-        console.warn('Invalid YouTube URL provided:', url)
+        logger.warn('Invalid YouTube URL provided:', url)
         return null
     }
 

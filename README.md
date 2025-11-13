@@ -49,7 +49,7 @@ SITE_URL=https://your-domain.com
 HUBSPOT_PORTAL_ID=your_hubspot_portal_id
 
 # Mailchimp Integration (optional - for newsletter)
-MAILCHAMP_API_KEY=your_mailchimp_api_key
+MAILCHIMP_API_KEY=your_mailchimp_api_key
 MAILCHIMP_API_SERVER=us1
 MAILCHIMP_AUDIENCE_ID=your_audience_id
 ```
@@ -167,7 +167,7 @@ git push origin main
     - `NODE_ENV`
     - `SITE_URL`
     - `HUBSPOT_PORTAL_ID` (if using HubSpot)
-    - `MAILCHAMP_API_KEY` (if using Mailchimp)
+    - `MAILCHIMP_API_KEY` (if using Mailchimp)
     - `MAILCHIMP_API_SERVER` (if using Mailchimp)
     - `MAILCHIMP_AUDIENCE_ID` (if using Mailchimp)
 

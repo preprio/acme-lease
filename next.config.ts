@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 import { vercelStegaSplit } from '@vercel/stega'
 import createNextIntlPlugin from 'next-intl/plugin'
+import { buildPreprGraphqlUrl } from '@/lib/access-token'
 
 interface RedirectItem {
     _slug: string
@@ -42,18 +43,19 @@ const query = `query GetRedirects {
         `
 
 async function fetchPreprRedirects() {
-    const fetched = await fetch(
-        'https://graphql.prepr.io/ac_c610fb5be36fffe3e886b38a72a56aeb25f32f70fdee43c3b79dc48e5ba08320',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: query,
-            }),
-        }
-    )
+    const graphqlUrl =
+        process.env.PREPR_GRAPHQL_URL ||
+        buildPreprGraphqlUrl(process.env.PREPR_GRAPHQL_TOKEN!)
+
+    const fetched = await fetch(graphqlUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            query: query,
+        }),
+    })
 
     const { data } = (await fetched.json()) as { data: RedirectsResponse }
 
