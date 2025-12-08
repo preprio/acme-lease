@@ -87,7 +87,16 @@ cp .env.example .env.local
 
 Then edit `.env.local` with your actual values. If `.env.example` doesn't exist, create `.env.local` manually using the environment variables listed in the [Environment Variables](#environment-variables) section above.
 
-4. **Generate GraphQL types**
+4. **Update the codegen configuration**
+
+Before generating GraphQL types, replace the schema URL in `codegen.ts` with your own Prepr GraphQL URL:
+
+```typescript
+// In codegen.ts, replace the schema URL with yours:
+schema: 'https://graphql.prepr.io/ac_YOUR_ACCESS_TOKEN'
+```
+
+5. **Generate GraphQL types**
 
 ```bash
 pnpm codegen
@@ -223,6 +232,7 @@ To enable preview mode for content editing:
 
 ### GraphQL Code Generation Fails
 
+- **Replace the schema URL in `codegen.ts`** with your own Prepr GraphQL URL from your access token
 - Ensure your `PREPR_GRAPHQL_URL` is correct and accessible
 - Check that your Prepr access token has the necessary permissions
 - Verify network connectivity to `graphql.prepr.io`

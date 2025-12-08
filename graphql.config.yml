@@ -1,4 +1,4 @@
-schema: https://graphql.prepr.io/ac_b2677065e3e02436809dd457f2e04ec17508bc58446ee8dd75e5bcc226a33462
+schema: https://graphql.prepr.io/ac_808264b0f3a95d8ac97110a5ceaf9d8159638661f63cd17e62163ec6fc626686
 documents:
   - '**/*.graphql'
   - 'src/queries/*.ts'

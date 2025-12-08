@@ -15,12 +15,6 @@ export const MIME_TYPES = {
     IMAGE_PNG: 'image/png',
 } as const
 
-export const CONTENT_TYPES = {
-    TEXT: 'Text',
-    ASSETS: 'Assets',
-    YOUTUBE_POST: 'YouTubePost',
-} as const
-
 export const IMAGE_MIME_TYPES = [
     MIME_TYPES.IMAGE_GIF,
     MIME_TYPES.IMAGE_WEBP,

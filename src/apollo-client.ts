@@ -50,7 +50,7 @@ export async function getApolloClient(): Promise<ApolloClient<unknown>> {
         ssrMode: true,
         link: ApolloLink.from([
             onError((error) => {
-                logger.error('GraphQL Error:', error.graphQLErrors)
+                logger.error('GraphQL Error:', error)
             }),
             httpLink,
         ]),
