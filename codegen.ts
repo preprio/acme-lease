@@ -14,9 +14,6 @@ const config: CodegenConfig = {
                 fragmentMasking: false,
             },
             plugins: [],
-            config: {
-                reactApolloVersion: 3,
-            },
         },
         './graphql.schema.json': {
             plugins: ['introspection'],
