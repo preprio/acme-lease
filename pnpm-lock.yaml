@@ -22,8 +22,8 @@ importers:
         specifier: ^2.2.9
         version: 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@preprio/prepr-nextjs':
-        specifier: 2.1.2
-        version: 2.1.2(@types/react@19.2.2)(jiti@2.6.1)(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postcss@8.5.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
+        specifier: 2.1.3
+        version: 2.1.3(@types/react@19.2.2)(jiti@2.6.1)(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postcss@8.5.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
       '@vercel/stega':
         specifier: ^0.1.2
         version: 0.1.2
@@ -894,10 +894,10 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@preprio/prepr-nextjs@2.1.2':
-    resolution: {integrity: sha512-gJss4qBjpGNn38fULCbhKdORdfQ88APLEUWlxsomRpGcY9Jffqr4lxif+KzDfbWYI1+vsXGqLYquocFU4sd53g==}
+  '@preprio/prepr-nextjs@2.1.3':
+    resolution: {integrity: sha512-bWwwNyTprCLckoB/2ouaRXRji0nSWbN/6yGG4wSJbCOoR0OwD/Wy7Ps9tMWLR5pltKty2VrLho0LxcF1lwEoXA==}
     peerDependencies:
-      next: ^15.0.0 || ^14.0.0 || ^13.0.0
+      next: ^16.0.3 || ^15.0.5 || ^15.1.9 || ^15.2.6 || ^15.3.6 || ^15.4.8 || ^15.5.7 || ^14.0.0 || ^13.0.0
       react: '^19.0.0 || ^18.0.0 || ^17.0.0 '
       react-dom: ^19.0.0 || ^18.0.0 || ^17.0.0
 
@@ -3502,6 +3502,11 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yaml@2.8.2:
+    resolution: {integrity: sha512-mplynKqc1C2hTVYxd0PU2xQAc22TI1vShAYGksCCfxbn/dFwnHTNi1bvYsBTkhdUNtGIf5xNOg938rrSSYvS9A==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -3529,8 +3534,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zustand@5.0.8:
-    resolution: {integrity: sha512-gyPKpIaxY9XcO2vSMrLbiER7QMAMGOQZVRdJ6Zi782jkbzZygq5GI9nG8g+sMgitRtndwaBSl7uiqC49o1SSiw==}
+  zustand@5.0.9:
+    resolution: {integrity: sha512-ALBtUj0AfjJt3uNRQoL1tL2tMvj6Gp/6e39dnfT6uzpelGru8v1tPOGBzayOWbPJvujM8JojDk3E1LxeFisBNg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': 19.2.2
@@ -4551,7 +4556,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@preprio/prepr-nextjs@2.1.2(@types/react@19.2.2)(jiti@2.6.1)(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postcss@8.5.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))':
+  '@preprio/prepr-nextjs@2.1.3(@types/react@19.2.2)(jiti@2.6.1)(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postcss@8.5.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))':
     dependencies:
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vercel/functions': 2.2.13
@@ -4562,7 +4567,7 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
       tailwind-merge: 3.4.0
-      zustand: 5.0.8(@types/react@19.2.2)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
+      zustand: 5.0.9(@types/react@19.2.2)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
     transitivePeerDependencies:
       - '@aws-sdk/credential-provider-web-identity'
       - '@types/react'
@@ -6691,7 +6696,7 @@ snapshots:
   postcss-load-config@5.1.0(jiti@2.6.1)(postcss@8.5.6):
     dependencies:
       lilconfig: 3.1.3
-      yaml: 2.8.1
+      yaml: 2.8.2
     optionalDependencies:
       jiti: 2.6.1
       postcss: 8.5.6
@@ -7381,6 +7386,8 @@ snapshots:
 
   yaml@2.8.1: {}
 
+  yaml@2.8.2: {}
+
   yargs-parser@21.1.1: {}
 
   yargs@17.7.2:
@@ -7407,7 +7414,7 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zustand@5.0.8(@types/react@19.2.2)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3)):
+  zustand@5.0.9(@types/react@19.2.2)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3)):
     optionalDependencies:
       '@types/react': 19.2.2
       react: 19.2.3
