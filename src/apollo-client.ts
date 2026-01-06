@@ -6,6 +6,7 @@ import {
 } from '@apollo/client'
 import { headers } from 'next/headers'
 import { onError } from '@apollo/client/link/error'
+import { CombinedGraphQLErrors } from '@apollo/client/errors'
 import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
 import { logger } from '@/lib/logger'
 import { env } from '@/config/env'
@@ -15,7 +16,7 @@ import { env } from '@/config/env'
  * @returns Configured Apollo Client instance
  * @throws Error if no access token is available
  */
-export async function getApolloClient(): Promise<ApolloClient<unknown>> {
+export async function getApolloClient(): Promise<ApolloClient> {
     if (
         env.APP_ENV !== 'production' &&
         env.PREPR_GRAPHQL_URL?.includes('-dev')
@@ -49,8 +50,12 @@ export async function getApolloClient(): Promise<ApolloClient<unknown>> {
         cache: new InMemoryCache(),
         ssrMode: true,
         link: ApolloLink.from([
-            onError((error) => {
-                logger.error('GraphQL Error:', error)
+            onError(({ error }) => {
+                if (CombinedGraphQLErrors.is(error)) {
+                    logger.error('GraphQL Error:', error.errors)
+                } else {
+                    logger.error('Network Error:', error)
+                }
             }),
             httpLink,
         ]),

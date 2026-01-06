@@ -21,7 +21,7 @@ async function getNavbar(locale: string) {
         fetchPolicy: 'no-cache',
     })
 
-    if (!data.Navigation) {
+    if (!data?.Navigation) {
         return null
     }
 
