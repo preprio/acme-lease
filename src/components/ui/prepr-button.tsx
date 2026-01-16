@@ -49,7 +49,10 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
     switch (button.button_type) {
         case 'PRIMARY':
             return (
-                <Link href={url}>
+                <Link
+                    href={url}
+                    data-prepr-variant-event={'Click'}
+                >
                     <Button
                         buttonStyle='primary'
                         className={className}
@@ -61,7 +64,10 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
 
         case 'SECONDARY':
             return (
-                <Link href={url}>
+                <Link
+                    href={url}
+                    data-prepr-variant-event={'Click'}
+                >
                     <Button
                         buttonStyle='secondary'
                         className={className}
@@ -75,6 +81,7 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
             return (
                 <LinkButton
                     href={url}
+                    data-prepr-variant-event={'Click'}
                     className={className}
                 >
                     {text}
