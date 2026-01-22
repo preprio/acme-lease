@@ -74,9 +74,11 @@ export default async function ProductPage({
                                     {product.price_suffix}
                                 </span>
                             </h2>
-                            <Button buttonStyle='primary'>
-                                {t('request_quote')}
-                            </Button>
+                            <Link href={`/contact`}>
+                                <Button buttonStyle='primary'>
+                                    {t('request_quote')}
+                                </Button>
+                            </Link>
                             <p className='text-mb-lg text-secondary-700 font-medium lg:text-lg'>
                                 {product.excerpt}
                             </p>
