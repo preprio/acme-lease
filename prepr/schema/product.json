@@ -1,0 +1,265 @@
+{
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/1q9b1czniytz\/w_1920\/car.jpg",
+    "appearance_tag": null,
+    "body": "Product",
+    "body_plural": "Products",
+    "body_singular": "Product",
+    "commenting": false,
+    "content_check": true,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "name",
+            "appearance": "single_line",
+            "body": "Name",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": true,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "body": "Slug",
+            "description": null,
+            "description_appearance": "help_text",
+            "edit_from_slash": false,
+            "field_state": "read_write",
+            "remove_trailing_slash": false,
+            "required": true,
+            "type": "Slug"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "excerpt",
+            "appearance": "textarea",
+            "body": "Excerpt",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "accept": [
+                "photo"
+            ],
+            "allow_align": false,
+            "allow_caption": true,
+            "allow_focal_point": true,
+            "allow_multiple": false,
+            "api_id": "image",
+            "body": "Image",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "focal_point_required": false,
+            "max": "1",
+            "min": "0",
+            "presets_change_required": false,
+            "required": false,
+            "type": "Asset"
+        },
+        {
+            "allow_multiple": true,
+            "api_id": "categories",
+            "appearance": "select",
+            "body": "Categories",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "group": false,
+            "max": "1",
+            "min": "0",
+            "required": false,
+            "type": "ContentReference",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Category",
+                    "label": "ContentModel",
+                    "position": 1,
+                    "ref": "fbd97244-acf6-4c27-a4c8-3a4bfdbcbd1f"
+                }
+            ]
+        },
+        {
+            "allow_multiple": true,
+            "api_id": "e_commerce_product",
+            "body": "E-Commerce Product",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1000",
+            "min": "0",
+            "remote_source": {
+                "body_singular": "CommerceProducts",
+                "label": "ContentModel",
+                "ref": "f48abda0-0f4a-4556-bb37-a9a23257629d"
+            },
+            "required": false,
+            "type": "ContentIntegration"
+        },
+        {
+            "api_id": "price",
+            "body": "Price",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "required": false,
+            "type": "Float",
+            "unique": false
+        },
+        {
+            "api_id": "rating",
+            "body": "Rating",
+            "default_value": "FOUR",
+            "description": "Rate the product from 1 to 5, where 5 means excellent and 1 means poor.",
+            "description_appearance": "tooltip",
+            "enum": {
+                "body_singular": "Rating",
+                "label": "ContentModel",
+                "ref": "b21ef508-19f8-4b2c-92fc-52575f9fa976"
+            },
+            "field_state": "read_write",
+            "required": false,
+            "type": "Enum"
+        },
+        {
+            "api_id": "price_suffix",
+            "body": "Price Suffix",
+            "default_value": "NONE",
+            "description": "Optional pricing suffix",
+            "description_appearance": "help_text",
+            "enum": {
+                "body_singular": "PriceSuffix",
+                "label": "ContentModel",
+                "ref": "bd39e257-8b4f-47a6-9a1c-4de1b8f188ea"
+            },
+            "field_state": "read_write",
+            "required": false,
+            "type": "Enum"
+        },
+        {
+            "a_b_testing": true,
+            "allow_multiple": true,
+            "api_id": "content",
+            "body": "Content",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1000",
+            "min": "0",
+            "personalization": true,
+            "required": false,
+            "type": "Stack",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Cards",
+                    "label": "Component",
+                    "position": 1,
+                    "ref": "c1f0129f-fb59-4394-96ac-e08d9a25d490"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "CTA",
+                    "label": "Component",
+                    "position": 2,
+                    "ref": "e9a985a4-d381-4236-b494-bad564fed9be"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "FAQ",
+                    "label": "ContentModel",
+                    "position": 3,
+                    "ref": "ea618735-9c34-4499-b2f6-a014fa0e332a"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Feature",
+                    "label": "Component",
+                    "position": 4,
+                    "ref": "413f29cc-c5b8-4ddb-b7b9-ec18b3cffde2"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Static",
+                    "label": "Component",
+                    "position": 5,
+                    "ref": "d3358a61-022f-4d95-b109-3fee49983a0f"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Contact",
+                    "label": "Component",
+                    "position": 6,
+                    "ref": "ffffc930-a8a5-48ae-bfc8-091d9f5a4b08"
+                }
+            ]
+        },
+        {
+            "appearance": "open",
+            "body": "SEO",
+            "description": null,
+            "type": "Divider"
+        },
+        {
+            "api_id": "seo",
+            "body": "SEO",
+            "component": {
+                "api_id": "SEO",
+                "label": "Component",
+                "ref": "3b1af544-d854-4ffd-9c4f-e81d6e10e691"
+            },
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "framed": true,
+            "required": false,
+            "type": "Component"
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": true,
+    "ref": "d48bab61-a263-4638-920d-a6a15a637e47",
+    "review_urls": [
+        {
+            "body": "Preview",
+            "live_preview": "1",
+            "url": "https:\/\/acme-lease.prepr.io\/{locale}\/products\/{slug}?access_token={access_token}"
+        }
+    ],
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": true,
+    "single_instance": false,
+    "slug": "{name}",
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": true
+}

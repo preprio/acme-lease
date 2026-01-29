@@ -1,0 +1,71 @@
+{
+    "appearance_image": null,
+    "appearance_tag": null,
+    "body": "Navigation",
+    "body_plural": "Navigations",
+    "body_singular": "Navigation",
+    "commenting": false,
+    "content_check": false,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "internal_name",
+            "appearance": "single_line",
+            "body": "Internal Name",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "a_b_testing": true,
+            "allow_multiple": true,
+            "api_id": "top_navigation",
+            "body": "Top Navigation",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1000",
+            "min": "1",
+            "personalization": true,
+            "required": true,
+            "type": "Stack",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Button",
+                    "label": "Component",
+                    "position": 1,
+                    "ref": "391d1731-f3a1-48ce-803e-568c89a6fb17"
+                }
+            ]
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": false,
+    "ref": "6cc0006b-63ea-4a50-b0fa-0e2c33262e50",
+    "review_urls": null,
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": false,
+    "single_instance": true,
+    "slug": null,
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": true
+}
