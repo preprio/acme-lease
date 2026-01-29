@@ -1,0 +1,87 @@
+{
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/2z4tcpunubm5\/w_1920\/section-faq.jpg",
+    "appearance_tag": null,
+    "body": "FAQ",
+    "body_plural": "FAQs",
+    "body_singular": "FAQ",
+    "commenting": false,
+    "content_check": false,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "internal_title",
+            "appearance": "single_line",
+            "body": "Internal Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "title",
+            "appearance": "single_line",
+            "body": "Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": true,
+            "seo_title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "a_b_testing": true,
+            "allow_multiple": true,
+            "api_id": "questions",
+            "body": "Questions",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "6",
+            "min": "1",
+            "personalization": false,
+            "required": true,
+            "type": "Stack",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "FAQQuestion",
+                    "label": "Component",
+                    "position": 1,
+                    "ref": "3a90d5b9-f31e-43d5-86de-03fc57e7da22"
+                }
+            ]
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": false,
+    "ref": "ea618735-9c34-4499-b2f6-a014fa0e332a",
+    "review_urls": null,
+    "scheduling": false,
+    "schema_version": "2025-04-09",
+    "seo_score": false,
+    "single_instance": false,
+    "slug": null,
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": false
+}

@@ -1,0 +1,20 @@
+{
+    "body": "Image Position",
+    "body_singular": "ImagePosition",
+    "enum": [
+        {
+            "display": "Left",
+            "value": "LEFT"
+        },
+        {
+            "display": "Right",
+            "value": "RIGHT"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "f9f4b38e-4394-45f6-a06f-b4a9f5df1cd6",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

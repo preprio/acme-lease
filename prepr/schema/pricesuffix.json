@@ -1,0 +1,20 @@
+{
+    "body": "Price Suffix",
+    "body_singular": "PriceSuffix",
+    "enum": [
+        {
+            "display": "NONE",
+            "value": "NONE"
+        },
+        {
+            "display": "MONTH",
+            "value": "MONTH"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "bd39e257-8b4f-47a6-9a1c-4de1b8f188ea",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

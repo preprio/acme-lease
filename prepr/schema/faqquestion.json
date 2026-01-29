@@ -1,0 +1,45 @@
+{
+    "api_id": "FAQQuestion",
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/74ycwj3t7019\/w_1920\/section-faq.jpg",
+    "appearance_tag": null,
+    "body": "FAQ Question",
+    "description": null,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "question",
+            "appearance": "single_line",
+            "body": "Question",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "answer",
+            "appearance": "textarea",
+            "body": "Answer",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        }
+    ],
+    "folder": null,
+    "icon": "fas fa-question",
+    "label": "Component",
+    "ref": "3a90d5b9-f31e-43d5-86de-03fc57e7da22",
+    "schema_version": "2025-04-09"
+}

@@ -1,0 +1,28 @@
+{
+    "body": "Static Component",
+    "body_singular": "StaticComponent",
+    "enum": [
+        {
+            "display": "Testimonials",
+            "value": "TESTIMONIALS"
+        },
+        {
+            "display": "Explanation",
+            "value": "EXPLANATION"
+        },
+        {
+            "display": "Steps",
+            "value": "STEPS"
+        },
+        {
+            "display": "Benefits",
+            "value": "BENEFITS"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "604c3bed-2a5c-4856-8b65-433cd8761026",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

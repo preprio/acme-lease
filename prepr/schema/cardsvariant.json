@@ -1,0 +1,20 @@
+{
+    "body": "Cards Variant",
+    "body_singular": "CardsVariant",
+    "enum": [
+        {
+            "display": "Default",
+            "value": "DEFAULT"
+        },
+        {
+            "display": "Blog",
+            "value": "BLOG"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "3e74c0d4-d5b0-4e11-b743-a6be315b5c46",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

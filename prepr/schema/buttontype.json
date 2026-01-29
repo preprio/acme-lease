@@ -1,0 +1,24 @@
+{
+    "body": "Button Type",
+    "body_singular": "ButtonType",
+    "enum": [
+        {
+            "display": "Secondary",
+            "value": "SECONDARY"
+        },
+        {
+            "display": "Primary",
+            "value": "PRIMARY"
+        },
+        {
+            "display": "Link",
+            "value": "LINK"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "06b9da74-0134-40a1-83b3-079258631bf0",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

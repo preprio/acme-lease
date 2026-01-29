@@ -1,0 +1,95 @@
+{
+    "api_id": "Hero",
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/1epigllm6dqw\/w_1920\/section-header.jpg",
+    "appearance_tag": null,
+    "body": "Hero",
+    "description": null,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "heading",
+            "appearance": "single_line",
+            "body": "Heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "sub_heading",
+            "appearance": "single_line",
+            "body": "Sub Heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "accept": [
+                "photo"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_multiple": false,
+            "api_id": "image",
+            "body": "Image",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "focal_point_required": false,
+            "max": "1",
+            "min": "0",
+            "presets": [
+                {
+                    "height": "400",
+                    "name": "Hero",
+                    "width": "500"
+                }
+            ],
+            "presets_change_required": false,
+            "required": false,
+            "type": "Asset"
+        },
+        {
+            "a_b_testing": false,
+            "allow_multiple": true,
+            "api_id": "buttons",
+            "body": "Buttons",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1000",
+            "min": "0",
+            "personalization": false,
+            "required": false,
+            "type": "Stack",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Button",
+                    "label": "Component",
+                    "position": 1,
+                    "ref": "391d1731-f3a1-48ce-803e-568c89a6fb17"
+                }
+            ]
+        }
+    ],
+    "folder": "Sections",
+    "icon": "far fa-star",
+    "label": "Component",
+    "ref": "0f1721a3-bb0d-40b2-80a8-6580c2c9c787",
+    "schema_version": "2025-04-09"
+}

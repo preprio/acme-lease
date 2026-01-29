@@ -1,0 +1,77 @@
+{
+    "api_id": "SEO",
+    "appearance_image": null,
+    "appearance_tag": null,
+    "body": "SEO",
+    "description": null,
+    "fields": [
+        {
+            "appearance": "info",
+            "body": "What is SEO?",
+            "description": "*SEO* fields make this content item more visible to **search engines**. You can simply **AI generate** the description or add your own with your chosen search keywords. **Take Note:** The image you choose for SEO is visible in search results. So make sure it matches this content item well and is appealing to visitors.",
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "required": false,
+            "type": "HelpText"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "meta_title",
+            "appearance": "single_line",
+            "body": "Meta title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "generate": "Generate a meta description with an absolute maximum of 60 characters based on [prepr_ai_generate:@Page.title] or [prepr_ai_generate:@Post.title] or [prepr_ai_generate:@Product.name] whichever is filled in.",
+                "translate": "1"
+            },
+            "required": false,
+            "seo_title": true,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "meta_description",
+            "appearance": "single_line",
+            "body": "Meta description",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "generate": "Generate a meta description with an absolute maximum of 120 characters based on [prepr_ai_generate:@Product.excerpt] or  or [prepr_ai_generate:@Post.excerpt] or [prepr_ai_generate:@Page.content]",
+                "translate": "1"
+            },
+            "required": false,
+            "seo_description": true,
+            "type": "Text"
+        },
+        {
+            "accept": [
+                "photo"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_focal_point": true,
+            "allow_multiple": false,
+            "api_id": "meta_image",
+            "body": "Meta image",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1",
+            "min": "0",
+            "presets_change_required": false,
+            "required": false,
+            "type": "Asset"
+        }
+    ],
+    "folder": null,
+    "icon": "fas fa-compress",
+    "label": "Component",
+    "ref": "3b1af544-d854-4ffd-9c4f-e81d6e10e691",
+    "schema_version": "2025-04-09"
+}
