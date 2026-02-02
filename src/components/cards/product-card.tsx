@@ -48,7 +48,7 @@ export default function ProductCard(props: { product: ProductCardFragment }) {
                 <p className='text-secondary-700 text-mb-lg font-medium lg:text-lg'>
                     &#8364;{product.price}
                     {hasPriceSuffix && '/'}
-                    {hasPriceSuffix && (
+                    {hasPriceSuffix && product.price_suffix !== 'NONE' && (
                         <span className='text-xs lowercase'>
                             {tProduct('price_suffix.' + product.price_suffix)}
                         </span>
