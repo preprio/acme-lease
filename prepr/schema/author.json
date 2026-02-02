@@ -1,0 +1,67 @@
+{
+    "appearance_image": null,
+    "appearance_tag": null,
+    "body": "Author",
+    "body_plural": "Authors",
+    "body_singular": "Author",
+    "commenting": false,
+    "content_check": true,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "name",
+            "appearance": "single_line",
+            "body": "Name",
+            "default_value": "{user.full_name}",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": true,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": true
+        },
+        {
+            "accept": [
+                "photo"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_focal_point": true,
+            "allow_multiple": false,
+            "api_id": "image",
+            "body": "Image",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1",
+            "min": "0",
+            "presets_change_required": false,
+            "required": false,
+            "type": "Asset"
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": false,
+    "ref": "e7ec487d-eb21-4285-b6f0-241a6c520b9d",
+    "review_urls": null,
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": true,
+    "single_instance": false,
+    "slug": null,
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": true
+}

@@ -1,0 +1,32 @@
+{
+    "body": "Rating",
+    "body_singular": "Rating",
+    "enum": [
+        {
+            "display": "1",
+            "value": "ONE"
+        },
+        {
+            "display": "2",
+            "value": "TWO"
+        },
+        {
+            "display": "3",
+            "value": "THREE"
+        },
+        {
+            "display": "4",
+            "value": "FOUR"
+        },
+        {
+            "display": "5",
+            "value": "FIVE"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "b21ef508-19f8-4b2c-92fc-52575f9fa976",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

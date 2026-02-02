@@ -1,0 +1,213 @@
+{
+    "appearance_image": null,
+    "appearance_tag": null,
+    "body": "Post",
+    "body_plural": "Posts",
+    "body_singular": "Post",
+    "commenting": false,
+    "content_check": true,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": true,
+            "api_id": "title",
+            "appearance": "single_line",
+            "body": "Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "improve": [
+                    "writing",
+                    "fix_spelling_grammar",
+                    "shorter",
+                    "longer",
+                    "simplify_language"
+                ],
+                "translate": "0"
+            },
+            "required": true,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "body": "Slug",
+            "description": null,
+            "description_appearance": "help_text",
+            "edit_from_slash": false,
+            "field_state": "read_write",
+            "remove_trailing_slash": false,
+            "required": true,
+            "type": "Slug"
+        },
+        {
+            "accept": [
+                "photo"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_focal_point": true,
+            "allow_multiple": false,
+            "api_id": "cover",
+            "body": "Cover",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "focal_point_required": false,
+            "max": "1",
+            "min": "0",
+            "presets_change_required": false,
+            "required": false,
+            "type": "Asset"
+        },
+        {
+            "allow_multiple": false,
+            "api_id": "author",
+            "appearance": "modal",
+            "body": "Author",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "group": false,
+            "max": "1",
+            "min": "0",
+            "required": false,
+            "type": "ContentReference",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Author",
+                    "label": "ContentModel",
+                    "position": 1,
+                    "ref": "e7ec487d-eb21-4285-b6f0-241a6c520b9d"
+                }
+            ]
+        },
+        {
+            "allow_multiple": true,
+            "api_id": "categories",
+            "appearance": "modal",
+            "body": "Categories",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "group": false,
+            "max": "1000",
+            "min": "0",
+            "required": false,
+            "type": "ContentReference",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "body_singular": "Category",
+                    "label": "ContentModel",
+                    "position": 1,
+                    "ref": "fbd97244-acf6-4c27-a4c8-3a4bfdbcbd1f"
+                }
+            ]
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "excerpt",
+            "appearance": "single_line",
+            "body": "Excerpt",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "accept": [
+                "Asset",
+                "Code",
+                "H2",
+                "H3",
+                "H4",
+                "Heading",
+                "Html",
+                "Paragraph",
+                "Photo",
+                "TextArea",
+                "Video",
+                "alignment",
+                "bold",
+                "italic",
+                "link",
+                "ordered-list",
+                "table",
+                "underline",
+                "unordered-list"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_focal_point": true,
+            "api_id": "content",
+            "body": "Content",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "openai_options": {
+                "translate": "1"
+            },
+            "presets_change_required": false,
+            "required": false,
+            "type": "ElementBox",
+            "types": []
+        },
+        {
+            "appearance": "open",
+            "body": "SEO",
+            "description": null,
+            "type": "Divider"
+        },
+        {
+            "api_id": "seo",
+            "body": "SEO",
+            "component": {
+                "api_id": "SEO",
+                "label": "Component",
+                "ref": "3b1af544-d854-4ffd-9c4f-e81d6e10e691"
+            },
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "framed": false,
+            "required": false,
+            "type": "Component"
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": true,
+    "ref": "25908a34-7ea1-4d57-818c-cbe017cf3663",
+    "review_urls": [
+        {
+            "body": "Preview",
+            "live_preview": "1",
+            "url": "https:\/\/acme-lease.prepr.io\/{locale}\/blog\/{slug}?access_token={access_token}"
+        }
+    ],
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": true,
+    "single_instance": false,
+    "slug": "{title}",
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": true
+}

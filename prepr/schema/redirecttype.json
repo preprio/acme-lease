@@ -1,0 +1,20 @@
+{
+    "body": "Redirect Type",
+    "body_singular": "RedirectType",
+    "enum": [
+        {
+            "display": "Permanent (301)",
+            "value": "PERMANENT"
+        },
+        {
+            "display": "Temporary (302)",
+            "value": "TEMPORARY"
+        }
+    ],
+    "enum_as_string": false,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "aa64c229-bab8-488c-b457-1dcee03a8b5e",
+    "schema_version": "2025-04-09",
+    "type": "enum"
+}

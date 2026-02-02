@@ -1,0 +1,164 @@
+{
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/3n4pvmm7t9ez\/w_1920\/page.jpg",
+    "appearance_tag": null,
+    "body": "Page",
+    "body_plural": "Pages",
+    "body_singular": "Page",
+    "commenting": true,
+    "content_check": true,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "title",
+            "appearance": "single_line",
+            "body": "Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "body": "Slug",
+            "description": null,
+            "description_appearance": "help_text",
+            "edit_from_slash": false,
+            "field_state": "read_write",
+            "remove_trailing_slash": false,
+            "required": true,
+            "type": "Slug"
+        },
+        {
+            "a_b_testing": true,
+            "allow_multiple": true,
+            "api_id": "content",
+            "body": "Content",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "max": "1000",
+            "min": "0",
+            "personalization": true,
+            "required": false,
+            "type": "Stack",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "CTA",
+                    "label": "Component",
+                    "position": 1,
+                    "ref": "e9a985a4-d381-4236-b494-bad564fed9be"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Feature",
+                    "label": "Component",
+                    "position": 2,
+                    "ref": "413f29cc-c5b8-4ddb-b7b9-ec18b3cffde2"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Hero",
+                    "label": "Component",
+                    "position": 3,
+                    "ref": "0f1721a3-bb0d-40b2-80a8-6580c2c9c787"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Static",
+                    "label": "Component",
+                    "position": 4,
+                    "ref": "d3358a61-022f-4d95-b109-3fee49983a0f"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "FAQ",
+                    "label": "ContentModel",
+                    "position": 5,
+                    "ref": "ea618735-9c34-4499-b2f6-a014fa0e332a"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Cards",
+                    "label": "Component",
+                    "position": 6,
+                    "ref": "c1f0129f-fb59-4394-96ac-e08d9a25d490"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Contact",
+                    "label": "Component",
+                    "position": 7,
+                    "ref": "ffffc930-a8a5-48ae-bfc8-091d9f5a4b08"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": false,
+                    "api_id": "Content",
+                    "label": "Component",
+                    "position": 8,
+                    "ref": "e57617ea-c058-4f38-9245-45773c6d6737"
+                }
+            ]
+        },
+        {
+            "appearance": "open",
+            "body": "SEO",
+            "description": null,
+            "type": "Divider"
+        },
+        {
+            "api_id": "seo",
+            "body": "SEO",
+            "component": {
+                "api_id": "SEO",
+                "label": "Component",
+                "ref": "3b1af544-d854-4ffd-9c4f-e81d6e10e691"
+            },
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "framed": false,
+            "required": false,
+            "type": "Component"
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": true,
+    "ref": "7063d5e7-3bed-4f16-98e6-5be257d697ab",
+    "review_urls": [
+        {
+            "body": "Preview",
+            "live_preview": "1",
+            "url": "https:\/\/acme-lease.prepr.io\/{locale}\/{slug}?access_token={access_token}"
+        }
+    ],
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": true,
+    "single_instance": false,
+    "slug": "{title}",
+    "slug_postfix": true,
+    "type": "model",
+    "versioning": true,
+    "visible": true,
+    "workflow": true
+}

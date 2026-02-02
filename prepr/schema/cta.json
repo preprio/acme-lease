@@ -1,0 +1,45 @@
+{
+    "api_id": "CTA",
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/7dxru772lt0d\/w_1920\/cta-button.jpg",
+    "appearance_tag": null,
+    "body": "CTA",
+    "description": null,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "heading",
+            "appearance": "single_line",
+            "body": "Heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "sub_heading",
+            "appearance": "single_line",
+            "body": "Sub Heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        }
+    ],
+    "folder": "Sections",
+    "icon": "fas fa-link",
+    "label": "Component",
+    "ref": "e9a985a4-d381-4236-b494-bad564fed9be",
+    "schema_version": "2025-04-09"
+}

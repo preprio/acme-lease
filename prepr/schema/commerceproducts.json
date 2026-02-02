@@ -1,0 +1,21 @@
+{
+    "body": "Products",
+    "body_singular": "CommerceProducts",
+    "fields": null,
+    "folder": null,
+    "label": "ContentModel",
+    "ref": "f48abda0-0f4a-4556-bb37-a9a23257629d",
+    "remote_source_active": true,
+    "remote_source_button_text": "Product",
+    "remote_source_domains": [
+        "picsum.photos",
+        "https:\/\/fastly.picsum.photos\/"
+    ],
+    "remote_source_headers": null,
+    "remote_source_icon": "fas fa-00",
+    "remote_source_last_sync": 0,
+    "remote_source_sync": true,
+    "remote_source_url": "https:\/\/openai.prepr.it\/api\/fake_remote_source\/cars",
+    "schema_version": "2025-04-09",
+    "type": "remote_source"
+}

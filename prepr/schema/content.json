@@ -1,0 +1,65 @@
+{
+    "api_id": "Content",
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/2nza1shd8543\/w_1920\/section-dynamic-content-in-a-component.png",
+    "appearance_tag": null,
+    "body": "Content",
+    "description": "A simple component to add dynamic content.",
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "title",
+            "appearance": "single_line",
+            "body": "Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "accept": [
+                "Asset",
+                "Audio",
+                "Document",
+                "H2",
+                "H3",
+                "Heading",
+                "Html",
+                "Paragraph",
+                "Photo",
+                "TextArea",
+                "Video",
+                "bold",
+                "italic",
+                "link",
+                "underline"
+            ],
+            "allow_align": false,
+            "allow_caption": false,
+            "allow_focal_point": true,
+            "api_id": "main_content",
+            "body": "Main content",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "focal_point_required": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "presets_change_required": false,
+            "required": false,
+            "type": "ElementBox",
+            "types": []
+        }
+    ],
+    "folder": null,
+    "icon": "fal fa-file-doc",
+    "label": "Component",
+    "ref": "e57617ea-c058-4f38-9245-45773c6d6737",
+    "schema_version": "2025-04-09"
+}

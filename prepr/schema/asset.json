@@ -1,0 +1,10 @@
+{
+    "body": "Asset",
+    "body_singular": "Asset",
+    "fields": null,
+    "label": "ContentModel",
+    "localization": true,
+    "ref": "d32929ad-967e-4d02-902f-d16f5ad0e525",
+    "schema_version": "2025-04-09",
+    "type": "asset"
+}

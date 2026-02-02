@@ -1,0 +1,126 @@
+{
+    "api_id": "Contact",
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/3qmjaus1moag\/w_1920\/section-consultation.jpg",
+    "appearance_tag": null,
+    "body": "Contact",
+    "description": null,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "heading",
+            "appearance": "single_line",
+            "body": "Heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "sub_heading",
+            "appearance": "textarea",
+            "body": "Sub heading",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "form_title",
+            "appearance": "single_line",
+            "body": "Form Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "phone_number",
+            "appearance": "single_line",
+            "body": "Phone number",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "email",
+            "appearance": "single_line",
+            "body": "Email",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "regex": "(([^<>()[\\]\\.,;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))",
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "appearance": "2",
+            "body": "Columns",
+            "type": "Column"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "hubspot_form_id",
+            "appearance": "single_line",
+            "body": "hubspot_form_id",
+            "description": "HubSpot form ID to locate a form in your HubSpot account",
+            "description_appearance": "tooltip",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "0"
+            },
+            "required": false,
+            "type": "Text"
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "hubspot_portal_id",
+            "appearance": "single_line",
+            "body": "hubspot_portal_id",
+            "description": "HubSpot portal ID to locate a form in your HubSpot account",
+            "description_appearance": "tooltip",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "0"
+            },
+            "required": false,
+            "type": "Text"
+        }
+    ],
+    "folder": "Sections",
+    "icon": "far fa-envelope",
+    "label": "Component",
+    "ref": "ffffc930-a8a5-48ae-bfc8-091d9f5a4b08",
+    "schema_version": "2025-04-09"
+}

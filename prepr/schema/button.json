@@ -1,0 +1,126 @@
+{
+    "api_id": "Button",
+    "appearance_image": null,
+    "appearance_tag": null,
+    "body": "Button",
+    "description": null,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "text",
+            "appearance": "single_line",
+            "body": "Text",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "title": true,
+            "type": "Text"
+        },
+        {
+            "api_id": "use_external_link",
+            "body": "Use external link?",
+            "default_value": false,
+            "description": "Let's you toggle between using an internal reference or external link",
+            "description_appearance": "help_text",
+            "false": "No",
+            "field_state": "read_write",
+            "required": false,
+            "true": "Yes",
+            "type": "Boolean"
+        },
+        {
+            "allow_multiple": false,
+            "api_id": "link",
+            "appearance": null,
+            "appearance_conditions": [
+                {
+                    "eq": false,
+                    "field": "use_external_link",
+                    "type": "Boolean"
+                }
+            ],
+            "body": "Link",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "group": false,
+            "max": "1",
+            "min": "0",
+            "required": false,
+            "type": "ContentReference",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Post",
+                    "label": "ContentModel",
+                    "position": 1,
+                    "ref": "25908a34-7ea1-4d57-818c-cbe017cf3663"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Page",
+                    "label": "ContentModel",
+                    "position": 2,
+                    "ref": "7063d5e7-3bed-4f16-98e6-5be257d697ab"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Category",
+                    "label": "ContentModel",
+                    "position": 3,
+                    "ref": "fbd97244-acf6-4c27-a4c8-3a4bfdbcbd1f"
+                }
+            ]
+        },
+        {
+            "a_b_testing": false,
+            "api_id": "external_url",
+            "appearance": "single_line",
+            "appearance_conditions": [
+                {
+                    "eq": true,
+                    "field": "use_external_link",
+                    "type": "Boolean"
+                }
+            ],
+            "body": "External URL",
+            "description": "For example: \/example or https:google.com",
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": true,
+            "type": "Text"
+        },
+        {
+            "api_id": "button_type",
+            "body": "Button Type",
+            "default_value": "PRIMARY",
+            "description": null,
+            "description_appearance": "help_text",
+            "enum": {
+                "body_singular": "ButtonType",
+                "label": "ContentModel",
+                "ref": "06b9da74-0134-40a1-83b3-079258631bf0"
+            },
+            "field_state": "read_write",
+            "required": false,
+            "type": "Enum"
+        }
+    ],
+    "folder": null,
+    "icon": "fas fa-compress",
+    "label": "Component",
+    "ref": "391d1731-f3a1-48ce-803e-568c89a6fb17",
+    "schema_version": "2025-04-09"
+}

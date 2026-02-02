@@ -1,0 +1,112 @@
+{
+    "appearance_image": "https:\/\/demo-patterns.stream.prepr.io\/7hv6184ie58i\/w_1920\/redirect.jpg",
+    "appearance_tag": null,
+    "body": "Redirect",
+    "body_plural": "Redirects",
+    "body_singular": "Redirect",
+    "commenting": false,
+    "content_check": true,
+    "description": null,
+    "engagement_insights": false,
+    "fields": [
+        {
+            "a_b_testing": false,
+            "api_id": "internal_title",
+            "appearance": "single_line",
+            "body": "Internal Title",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "no_html": false,
+            "openai_options": {
+                "translate": "1"
+            },
+            "required": false,
+            "seo_title": true,
+            "title": true,
+            "type": "Text",
+            "unique": false
+        },
+        {
+            "body": "Slug",
+            "description": null,
+            "description_appearance": "help_text",
+            "edit_from_slash": false,
+            "field_state": "read_write",
+            "remove_trailing_slash": false,
+            "required": false,
+            "type": "Slug"
+        },
+        {
+            "allow_multiple": true,
+            "api_id": "destination",
+            "appearance": "modal",
+            "body": "Destination",
+            "description": null,
+            "description_appearance": "help_text",
+            "field_state": "read_write",
+            "group": false,
+            "max": "1000",
+            "min": "0",
+            "required": false,
+            "type": "ContentReference",
+            "types": [
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Page",
+                    "label": "ContentModel",
+                    "position": 1,
+                    "ref": "7063d5e7-3bed-4f16-98e6-5be257d697ab"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Post",
+                    "label": "ContentModel",
+                    "position": 2,
+                    "ref": "25908a34-7ea1-4d57-818c-cbe017cf3663"
+                },
+                {
+                    "allow_group": false,
+                    "allow_new": true,
+                    "body_singular": "Product",
+                    "label": "ContentModel",
+                    "position": 3,
+                    "ref": "d48bab61-a263-4638-920d-a6a15a637e47"
+                }
+            ]
+        },
+        {
+            "api_id": "redirect_type",
+            "body": "Redirect Type",
+            "default_value": "PERMANENT",
+            "description": null,
+            "description_appearance": "help_text",
+            "enum": {
+                "body_singular": "RedirectType",
+                "label": "ContentModel",
+                "ref": "aa64c229-bab8-488c-b457-1dcee03a8b5e"
+            },
+            "field_state": "read_write",
+            "required": true,
+            "type": "Enum"
+        }
+    ],
+    "folder": null,
+    "label": "ContentModel",
+    "lock_content_item": false,
+    "previewing": false,
+    "ref": "a942521c-5a9d-4679-9ea9-77da5d75d454",
+    "review_urls": null,
+    "scheduling": true,
+    "schema_version": "2025-04-09",
+    "seo_score": true,
+    "single_instance": false,
+    "slug": null,
+    "slug_postfix": false,
+    "type": "model",
+    "versioning": false,
+    "visible": true,
+    "workflow": true
+}
