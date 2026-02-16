@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 import React from 'react'
-import { extractAccessToken } from '@preprio/prepr-nextjs/server'
+import { headers } from 'next/headers'
 import ToastProvider from '@/components/providers/toast-provider'
 import HubspotTracking from '@/components/tracking/hubspot-tracking'
 import { PreprTrackingPixel } from '@preprio/prepr-nextjs/react'
@@ -12,6 +12,7 @@ import { routing } from '@/i18n/routing'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import type { Locale } from '@/types/locale'
+import { getEnvAccessToken } from '@/lib/access-token'
 
 const ubuntu = Ubuntu({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
@@ -35,7 +36,9 @@ export default async function LocaleLayout({
 
     const messages = await getMessages()
 
-    const accessToken = extractAccessToken(process.env.PREPR_GRAPHQL_URL!)
+    // Get access token from headers (set by middleware) or fall back to env
+    const headerStore = await headers()
+    const accessToken = headerStore.get('x-access-token') ?? getEnvAccessToken()
 
     return (
         <html
