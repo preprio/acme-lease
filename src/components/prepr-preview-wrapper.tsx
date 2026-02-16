@@ -2,18 +2,21 @@ import React from 'react'
 import { getToolbarProps } from '@preprio/prepr-nextjs/server'
 import { PreprToolbarProps } from '@preprio/prepr-nextjs/types'
 import { PreprToolbarProvider, PreprToolbar } from '@preprio/prepr-nextjs/react'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { logger } from '@/lib/logger'
-import { getEnvGraphqlUrl } from '@/lib/access-token'
+import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
 
 export default async function PreprPreviewWrapper({
     children,
-}: Readonly<{
+}: {
     children: React.ReactNode
-}>) {
+}) {
     let previewBarProps: PreprToolbarProps | null = null
 
-    const graphqlUrl = getEnvGraphqlUrl()
+    // Get access token from headers (set by middleware) or fall back to env
+    const headerStore = await headers()
+    const accessToken = headerStore.get('x-access-token') ?? getEnvAccessToken()
+    const graphqlUrl = accessToken ? buildPreprGraphqlUrl(accessToken) : undefined
 
     const failedJsx = <>{children}</>
 
@@ -48,8 +51,10 @@ export default async function PreprPreviewWrapper({
                     locale: 'en',
                 }}
             >
-                <PreprToolbar />
-                {children}
+                <>
+                    <PreprToolbar />
+                    {children}
+                </>
             </PreprToolbarProvider>
         )
     }
