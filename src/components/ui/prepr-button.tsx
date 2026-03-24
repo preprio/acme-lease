@@ -20,16 +20,7 @@ function buildButtonUrl(button: ButtonFragment): string {
     }
 
     if (button.link) {
-        switch (button.link.__typename) {
-            case 'Category':
-                return `/products/${button.link._slug || ''}`
-            case 'Page':
-                return `/${button.link._slug || ''}`
-            case 'Post':
-                return `/blog/${button.link._slug || ''}`
-            default:
-                return ''
-        }
+        return `/${button.link._slug || ''}`
     }
 
     return ''
@@ -49,11 +40,9 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
     switch (button.button_type) {
         case 'PRIMARY':
             return (
-                <Link
-                    href={url}
-                    data-prepr-variant-event={'Click'}
-                >
+                <Link href={url}>
                     <Button
+                        data-prepr-variant-event={'Click'}
                         buttonStyle='primary'
                         className={className}
                     >
@@ -64,11 +53,9 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
 
         case 'SECONDARY':
             return (
-                <Link
-                    href={url}
-                    data-prepr-variant-event={'Click'}
-                >
+                <Link href={url}>
                     <Button
+                        data-prepr-variant-event={'Click'}
                         buttonStyle='secondary'
                         className={className}
                     >
@@ -80,8 +67,8 @@ export default function PreprButton({ button, className }: PreprButtonProps) {
         case 'LINK':
             return (
                 <LinkButton
-                    href={url}
                     data-prepr-variant-event={'Click'}
+                    href={url}
                     className={className}
                 >
                     {text}

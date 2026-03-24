@@ -7,6 +7,8 @@ import {
     ProductQuery,
 } from '@/gql/graphql'
 import { getHeaders } from '@/lib/server'
+import { createGraphQLError, getErrorMessage } from '@/lib/errors'
+import { logger } from '@/lib/logger'
 
 export type GetProductsOptions = {
     locale: string
@@ -70,27 +72,33 @@ export class ProductsService {
      *
      * @param options - Query options including locale and slug
      * @returns Single product or null if not found
+     * @throws {AppError} If the GraphQL query fails
      */
     static async getProductBySlug(options: GetProductBySlugOptions) {
         const { locale, slug } = options
 
-        const client = await getApolloClient()
-        const headers = await getHeaders()
+        try {
+            const client = await getApolloClient()
+            const headers = await getHeaders()
 
-        const { data } = await client.query<ProductQuery>({
-            query: ProductDocument,
-            variables: {
-                slug,
-            },
-            context: {
-                headers: {
-                    ...headers,
-                    'Prepr-Locale': locale,
+            const { data } = await client.query<ProductQuery>({
+                query: ProductDocument,
+                variables: {
+                    slug,
                 },
-            },
-            fetchPolicy: 'no-cache',
-        })
+                context: {
+                    headers: {
+                        ...headers,
+                        'Prepr-Locale': locale,
+                    },
+                },
+                fetchPolicy: 'no-cache',
+            })
 
-        return data?.Product || null
+            return data?.Product || null
+        } catch (error) {
+            logger.error(`Error fetching product with slug "${slug}":`, error)
+            throw createGraphQLError(getErrorMessage(error))
+        }
     }
 }

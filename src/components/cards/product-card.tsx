@@ -12,7 +12,7 @@ export default function ProductCard(props: { product: ProductCardFragment }) {
 
     return (
         <Link
-            href={`/products/${product._slug}`}
+            href={`/${product._slug}`}
             data-prepr-item-id={product._id}
             className='hover:border-primary-600 flex h-full cursor-pointer flex-col justify-between gap-14 rounded-3xl border-2 border-transparent bg-white p-6 transition duration-200 ease-in select-none'
         >
@@ -48,7 +48,7 @@ export default function ProductCard(props: { product: ProductCardFragment }) {
                 <p className='text-secondary-700 text-mb-lg font-medium lg:text-lg'>
                     &#8364;{product.price}
                     {hasPriceSuffix && '/'}
-                    {hasPriceSuffix && product.price_suffix !== 'NONE' && (
+                    {hasPriceSuffix && (
                         <span className='text-xs lowercase'>
                             {tProduct('price_suffix.' + product.price_suffix)}
                         </span>

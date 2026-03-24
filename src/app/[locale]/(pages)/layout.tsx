@@ -6,6 +6,10 @@ import AccessTokenIndicator from '@/components/access-token-indicator'
 import '@preprio/prepr-nextjs/index.css'
 import PreprPreviewWrapper from '@/components/prepr-preview-wrapper'
 import type { Locale } from '@/types/locale'
+import { headers } from 'next/headers'
+import { getEnvAccessToken } from '@/lib/access-token'
+
+export const dynamic = 'force-dynamic'
 
 export default async function PagesLayout({
     children,
@@ -21,13 +25,22 @@ export default async function PagesLayout({
         notFound()
     }
 
+    // Get access token from headers
+    const headerStore = await headers()
+    const accessTokenHeader = headerStore.get('x-access-token')
+    const defaultAccessToken = getEnvAccessToken()
+    const displayAccessToken =
+        accessTokenHeader && accessTokenHeader !== defaultAccessToken
+            ? accessTokenHeader
+            : null
+
     return (
         <PreprPreviewWrapper>
             <div className='flex min-h-screen flex-col'>
                 <Navbar locale={locale} />
                 <main className='flex-1'>{children}</main>
                 <footer className='py-7'>
-                    <AccessTokenIndicator />
+                    <AccessTokenIndicator accessToken={displayAccessToken} />
                 </footer>
             </div>
         </PreprPreviewWrapper>
