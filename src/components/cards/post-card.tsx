@@ -16,7 +16,8 @@ export default function PostCard(props: { post: PostCardFragment }) {
     const t = useTranslations('Blog')
 
     const handleClick = () => {
-        router.push(`/${post._slug}`)
+        const slug = post._slug?.startsWith('blog/') ? post._slug : `blog/${post._slug}`
+        router.push(`/${slug}`)
     }
 
     return (

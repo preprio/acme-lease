@@ -25,6 +25,8 @@ export default async function BlogDetailPage({
 }) {
     const { slug, locale } = await params
 
+    console.log('slug', slug)
+
     const post = await PostsService.getPostBySlug({ slug, locale })
 
     if (!post) {
@@ -88,11 +90,7 @@ export default async function BlogDetailPage({
                             </p>
                         </Prose>
 
-                        <BlogContent
-                            content={
-                                post.content
-                            }
-                        />
+                        <BlogContent content={post.content} />
 
                         <div className='mx-auto max-w-prose py-10'>
                             <Suspense fallback={<Loading />}>
@@ -101,7 +99,7 @@ export default async function BlogDetailPage({
                         </div>
                     </div>
                 </Container>
-            </section> 
+            </section>
             <Suspense fallback={<Loading />}>
                 <SimilarPosts id={post._id} />
             </Suspense>
