@@ -81,21 +81,35 @@ export class ProductsService {
             const client = await getApolloClient()
             const headers = await getHeaders()
 
+            const queryContext = {
+                headers: {
+                    ...headers,
+                    'Prepr-Locale': locale,
+                },
+            }
+
             const { data } = await client.query<ProductQuery>({
                 query: ProductDocument,
-                variables: {
-                    slug,
-                },
-                context: {
-                    headers: {
-                        ...headers,
-                        'Prepr-Locale': locale,
-                    },
-                },
+                variables: { slug },
+                context: queryContext,
                 fetchPolicy: 'no-cache',
             })
 
-            return data?.Product || null
+            if (data?.Product) return data.Product
+
+            // Retry with products/ prefix if slug doesn't already contain it
+            if (!slug.includes('products/')) {
+                const prefixedSlug = `products/${slug}`
+                const { data: retryData } = await client.query<ProductQuery>({
+                    query: ProductDocument,
+                    variables: { slug: prefixedSlug },
+                    context: queryContext,
+                    fetchPolicy: 'no-cache',
+                })
+                return retryData?.Product || null
+            }
+
+            return null
         } catch (error) {
             logger.error(`Error fetching product with slug "${slug}":`, error)
             throw createGraphQLError(getErrorMessage(error))

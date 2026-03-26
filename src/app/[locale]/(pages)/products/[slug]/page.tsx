@@ -19,6 +19,8 @@ export default async function ProductPage({
 }) {
     const { slug, locale } = await params
 
+    console.log('slug', slug)
+
     const product = await ProductsService.getProductBySlug({ slug, locale })
 
     if (!product) {
@@ -86,10 +88,7 @@ export default async function ProductPage({
                     </div>
                 </Container>
             </section>
-            {sections && (
-                <Suspense fallback={<Loading />}>{sections}</Suspense>
-            )}
+            {sections && <Suspense fallback={<Loading />}>{sections}</Suspense>}
         </div>
     )
 }
-
