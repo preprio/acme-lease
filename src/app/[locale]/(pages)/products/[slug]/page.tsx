@@ -81,7 +81,7 @@ export default async function ProductPage({
                                     {t('request_quote')}
                                 </Button>
                             </Link>
-                            <p className='text-mb-lg text-secondary-700 font-medium lg:text-lg'>
+                            <p className='text-mb-lg text-secondary-700 mt-6 font-medium lg:text-lg'>
                                 {product.excerpt}
                             </p>
                         </div>
