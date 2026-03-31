@@ -87,21 +87,35 @@ export class PostsService {
             const client = await getApolloClient()
             const headers = await getHeaders()
 
+            const queryContext = {
+                headers: {
+                    ...headers,
+                    'Prepr-Locale': locale,
+                },
+            }
+
             const { data } = await client.query<PostQuery>({
                 query: PostDocument,
-                variables: {
-                    slug,
-                },
-                context: {
-                    headers: {
-                        ...headers,
-                        'Prepr-Locale': locale,
-                    },
-                },
+                variables: { slug },
+                context: queryContext,
                 fetchPolicy: 'no-cache',
             })
 
-            return data?.Post || null
+            if (data?.Post) return data.Post
+
+            // Retry with blog/ prefix if slug doesn't already contain it
+            if (!slug.includes('blog/')) {
+                const prefixedSlug = `blog/${slug}`
+                const { data: retryData } = await client.query<PostQuery>({
+                    query: PostDocument,
+                    variables: { slug: prefixedSlug },
+                    context: queryContext,
+                    fetchPolicy: 'no-cache',
+                })
+                return retryData?.Post || null
+            }
+
+            return null
         } catch (error) {
             logger.error(`Error fetching post with slug "${slug}":`, error)
             throw createGraphQLError(getErrorMessage(error))
