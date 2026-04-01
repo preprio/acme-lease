@@ -43,65 +43,87 @@ const query = `query GetRedirects {
         `
 
 async function fetchPreprRedirects() {
-    const graphqlUrl =
-        process.env.PREPR_GRAPHQL_URL ||
-        buildPreprGraphqlUrl(process.env.PREPR_GRAPHQL_TOKEN!)
+    try {
+        const graphqlUrl =
+            process.env.PREPR_GRAPHQL_URL ||
+            buildPreprGraphqlUrl(process.env.PREPR_GRAPHQL_TOKEN!)
 
-    const fetched = await fetch(graphqlUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            query: query,
-        }),
-    })
-
-    const { data } = (await fetched.json()) as { data: RedirectsResponse }
-
-    const redirects = data?.Redirects?.items.map((item: RedirectItem) => {
-        let url = ''
-
-        if (item.destination[0] === null) return null
-
-        if (item.destination[0]) {
-            switch (item.destination[0].__typename) {
-                case 'Post':
-                    url = `/blog/${item.destination[0]._slug}`
-                    break
-                case 'Page':
-                    url = `/${item.destination[0]._slug === '/' ? '' : item.destination[0]._slug}`
-                    break
-                case 'Product':
-                    url = `/products/${item.destination[0]._slug}`
-                    break
-                default:
-                    break
-            }
+        if (!graphqlUrl) {
+            console.warn('PREPR_GRAPHQL_URL or PREPR_GRAPHQL_TOKEN not set, skipping redirects')
+            return []
         }
 
-        if (item.redirect_type === 'PERMANENT')
+        const fetched = await fetch(graphqlUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                query: query,
+            }),
+        })
+
+        if (!fetched.ok) {
+            console.warn(`Failed to fetch redirects: ${fetched.status} ${fetched.statusText}`)
+            return []
+        }
+
+        const response = (await fetched.json()) as { data?: RedirectsResponse; errors?: unknown[] }
+
+        if (response.errors) {
+            console.warn('GraphQL errors while fetching redirects:', response.errors)
+            return []
+        }
+
+        const { data } = response
+
+        const redirects = (data?.Redirects?.items ?? []).map((item: RedirectItem) => {
+            let url = ''
+
+            if (item.destination[0] === null) return null
+
+            if (item.destination[0]) {
+                switch (item.destination[0].__typename) {
+                    case 'Post':
+                        url = `/blog/${item.destination[0]._slug}`
+                        break
+                    case 'Page':
+                        url = `/${item.destination[0]._slug === '/' ? '' : item.destination[0]._slug}`
+                        break
+                    case 'Product':
+                        url = `/products/${item.destination[0]._slug}`
+                        break
+                    default:
+                        break
+                }
+            }
+
+            if (item.redirect_type === 'PERMANENT')
+                return {
+                    source: item._slug.toString().startsWith('/')
+                        ? item._slug
+                        : `/${vercelStegaSplit(item._slug).cleaned}`,
+                    destination: url,
+                    statusCode: 301,
+                }
+
             return {
                 source: item._slug.toString().startsWith('/')
                     ? item._slug
                     : `/${vercelStegaSplit(item._slug).cleaned}`,
                 destination: url,
-                statusCode: 301,
+                permanent: false,
             }
+        })
 
-        return {
-            source: item._slug.toString().startsWith('/')
-                ? item._slug
-                : `/${vercelStegaSplit(item._slug).cleaned}`,
-            destination: url,
-            permanent: false,
-        }
-    })
-
-    return redirects.filter(
-        (item): item is Exclude<typeof item, null> =>
-            item !== null && item.destination !== ''
-    )
+        return redirects.filter(
+            (item): item is Exclude<typeof item, null> =>
+                item !== null && item.destination !== ''
+        )
+    } catch (error) {
+        console.warn('Error fetching Prepr redirects:', error)
+        return []
+    }
 }
 
 const nextConfig: NextConfig = {
