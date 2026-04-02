@@ -12,7 +12,7 @@ export default function ProductCard(props: { product: ProductCardFragment }) {
 
     return (
         <Link
-            href={`/products/${product._slug}`}
+            href={`/products/${product._slug?.replace(/^products\//, '')}`}
             data-prepr-item-id={product._id}
             className='hover:border-primary-600 flex h-full cursor-pointer flex-col justify-between gap-14 rounded-3xl border-2 border-transparent bg-white p-6 transition duration-200 ease-in select-none'
         >

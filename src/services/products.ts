@@ -7,6 +7,8 @@ import {
     ProductQuery,
 } from '@/gql/graphql'
 import { getHeaders } from '@/lib/server'
+import { createGraphQLError, getErrorMessage } from '@/lib/errors'
+import { logger } from '@/lib/logger'
 
 export type GetProductsOptions = {
     locale: string
@@ -74,23 +76,42 @@ export class ProductsService {
     static async getProductBySlug(options: GetProductBySlugOptions) {
         const { locale, slug } = options
 
-        const client = await getApolloClient()
-        const headers = await getHeaders()
+        try {
+            const client = await getApolloClient()
+            const headers = await getHeaders()
 
-        const { data } = await client.query<ProductQuery>({
-            query: ProductDocument,
-            variables: {
-                slug,
-            },
-            context: {
+            const queryContext = {
                 headers: {
                     ...headers,
                     'Prepr-Locale': locale,
                 },
-            },
-            fetchPolicy: 'no-cache',
-        })
+            }
 
-        return data?.Product || null
+            const { data } = await client.query<ProductQuery>({
+                query: ProductDocument,
+                variables: { slug },
+                context: queryContext,
+                fetchPolicy: 'no-cache',
+            })
+
+            if (data?.Product) return data.Product
+
+            // Retry with products/ prefix if slug doesn't already contain it
+            if (!slug.includes('products/')) {
+                const prefixedSlug = `products/${slug}`
+                const { data: retryData } = await client.query<ProductQuery>({
+                    query: ProductDocument,
+                    variables: { slug: prefixedSlug },
+                    context: queryContext,
+                    fetchPolicy: 'no-cache',
+                })
+                return retryData?.Product || null
+            }
+
+            return null
+        } catch (error) {
+            logger.error(`Error fetching product with slug "${slug}":`, error)
+            throw createGraphQLError(getErrorMessage(error))
+        }
     }
 }
