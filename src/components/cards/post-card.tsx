@@ -16,7 +16,7 @@ export default function PostCard(props: { post: PostCardFragment }) {
     const t = useTranslations('Blog')
 
     const handleClick = () => {
-        router.push(`/blog/${post._slug}`)
+        router.push(`/blog/${post._slug?.replace(/^blog\//, '')}`)
     }
 
     return (
