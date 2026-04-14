@@ -44,18 +44,18 @@ export default async function PreprPreviewWrapper({
 
     if (shouldShowPreviewBar && previewBarProps) {
         return (
-            <PreprToolbarProvider
-                props={previewBarProps}
-                options={{
-                    debug: true,
-                    locale: 'en',
-                }}
-            >
-                <>
+            <>
+                <PreprToolbarProvider
+                    props={previewBarProps}
+                    options={{
+                        debug: true,
+                        locale: 'en',
+                    }}
+                >
                     <PreprToolbar />
-                    {children}
-                </>
-            </PreprToolbarProvider>
+                </PreprToolbarProvider>
+                {children}
+            </>
         )
     }
 
