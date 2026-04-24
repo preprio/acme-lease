@@ -19,6 +19,7 @@
         "@preprio/prepr-nextjs": "2.2.6",
         "@vercel/stega": "^1.1.0",
         "clsx": "^2.1.1",
+        "next": "16.1.7",
         "graphql": "^16.13.1",
         "next": "16.1.1",
         "next-intl": "^4.8.3",
