@@ -22,11 +22,11 @@ function buildButtonUrl(button: ButtonFragment): string {
     if (button.link) {
         switch (button.link.__typename) {
             case 'Category':
-                return `/products/${button.link._slug || ''}`
+                return `/products/${(button.link._slug || '').replace(/^products\//, '')}`
             case 'Page':
                 return `/${button.link._slug || ''}`
             case 'Post':
-                return `/blog/${button.link._slug || ''}`
+                return `/blog/${(button.link._slug || '').replace(/^blog\//, '')}`
             default:
                 return ''
         }
