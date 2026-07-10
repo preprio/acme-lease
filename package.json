@@ -13,7 +13,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@apollo/client": "^4.1.9",
+    "@apollo/client": "^4.1.6",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "^2.2.9",
     "@preprio/prepr-nextjs": "2.2.6",
@@ -28,8 +28,7 @@
     "react-icons": "^5.6.0",
     "swiper": "^12.1.2",
     "tailwind-merge": "^3.5.0",
-    "zod": "^4.3.6",
-    "@typescript-eslint/parser": "^8.59.3"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -41,33 +40,32 @@
     "@graphql-codegen/typescript-operations": "^5.0.9",
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^25.8.0",
+    "@types/node": "^25.5.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.59.3",
-    "@typescript-eslint/parser": "^8.59.3",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.59.3"
+    "typescript-eslint": "^8.57.2"
   },
   "pnpm": {
     "overrides": {
       "@types/react": "19.2.2",
       "@types/react-dom": "19.2.2",
-      "lodash": "^4.18.0",
-      "brace-expansion@<1.1.13": "^1.1.13",
-      "brace-expansion@>=4.0.0 <5.0.5": "^5.0.5",
-      "postcss@<8.5.10": ">=8.5.10",
-      "ws": ">=8.20.1",
+      "icu-minify": "^4.9.2",
+      "lodash": ">=4.18.0",
+      "brace-expansion": ">=5.0.5",
+      "postcss": ">=8.5.10",
       "js-yaml": ">=4.2.0",
       "js-yaml@<=4.1.1": ">=4.2.0",
       "js-yaml@<4.2.0": ">=4.2.0",
@@ -77,7 +75,7 @@
       "shell-quote@>=1.1.0 <=1.8.3": ">=1.8.4",
       "esbuild": ">=0.28.1",
       "esbuild@>=0.27.3 <0.28.1": ">=0.28.1",
-      "postcss": ">=8.5.10"
+      "postcss@<8.5.10": ">=8.5.10"
     }
   }
 }
