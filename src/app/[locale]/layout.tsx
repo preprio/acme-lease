@@ -6,7 +6,7 @@ import React from 'react'
 import { headers } from 'next/headers'
 import ToastProvider from '@/components/providers/toast-provider'
 import HubspotTracking from '@/components/tracking/hubspot-tracking'
-import { PreprTrackingPixel } from '@preprio/prepr-nextjs/react'
+import { PreprTrackingPixel } from '@preprio/toolkit/nextjs'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { getMessages } from 'next-intl/server'
@@ -46,7 +46,7 @@ export default async function LocaleLayout({
             lang={locale}
         >
             <head>
-                <PreprTrackingPixel accessToken={accessToken!} />
+                <PreprTrackingPixel id={accessToken!} />
             </head>
             <body
                 className={`${ubuntu.className} flex h-screen min-h-screen flex-col`}

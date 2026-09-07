@@ -24,12 +24,6 @@ const INITIAL_STATE = {
     status: 'UNSET' as const,
 }
 
-declare global {
-    interface Window {
-        prepr: (event: string, type: string, data: string | null | undefined) => void
-    }
-}
-
 export default function CtaCard({
     item,
     color = 'white',
@@ -47,7 +41,7 @@ export default function CtaCard({
     useEffect(() => {
         if (formState.message) {
             if (formState.status === 'SUCCESS') {
-                window.prepr('event', 'Email', formState.email)
+                window.prepr?.('event', 'Email', formState.email)
                 toast.custom((t: Toast) => (
                     <div className='flex w-full max-w-[420px] items-start justify-between rounded-2xl bg-white p-5'>
                         <div className='flex flex-wrap gap-4'>
