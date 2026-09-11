@@ -43,7 +43,7 @@ importers:
         version: 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@preprio/toolkit':
         specifier: 0.3.4
-        version: 0.3.4(next@16.2.11(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 0.3.4(next@16.3.3(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vercel/stega':
         specifier: ^1.1.0
         version: 1.1.0
@@ -4673,12 +4673,12 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.6
       '@parcel/watcher-win32-x64': 2.5.6
 
-  '@preprio/toolkit@0.3.4(next@16.2.11(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@preprio/toolkit@0.3.4(next@16.3.3(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@vercel/stega': 1.1.0
       preact: 10.29.8
     optionalDependencies:
-      next: 16.2.11(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.3.3(@babel/core@8.0.1)(@types/node@25.8.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
     transitivePeerDependencies:
