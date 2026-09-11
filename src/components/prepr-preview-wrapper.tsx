@@ -1,7 +1,6 @@
 import React from 'react'
-import { getToolbarProps } from '@preprio/prepr-nextjs/server'
-import { PreprToolbarProps } from '@preprio/prepr-nextjs/types'
-import { PreprToolbarProvider, PreprToolbar } from '@preprio/prepr-nextjs/react'
+import { getToolbarProps, PreprToolbar } from '@preprio/toolkit/nextjs'
+import type { PreprToolbarProps } from '@preprio/toolkit'
 import { cookies, headers } from 'next/headers'
 import { logger } from '@/lib/logger'
 import { buildPreprGraphqlUrl, getEnvAccessToken } from '@/lib/access-token'
@@ -45,15 +44,10 @@ export default async function PreprPreviewWrapper({
     if (shouldShowPreviewBar && previewBarProps) {
         return (
             <>
-                <PreprToolbarProvider
-                    props={previewBarProps}
-                    options={{
-                        debug: true,
-                        locale: 'en',
-                    }}
-                >
-                    <PreprToolbar />
-                </PreprToolbarProvider>
+                <PreprToolbar
+                    {...previewBarProps}
+                    options={{ debug: true, locale: 'en' }}
+                />
                 {children}
             </>
         )

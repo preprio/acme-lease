@@ -3,7 +3,6 @@ import Navbar from '@/components/layout/navbar'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import AccessTokenIndicator from '@/components/access-token-indicator'
-import '@preprio/prepr-nextjs/index.css'
 import PreprPreviewWrapper from '@/components/prepr-preview-wrapper'
 import type { Locale } from '@/types/locale'
 

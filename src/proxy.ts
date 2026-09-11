@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import createIntlMiddleware from 'next-intl/middleware'
-import createPreprMiddleware from '@preprio/prepr-nextjs/middleware'
+import { createPreprMiddleware } from '@preprio/toolkit/nextjs'
 import { getEnvAccessToken } from '@/lib/access-token'
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '@/constants/locales'
 import { env } from '@/config/env'

@@ -1,6 +1,6 @@
 import { getApolloClient } from '@/apollo-client'
 import { NavigationDocument, NavigationQuery } from '@/gql/graphql'
-import { getPreprHeaders } from '@preprio/prepr-nextjs/server'
+import { getPreprHeaders } from '@preprio/toolkit/nextjs'
 import NavbarClient from '@/components/layout/navbar-client'
 import ErrorBoundaryWrapper from '@/components/error-boundary-wrapper'
 
