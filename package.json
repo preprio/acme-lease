@@ -16,7 +16,7 @@
     "@apollo/client": "^4.1.9",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "^2.2.9",
-    "@preprio/toolkit": "0.3.4",
+    "@preprio/toolkit": "0.4.0",
     "@vercel/stega": "^1.1.0",
     "clsx": "^2.1.1",
     "graphql": "^16.13.1",
