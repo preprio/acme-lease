@@ -150,6 +150,15 @@ const nextConfig: NextConfig = {
             },
         ]
     },
+    // Demo site: keep every response (HTML, sitemap, assets) out of search indexes
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+            },
+        ]
+    },
     async redirects() {
         return (await fetchPreprRedirects()) || []
     },
