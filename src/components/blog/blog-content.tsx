@@ -77,6 +77,8 @@ export default function BlogContent({
                     />
                 )
             case CONTENT_TYPES.YOUTUBE_POST:
+                // Not every DCF queries YouTube fields (e.g. Content.main_content)
+                if (!(item as YouTubePost).url) return null
                 return (
                     <YoutubeEmbed
                         url={(item as YouTubePost).url}
