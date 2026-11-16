@@ -8,23 +8,29 @@ import BlogAssets from '@/components/blog/blog-assets'
 import YoutubeEmbed from '@/components/ui/youtube-embed'
 import { cn } from '@/lib/utils'
 import { logger } from '@/lib/logger'
-import { Assets, DcfFragment, Text, YouTubePost } from '@/gql/graphql'
+import { Assets, Text, YouTubePost } from '@/gql/graphql'
 import { CONTENT_TYPES } from './constants'
 
+/**
+ * A Dynamic Content Field item. Only `__typename` is guaranteed: the field's
+ * union differs per schema version, so the fields come from the block fragments.
+ */
+type DcfItem = { __typename?: string } & Record<string, unknown>
+
 interface BlogContentProps extends React.PropsWithChildren {
-    content?: Array<DcfFragment | null> | null
+    content?: ReadonlyArray<DcfItem | null> | null
     className?: string
 }
 
 /**
  * Generates a unique key for content items, preferring stable IDs over indices
  */
-function getContentKey(item: DcfFragment, index: number): string {
+function getContentKey(item: DcfItem, index: number): string {
     // Try to use a stable identifier from the item
-    if ('_id' in item && item._id) {
+    if (typeof item._id === 'string' && item._id) {
         return item._id
     }
-    if ('url' in item && item.url) {
+    if (typeof item.url === 'string' && item.url) {
         return item.url
     }
 
