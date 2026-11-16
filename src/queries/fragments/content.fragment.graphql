@@ -4,7 +4,6 @@ fragment Content on Content {
     main_content {
         __typename
         ...TextBlock
-        ...YouTubeBlock
         ...AssetsBlock
     }
 }
