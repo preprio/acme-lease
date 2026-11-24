@@ -6,6 +6,7 @@ import {
     PostDocument,
     PostQuery,
 } from '@/gql/graphql'
+import { withLivePreview } from '@/lib/live-preview'
 import { getHeaders } from '@/lib/server'
 import { createGraphQLError, getErrorMessage } from '@/lib/errors'
 import { logger } from '@/lib/logger'
@@ -51,7 +52,7 @@ export class PostsService {
                 }
             }
 
-            const { data } = await client.query<PostsQuery>({
+            const { data: dataRaw } = await client.query<PostsQuery>({
                 query: PostsDocument,
                 variables: {
                     skip,
@@ -65,6 +66,7 @@ export class PostsService {
                     },
                 },
             })
+            const data = await withLivePreview(PostsDocument, dataRaw)
 
             return data?.Posts || null
         } catch (error) {
@@ -94,24 +96,29 @@ export class PostsService {
                 },
             }
 
-            const { data } = await client.query<PostQuery>({
+            const { data: dataRaw } = await client.query<PostQuery>({
                 query: PostDocument,
                 variables: { slug },
                 context: queryContext,
                 fetchPolicy: 'no-cache',
             })
+            const data = await withLivePreview(PostDocument, dataRaw)
 
             if (data?.Post) return data.Post
 
             // Retry with blog/ prefix if slug doesn't already contain it
             if (!slug.includes('blog/')) {
                 const prefixedSlug = `blog/${slug}`
-                const { data: retryData } = await client.query<PostQuery>({
+                const { data: retryDataRaw } = await client.query<PostQuery>({
                     query: PostDocument,
                     variables: { slug: prefixedSlug },
                     context: queryContext,
                     fetchPolicy: 'no-cache',
                 })
+                const retryData = await withLivePreview(
+                    PostDocument,
+                    retryDataRaw
+                )
                 return retryData?.Post || null
             }
 

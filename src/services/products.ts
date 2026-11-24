@@ -6,6 +6,7 @@ import {
     ProductDocument,
     ProductQuery,
 } from '@/gql/graphql'
+import { withLivePreview } from '@/lib/live-preview'
 import { getHeaders } from '@/lib/server'
 import { createGraphQLError, getErrorMessage } from '@/lib/errors'
 import { logger } from '@/lib/logger'
@@ -49,7 +50,7 @@ export class ProductsService {
             }
         }
 
-        const { data } = await client.query<ProductsQuery>({
+        const { data: dataRaw } = await client.query<ProductsQuery>({
             query: ProductsDocument,
             variables: {
                 skip,
@@ -63,6 +64,7 @@ export class ProductsService {
                 },
             },
         })
+        const data = await withLivePreview(ProductsDocument, dataRaw)
 
         return data?.Products || null
     }
@@ -87,24 +89,31 @@ export class ProductsService {
                 },
             }
 
-            const { data } = await client.query<ProductQuery>({
+            const { data: dataRaw } = await client.query<ProductQuery>({
                 query: ProductDocument,
                 variables: { slug },
                 context: queryContext,
                 fetchPolicy: 'no-cache',
             })
+            const data = await withLivePreview(ProductDocument, dataRaw)
 
             if (data?.Product) return data.Product
 
             // Retry with products/ prefix if slug doesn't already contain it
             if (!slug.includes('products/')) {
                 const prefixedSlug = `products/${slug}`
-                const { data: retryData } = await client.query<ProductQuery>({
-                    query: ProductDocument,
-                    variables: { slug: prefixedSlug },
-                    context: queryContext,
-                    fetchPolicy: 'no-cache',
-                })
+                const { data: retryDataRaw } = await client.query<ProductQuery>(
+                    {
+                        query: ProductDocument,
+                        variables: { slug: prefixedSlug },
+                        context: queryContext,
+                        fetchPolicy: 'no-cache',
+                    }
+                )
+                const retryData = await withLivePreview(
+                    ProductDocument,
+                    retryDataRaw
+                )
                 return retryData?.Product || null
             }
 
