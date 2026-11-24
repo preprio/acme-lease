@@ -7,12 +7,14 @@ import { headers } from 'next/headers'
 import ToastProvider from '@/components/providers/toast-provider'
 import HubspotTracking from '@/components/tracking/hubspot-tracking'
 import { PreprTrackingPixel } from '@preprio/toolkit/nextjs'
+import { PreprRefresh } from '@preprio/toolkit/nextjs/live'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import type { Locale } from '@/types/locale'
 import { getEnvAccessToken } from '@/lib/access-token'
+import { livePreviewEnabled } from '@/lib/live-preview'
 
 const ubuntu = Ubuntu({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
@@ -51,6 +53,7 @@ export default async function LocaleLayout({
             <body
                 className={`${ubuntu.className} flex h-screen min-h-screen flex-col`}
             >
+                {livePreviewEnabled && <PreprRefresh enabled />}
                 <NextIntlClientProvider messages={messages}>
                     <ToastProvider>
                         <HubspotTracking />
