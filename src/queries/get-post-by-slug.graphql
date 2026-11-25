@@ -17,7 +17,10 @@ query Post($slug: String) {
                 ...Author
             }
             content {
-                ...DCF
+                __typename
+                ...TextBlock
+                ...YouTubeBlock
+                ...AssetsBlock
             }
         }
 }

@@ -1,5 +1,6 @@
 import { getApolloClient } from '@/apollo-client'
 import { NavigationDocument, NavigationQuery } from '@/gql/graphql'
+import { withLivePreview } from '@/lib/live-preview'
 import { getPreprHeaders } from '@preprio/toolkit/nextjs'
 import NavbarClient from '@/components/layout/navbar-client'
 import ErrorBoundaryWrapper from '@/components/error-boundary-wrapper'
@@ -10,7 +11,7 @@ async function getNavbar(locale: string) {
     const headers = await getPreprHeaders()
     const client = await getApolloClient()
 
-    const { data } = await client.query<NavigationQuery>({
+    const { data: dataRaw } = await client.query<NavigationQuery>({
         query: NavigationDocument,
         context: {
             headers: {
@@ -20,6 +21,7 @@ async function getNavbar(locale: string) {
         },
         fetchPolicy: 'no-cache',
     })
+    const data = await withLivePreview(NavigationDocument, dataRaw)
 
     if (!data?.Navigation) {
         return null

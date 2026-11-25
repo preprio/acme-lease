@@ -1,23 +1,32 @@
-fragment DCF on _prepr_types {
-    ... on Text {
-        _id
-        body
-        format
-        text
+# Dynamic Content Field blocks.
+#
+# Fragments are defined on concrete types, not on a union. Legacy tokens type
+# every DCF as the shared `_prepr_types` union, newer tokens give each DCF its
+# own union (e.g. `Post_Content`). A spread on a concrete type is valid in both,
+# as long as that type is enabled on the field: only spread a block on a field
+# whose union contains it (e.g. YouTubePost is on Post.content, not on
+# Content.main_content).
+
+fragment TextBlock on Text {
+    _id
+    body
+    format
+    text
+}
+
+fragment AssetsBlock on Assets {
+    items {
+        _type
+        url(width: 1000)
+        mime_type
+        caption
+        playback_id
+        width
+        height
     }
-    ... on YouTubePost {
-        _id
-        url
-    }
-    ... on Assets {
-        items {
-            _type
-            url(width: 1000)
-            mime_type
-            caption
-            playback_id
-            width
-            height
-        }
-    }
+}
+
+fragment YouTubeBlock on YouTubePost {
+    _id
+    url
 }

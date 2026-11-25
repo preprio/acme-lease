@@ -1,5 +1,6 @@
 import { getApolloClient } from '@/apollo-client'
 import { PageDocument, PageQuery } from '@/gql/graphql'
+import { withLivePreview } from '@/lib/live-preview'
 import { getHeaders } from '@/lib/server'
 import { createGraphQLError, getErrorMessage } from '@/lib/errors'
 import { logger } from '@/lib/logger'
@@ -30,7 +31,7 @@ export class PagesService {
             const client = await getApolloClient()
             const headers = await getHeaders()
 
-            const { data } = await client.query<PageQuery>({
+            const { data: dataRaw } = await client.query<PageQuery>({
                 query: PageDocument,
                 variables: {
                     slug,
@@ -43,6 +44,7 @@ export class PagesService {
                 },
                 fetchPolicy: 'no-cache',
             })
+            const data = await withLivePreview(PageDocument, dataRaw)
 
             return data?.Page || null
         } catch (error) {
