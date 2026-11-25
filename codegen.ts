@@ -1,4 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
+import { preprIds } from '@preprio/toolkit/codegen'
 
 // IMPORTANT: Replace the schema URL below with your own Prepr GraphQL URL
 // Get your URL from: Prepr Dashboard → Settings → Access tokens
@@ -13,6 +14,9 @@ const config: CodegenConfig = {
             presetConfig: {
                 fragmentMasking: false,
             },
+            // Selects _id everywhere the schema has one, so live preview can
+            // match the editor's unsaved changes to the rendered content.
+            documentTransforms: [preprIds],
             plugins: [],
         },
         './graphql.schema.json': {

@@ -3,12 +3,13 @@ import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
 import { getApolloClient } from '@/apollo-client'
 import { CategoriesDocument, CategoriesQuery } from '@/gql/graphql'
+import { withLivePreview } from '@/lib/live-preview'
 
 export const revalidate = 0
 
 async function getCategories(locale: string) {
     const client = await getApolloClient()
-    const { data } = await client.query<CategoriesQuery>({
+    const { data: dataRaw } = await client.query<CategoriesQuery>({
         query: CategoriesDocument,
         context: {
             headers: {
@@ -16,6 +17,7 @@ async function getCategories(locale: string) {
             },
         },
     })
+    const data = await withLivePreview(CategoriesDocument, dataRaw)
 
     return data?.Categories
 }
